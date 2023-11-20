@@ -5,11 +5,9 @@ import Navbar from '../components/navbar'
 function Login() {
   return (
     <>
-        <Navbar/>
-        
-        <div className="card w-full border-l-green-300 image-full">
+        {/* <div className="card w-full border-l-green-300 image-full">
             <InputLogin/>
-        </div>
+        </div> */}
     </>
   )
 }
