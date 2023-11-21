@@ -50,15 +50,15 @@ function Artikel() {
           <div className="py-2">
             <div className="card card-side bg-base-100 shadow-xl">
               <figure>
-                <img src={artikel2} alt="Movie" />
+                <img src={artikel2} alt="Movie" className=""/>
               </figure>
               <div className="card-body">
-                <p className="text-sm">General Health</p>
-                <h4 className="card-title">
+                <p className="text-xs">General Health</p>
+                <h4 className="card-title text-sm font-bold">
                   The Importance of Mental Health: Maintaining Balance in Your
                   Life
                 </h4>
-                <p className="text-sm">Sep 22, 2023</p>
+                <p className="text-xs">Sep 22, 2023</p>
               </div>
             </div>
           </div>
@@ -69,11 +69,11 @@ function Artikel() {
                 <img src={artikel3} alt="Movie" />
               </figure>
               <div className="card-body">
-                <p className="text-sm">Psychology</p>
-                <h4 className="card-title">
+                <p className="text-xs">Psychology</p>
+                <h4 className="card-title text-sm font-bold">
                   Positive Psychology: Enhancing Well-being and Happiness
                 </h4>
-                <p className="text-sm">Okt 22, 2023</p>
+                <p className="text-xs">Okt 22, 2023</p>
               </div>
             </div>
           </div>
@@ -84,12 +84,12 @@ function Artikel() {
                 <img src={artikel4} alt="Movie" />
               </figure>
               <div className="card-body">
-                <p className="text-sm">Psychiatrists</p>
-                <h4 className="card-title">
+                <p className="text-xs">Psychiatrists</p>
+                <h4 className="card-title text-sm font-bold">
                   Getting to Know the Profession of Psychiatrists: Mental Health
                   Experts
                 </h4>
-                <p className="text-sm">June 22, 2023</p>
+                <p className="text-xs">June 22, 2023</p>
               </div>
             </div>
           </div>
