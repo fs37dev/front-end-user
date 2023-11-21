@@ -47,7 +47,7 @@ function HomeService() {
             </div>
           </div>
           <div
-            className="card w-96 bg-base-100 shadow-xl py-8 my-6"
+            className="card w-96 bg-base-100 shadow-xl"
             style={{ backgroundColor: "#f4feff", color: "#000" }}
           >
             <figure>
