@@ -5,7 +5,7 @@ function ListDokter() {
   return (
     <>
       <div
-        className="px-20 p-2"
+        className="lg:px-20 px-10 p-2"
         style={{ backgroundColor: "#f4feff", color: "#000" }}
       >
         <div>
@@ -26,7 +26,11 @@ function ListDokter() {
             spesialis berpengalaman.
           </p>
         </div>
-        <form action="" method="get" className="flex flex-row gap-6 py-8">
+        <form
+          action=""
+          method="get"
+          className="flex flex-row gap-6 py-8 overflow-y-auto"
+        >
           <div className="card card-compact bg-base-100 shadow-xl">
             <figure className="w-60">
               <img src={dokter} alt="dokter" className="w-40" />

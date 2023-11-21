@@ -3,10 +3,10 @@ import React from "react";
 function HomeAbout() {
   return (
     <div
-      className="px-20 py-40 flex"
+      className="lg:px-20 px-10 py-40 flex"
       style={{ backgroundColor: "#f4feff", color: "#000" }}
     >
-      <div className="px-60">
+      <div className="lg:px-60">
         <div className="card w-full bg-base-100 shadow-xl rounded-xl p-5">
           <div className="card-body">
             <div

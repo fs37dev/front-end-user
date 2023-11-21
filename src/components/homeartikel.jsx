@@ -7,7 +7,7 @@ import artikel4 from "/artikel4.svg";
 
 function Artikel() {
   return (
-    <div className="px-20 py-10">
+    <div className="lg:px-20 px-10 py-10 ">
       <div>
         <h1
           className="text-3xl font-bold text-center"
@@ -16,13 +16,13 @@ function Artikel() {
           Artikel
         </h1>
       </div>
-      <div className="flex flex-row gap-40 items-center">
+      <div className="lg:flex flex-row gap-40 items-center">
         <div>
-          <img src={dokter} alt="donter" className="" />
+          <img src={dokter} alt="donter" className="hidden lg:flex" />
         </div>
 
         <div>
-          <div className="text-sm py-3">
+          <div className="text-sm py-3 justify-end">
             Artikel ini merupakan sumber informasi penting, pada topik tertentu,
             memberikan penjelasan mendalam dan analisis yang didukung oleh bukti
             yang kuat. Membacanya untuk mendapatkan pemahaman yang lebih baik
