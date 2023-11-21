@@ -18,7 +18,7 @@ function Navbar() {
         </h1>
       </div>
       <nav>
-        <ul className="lg:flex flex-row gap-8 justify-center items-center menu menu-horizontal">
+        <ul className="lg:flex flex-row gap-2 justify-center items-center menu menu-horizontal">
           <li className="lg:hidden">
             <details>
               <summary>Menu</summary>
@@ -43,11 +43,9 @@ function Navbar() {
                     About Us
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink to="/login" className="text-gray-400 font-bold">
-                    <button className="btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2xl">
+                <li className="btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2xl">
+                  <NavLink to="/login" className="text-white font-bold">
                       Login
-                    </button>
                   </NavLink>
                 </li>
               </ul>
@@ -74,12 +72,10 @@ function Navbar() {
               About Us
             </NavLink>
           </li>
-
-          <li className="hidden lg:flex">
-            <NavLink to="/login" className="text-gray-400 font-bold">
-              <button className="btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2xl">
-                Login
-              </button>
+          <li className="hidden lg:flex btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2x">
+            <NavLink to="/login" className="text-white font-bold hover:bg-none">
+              {" "}
+              Login
             </NavLink>
           </li>
         </ul>
