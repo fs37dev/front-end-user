@@ -5,7 +5,7 @@ function HomeGet() {
   return (
     <section>
       <div
-        className="flex flex-row px-20 p-2 gap-10 items-center"
+        className="flex flex-row px-20 p-2 gap-10 items-center py-20"
         style={{ backgroundColor: "#f4feff", color: "#000" }}
       >
         <div className="">
