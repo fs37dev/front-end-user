@@ -5,6 +5,7 @@ import HomeService from '../components/service';
 import Artikel from '../components/artike';
 import ListDokter from '../components/listdoctor';
 import HomeAbout from '../components/homeabout';
+import Footer from '../components/footer';
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
       <Artikel/>
       <ListDokter/>
       <HomeAbout/>
+      <Footer/>
     </>
   );
 }
