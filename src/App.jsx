@@ -3,7 +3,7 @@ import Navbar from "./components/navbar";
 import Home from "./pages/home";
 import AboutUs from "./pages/about";
 import HomeService from "./components/homeservice";
-import BookDoctor from "./pages/bookdoctor";
+import BookDoctor from "./pages/bookdokter";
 import Login from "./pages/login";
 
 function App() {

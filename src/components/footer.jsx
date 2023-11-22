@@ -1,8 +1,8 @@
 import React from "react";
-import google from "/google.png";
-import twitter from "/twitter.png";
-import instagram from "/instagram.png";
-import linkedin from "/linkedin.png";
+import google from "../assets/google.png";
+import twitter from "../assets/twitter.png";
+import instagram from "../assets/instagram.png";
+import linkedin from "../assets/linkedin.png";
 
 function Footer() {
   return (
