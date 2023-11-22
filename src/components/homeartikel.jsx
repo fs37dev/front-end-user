@@ -7,7 +7,7 @@ import artikel4 from "/artikel4.svg";
 
 function Artikel() {
   return (
-    <div className="px-20 py-10">
+    <div className="lg:px-20 px-10 py-10 ">
       <div>
         <h1
           className="text-3xl font-bold text-center"
@@ -16,13 +16,13 @@ function Artikel() {
           Artikel
         </h1>
       </div>
-      <div className="flex flex-row gap-40 items-center">
+      <div className="lg:flex flex-row gap-40 items-center">
         <div>
-          <img src={dokter} alt="donter" className="" />
+          <img src={dokter} alt="donter" className="hidden lg:flex" />
         </div>
 
         <div>
-          <div className="text-sm py-3">
+          <div className="text-sm py-3 justify-end">
             Artikel ini merupakan sumber informasi penting, pada topik tertentu,
             memberikan penjelasan mendalam dan analisis yang didukung oleh bukti
             yang kuat. Membacanya untuk mendapatkan pemahaman yang lebih baik
@@ -50,15 +50,15 @@ function Artikel() {
           <div className="py-2">
             <div className="card card-side bg-base-100 shadow-xl">
               <figure>
-                <img src={artikel2} alt="Movie" />
+                <img src={artikel2} alt="Movie" className=""/>
               </figure>
               <div className="card-body">
-                <p className="text-sm">General Health</p>
-                <h4 className="card-title">
+                <p className="text-xs">General Health</p>
+                <h4 className="card-title text-sm font-bold">
                   The Importance of Mental Health: Maintaining Balance in Your
                   Life
                 </h4>
-                <p className="text-sm">Sep 22, 2023</p>
+                <p className="text-xs">Sep 22, 2023</p>
               </div>
             </div>
           </div>
@@ -69,11 +69,11 @@ function Artikel() {
                 <img src={artikel3} alt="Movie" />
               </figure>
               <div className="card-body">
-                <p className="text-sm">Psychology</p>
-                <h4 className="card-title">
+                <p className="text-xs">Psychology</p>
+                <h4 className="card-title text-sm font-bold">
                   Positive Psychology: Enhancing Well-being and Happiness
                 </h4>
-                <p className="text-sm">Okt 22, 2023</p>
+                <p className="text-xs">Okt 22, 2023</p>
               </div>
             </div>
           </div>
@@ -84,12 +84,12 @@ function Artikel() {
                 <img src={artikel4} alt="Movie" />
               </figure>
               <div className="card-body">
-                <p className="text-sm">Psychiatrists</p>
-                <h4 className="card-title">
+                <p className="text-xs">Psychiatrists</p>
+                <h4 className="card-title text-sm font-bold">
                   Getting to Know the Profession of Psychiatrists: Mental Health
                   Experts
                 </h4>
-                <p className="text-sm">June 22, 2023</p>
+                <p className="text-xs">June 22, 2023</p>
               </div>
             </div>
           </div>
