@@ -6,16 +6,13 @@ function Login() {
   return (
     <>
       <div
-        className="card w-full image-full"
-        style={{ backgroundColor: "#00bfa6" }}
+        className='relative w-full h-screen bg-zinc-900/90'
       >
         <figure>
-          <img src={loginimg} alt="register" />
+          <img className='absolute w-full h-full object-cover mix-bland-overlay' src={loginimg} alt="login" />
         </figure>
-        <div className="card-body">
           <InputLogin />
         </div>
-      </div>
     </>
   );
 }

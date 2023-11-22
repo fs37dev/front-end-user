@@ -1,69 +1,97 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function InputRegister() {
+  const navigate = useNavigate();
+  const [nama, setNama] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [konfirmasiPassword, setKonfirmasiPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+
+    if (!nama || !email || !password || !konfirmasiPassword) {
+      setError("Input data anda!");
+    } else if (password !== konfirmasiPassword) {
+      setError('Password dan Konfirmasi Password tidak cocok!')
+    } else {
+      navigate("/");
+    }
+  };
+
   return (
-    <>
-      <form action="">
-        <div className="flex justify-center items-center">
-          <div className="card w-96 bg-base-100 shadow-xl my-6 text-black">
-            <div className="card-body">
-              <h1 className="font-bold text-center text-xl">
-                Register Dengan Kami!
-              </h1>
-              <h2 className="font-bold text-center text-base">
-                Informasi Anda aman bersama kami
-              </h2>
-              <div className="py-1">
-                <p>Nama</p>
-                <input
-                  type="text"
-                  placeholder="Input Nama Anda"
-                  className="input input-bordered w-full max-w-xs"
-                />
-              </div>
-              <div className="py-1">
-                <p>Email</p>
-                <input
-                  type="text"
-                  placeholder="Input Email Anda"
-                  className="input input-bordered w-full max-w-xs"
-                />
-              </div>
-              <div className="py-1">
-                <p>Password</p>
-                <input
-                  type="text"
-                  placeholder="Input Password Anda"
-                  className="input input-bordered w-full max-w-xs"
-                />
-              </div>
-              <div className="py-1">
-                <p>Konfirmasi Password</p>
-                <input
-                  type="text"
-                  placeholder="Input Password Anda Sekali lagi"
-                  className="input input-bordered w-full max-w-xs"
-                />
-              </div>
-              <div className="py-1">
-                <button
-                  className="btn btn-success w-full rounded-full"
-                  style={{ backgroundColor: "#009781", color: "#000" }}
-                >
-                  <p className="text-white">Sign Up</p>
-                </button>
-              </div>
-              <p>
-                Sudah punya akun? 
-                <a className="font-bold" style={{ color: "#009494" }} href="#">
-                   Sign In
-                </a>
-              </p>
+    <div className="relative w-full h-screen">
+      <div className="flex justify-center items-center h-full">
+        <form className="rounded-lg shadow-2xl lg:w-full max-w-[900px] w-100 mx-auto bg-white ">
+          <div className="card-body">
+            <h1 className="font-bold text-center text-xl">
+              Register Dengan Kami!
+            </h1>
+            <h2 className="font-bold text-center text-base">
+              Informasi Anda aman bersama kami
+            </h2>
+            <div className="flex flex-col py-1">
+              <label>Nama</label>
+              <input
+                placeholder="Input Nama"
+                className="border rounded-lg input-bordered relative bg-gray-100 p-2"
+                type="text"
+                value={nama}
+                onChange={(e) => setNama(e.target.value)}
+              />
             </div>
+            <div className="flex flex-col py-1">
+              <label>Email</label>
+              <input
+                placeholder="Input Email"
+                className="border rounded-lg input-bordered relative bg-gray-100 p-2"
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="flex flex-col py-1">
+              <label>Password</label>
+              <input
+                placeholder="Input Password"
+                className="border rounded-lg input-bordered relative bg-gray-100 p-2"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div className="flex flex-col py-1">
+              <label>Konfirmasi Password</label>
+              <input
+                placeholder="Konfirmasi Password"
+                className="border rounded-lg input-bordered relative bg-gray-100 p-2"
+                type="password"
+                value={konfirmasiPassword}
+                onChange={(e) => setKonfirmasiPassword(e.target.value)}
+              />
+            </div>
+            <button
+              className="w-50 py-3 mt-3 rounded-full bg-emerald-500 hover:bg-emerald-700 relative text-white"
+              onClick={handleSignUp}
+            >
+              Sign Up
+            </button>
+            {error && <p className="text-center text-red-500 mt-2">{error}</p>}
+            <p className="text-center mt-3">
+              Sudah Punya Akun?{" "}
+              <a
+                onClick={() => navigate("/login")}
+                className="text-emerald-500 font-bold"
+              >
+                Sign In
+              </a>
+            </p>
           </div>
-        </div>
-      </form>
-    </>
+        </form>
+      </div>
+    </div>
   );
 }
 
