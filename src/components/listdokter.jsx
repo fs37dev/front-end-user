@@ -50,13 +50,13 @@ function ListDokter() {
                 />
               </div>
               <input type="hidden" name="id" value="" />
-              <button
+              <a href="/detaildocter.jsx"><button
                 type="submit"
                 id=""
                 className="btn bg-blue-500 text-white"
               >
                 Reservasi
-              </button>
+              </button></a>
             </div>
           </div>
         </div>

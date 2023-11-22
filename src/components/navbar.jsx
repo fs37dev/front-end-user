@@ -23,57 +23,87 @@ function Navbar() {
             <details>
               <summary>Menu</summary>
               <ul className="p-2 bg-base-100">
-                <li>
-                  <NavLink to="/" className="text-gray-400 font-bold">
+                <li className="text-gray-400 font-bold">
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) => isActive && "active-link"}
+                  >
                     Home
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink to="/service" className="text-gray-400 font-bold">
+                <li className="text-gray-400 font-bold">
+                  <NavLink
+                    to="/service"
+                    className={({ isActive }) => isActive && "active-link"}
+                  >
                     Services
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink to="/doctors" className="text-gray-400 font-bold">
+                <li className="text-gray-400 font-bold">
+                  <NavLink
+                    to="/doctors"
+                    className={({ isActive }) => isActive && "active-link"}
+                  >
                     Doctors
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink to="/about" className="text-gray-400 font-bold">
+                <li className="text-gray-400 font-bold">
+                  <NavLink
+                    to="/about"
+                    className={({ isActive }) => isActive && "active-link"}
+                  >
                     About Us
                   </NavLink>
                 </li>
-                <li className="btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2xl">
-                  <NavLink to="/login" className="text-white font-bold">
-                      Login
+                <li className="btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2xl font-bold">
+                  <NavLink
+                    to="/login"
+                    className={({ isActive }) => isActive && "active-link"}
+                  >
+                    Login
                   </NavLink>
                 </li>
               </ul>
             </details>
           </li>
 
-          <li className="hidden lg:flex">
-            <NavLink to="/" className="text-gray-400 font-bold">
+          <li className="hidden lg:flex text-gray-400 font-bold">
+            <NavLink
+              to="/"
+              className={({ isActive }) => isActive && "active-link"}
+            >
               Home
             </NavLink>
           </li>
-          <li className="hidden lg:flex">
-            <NavLink to="/service" className="text-gray-400 font-bold">
+          <li className="hidden lg:flex text-gray-400 font-bold">
+            <NavLink
+              to="/service"
+              className={({ isActive }) => isActive && "active-link"}
+            >
               Services
             </NavLink>
           </li>
-          <li className="hidden lg:flex">
-            <NavLink to="/doctors" className="text-gray-400 font-bold">
+          <li className="hidden lg:flex text-gray-400 font-bold">
+            <NavLink
+              to="/doctors"
+              className={({ isActive }) => isActive && "active-link"}
+            >
               Doctors
             </NavLink>
           </li>
-          <li className="hidden lg:flex">
-            <NavLink to="/about" className="text-gray-400 font-bold">
+          <li className="hidden lg:flex text-gray-400 font-bold">
+            <NavLink
+              to="/about"
+              className={({ isActive }) => isActive && "active-link"}
+            >
               About Us
             </NavLink>
           </li>
-          <li className="hidden lg:flex btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2x">
-            <NavLink to="/login" className="text-white font-bold hover:bg-none">
+          <li className="hidden lg:flex btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2x font-bold">
+            <NavLink
+              to="/login"
+              className={({ isActive }) => isActive && "active-link"}
+            >
               {" "}
               Login
             </NavLink>
