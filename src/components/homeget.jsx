@@ -1,5 +1,5 @@
 import React from "react";
-import gambarhome from "/home.svg";
+import gambarhome from "../assets/home.svg";
 
 function HomeGet() {
   return (
