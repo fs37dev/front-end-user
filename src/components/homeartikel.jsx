@@ -1,9 +1,9 @@
 import React from "react";
-import dokter from "/dokter.svg";
-import artikel1 from "/artikel.svg";
-import artikel2 from "/artikel2.svg";
-import artikel3 from "/artikel3.svg";
-import artikel4 from "/artikel4.svg";
+import dokter from "../assets/dokter.svg";
+import artikel1 from "../assets/artikel.svg";
+import artikel2 from "../assets/artikel2.svg";
+import artikel3 from "../assets/artikel3.svg";
+import artikel4 from "../assets/artikel4.svg";
 
 function Artikel() {
   return (

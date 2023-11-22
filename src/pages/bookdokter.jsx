@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/navbar";
 import ListDokter from "../components/listdokter";
 
-function BookDoctor() {
+function BookDokter() {
   return (
     <>
       <ListDokter />
@@ -10,4 +10,4 @@ function BookDoctor() {
   );
 }
 
-export default BookDoctor;
+export default BookDokter;

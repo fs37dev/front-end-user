@@ -1,5 +1,5 @@
 import React from "react";
-import dokter from "/dokter.svg";
+import dokter from "../assets/dokter.svg";
 
 function ListDokter() {
   return (

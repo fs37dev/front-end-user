@@ -1,6 +1,6 @@
 import React from "react";
 import InputLogin from "../components/inputlogin";
-import loginimg from "/loginimg.png"
+import loginimg from "../assets/loginimg.png"
 
 function Login() {
   return (
