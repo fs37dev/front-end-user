@@ -1,8 +1,8 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-function InputLogin() {  
-  const navigate = useNavigate()
+function InputLogin() {
+  const navigate = useNavigate();
   return (
     <>
       <form action="">
@@ -32,13 +32,18 @@ function InputLogin() {
                 <button
                   className="btn btn-success w-full rounded-full"
                   style={{ backgroundColor: "#009781", color: "#000" }}
+                  onClick={() => navigate("/")}
                 >
                   <p className="text-white">Sign In</p>
                 </button>
               </div>
               <p>
                 Tidak punya akun?
-                <a className="font-bold" style={{ color: "#009494" }} onClick={() => navigate('/register')}>
+                <a
+                  className="font-bold"
+                  style={{ color: "#009494" }}
+                  onClick={() => navigate("/register")}
+                >
                   Register
                 </a>
               </p>
@@ -50,4 +55,4 @@ function InputLogin() {
   );
 }
 
-export default InputLogin
+export default InputLogin;

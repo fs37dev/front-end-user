@@ -51,6 +51,7 @@ function InputRegister() {
                 <button
                   className="btn btn-success w-full rounded-full"
                   style={{ backgroundColor: "#009781", color: "#000" }}
+                  onClick={() => navigate("/")}
                 >
                   <p className="text-white">Sign Up</p>
                 </button>
