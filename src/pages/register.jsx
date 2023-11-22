@@ -1,5 +1,5 @@
 import React from "react";
-import registerimg from "/registerimg.png";
+import registerimg from "../assets/registerimg.png";
 import InputRegister from "../components/inputregister";
 
 function Register() {

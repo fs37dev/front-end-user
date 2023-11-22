@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function InputLogin() {  
+  const navigate = useNavigate()
   return (
     <>
       <form action="">
@@ -36,7 +38,7 @@ function InputLogin() {
               </div>
               <p>
                 Tidak punya akun?
-                <a className="font-bold" style={{ color: "#009494" }} href="#">
+                <a className="font-bold" style={{ color: "#009494" }} onClick={() => navigate('/register')}>
                   Register
                 </a>
               </p>

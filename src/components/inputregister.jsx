@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function InputRegister() {
+  const navigate = useNavigate()
   return (
     <>
       <form action="">
@@ -54,9 +56,13 @@ function InputRegister() {
                 </button>
               </div>
               <p>
-                Sudah punya akun? 
-                <a className="font-bold" style={{ color: "#009494" }} href="#">
-                   Sign In
+                Sudah punya akun?
+                <a
+                  className="font-bold"
+                  style={{ color: "#009494" }}
+                  onClick={() => navigate("/login")}
+                >
+                  Sign In
                 </a>
               </p>
             </div>
