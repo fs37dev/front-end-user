@@ -7,6 +7,7 @@ import BookDoctor from "./pages/bookdokter";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import DetailDokter from "./components/detaildokter";
+import PilihMedia from "./pages/pilihmedia";
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
         <Route path="/doctors" element={<BookDoctor />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register/>}/>
-        <Route path="/detaildokter" element={<DetailDokter/>}/>
+        <Route path="/register" element={<Register />} />
+        <Route path="/detaildokter" element={<DetailDokter />} />
+        <Route path="/selectpackage" element={<PilihMedia />} />
       </Routes>
     </>
   );

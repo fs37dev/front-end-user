@@ -2,8 +2,10 @@ import React from 'react'
 import dokter from "../assets/dokter.svg";
 import kalender from "../assets/calendar.png"
 import time from "../assets/time.png"
+import { useNavigate } from 'react-router-dom';
 
 function DetailDokter() {
+  const navigate = useNavigate()
   return (
     <>
       <form>
@@ -159,7 +161,7 @@ function DetailDokter() {
               <input type="hidden" name="hospital" value="" />
               <button
                 type="submit"
-                className="btn m-7 btn-active btn-accent rounded-full text-base-100"
+                className="btn m-7 btn-active btn-accent rounded-full text-base-100" onClick={() => navigate("/selectpackage")}
               >
                 Book Appointment
               </button>
