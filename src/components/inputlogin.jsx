@@ -1,57 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function InputLogin() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSignIn = (e) => {
+    e.preventDefault(); 
+
+    if (!email || !password) {
+      setError("Input data anda!");
+    } else {
+      navigate("/"); 
+    }
+  };
+
   return (
-    <>
-      <form action="">
-        <div className="flex justify-center items-center">
-          <div className="card w-96 bg-base-100 shadow-xl my-6 text-black">
-            <div className="card-body">
-              <h2 className="font-bold text-center text-base">
-                Silakan Masuk ke akun Anda untuk melanjutkan:
-              </h2>
-              <div className="py-1">
-                <p>Email</p>
-                <input
-                  type="text"
-                  placeholder="Input Email Anda"
-                  className="input input-bordered w-full max-w-xs"
-                />
-              </div>
-              <div className="py-1">
-                <p>Password</p>
-                <input
-                  type="text"
-                  placeholder="Input Password Anda"
-                  className="input input-bordered w-full max-w-xs"
-                />
-              </div>
-              <div className="py-1">
-                <button
-                  className="btn btn-success w-full rounded-full"
-                  style={{ backgroundColor: "#009781", color: "#000" }}
-                  onClick={() => navigate("/")}
-                >
-                  <p className="text-white">Sign In</p>
-                </button>
-              </div>
-              <p>
-                Tidak punya akun?
-                <a
-                  className="font-bold"
-                  style={{ color: "#009494" }}
-                  onClick={() => navigate("/register")}
-                >
-                  Register
-                </a>
-              </p>
-            </div>
+    <div className="relative w-full h-screen">
+      <div className="flex justify-center items-center h-full">
+        <form
+          className="rounded-lg shadow-2xl lg:w-full max-w-[900px] w-80 mx-auto bg-white p-8"
+          onSubmit={handleSignIn}
+        >
+          <h2 className="text-4xl font-bold text-center py-4">Login.</h2>
+          <div className="flex flex-col mb-4">
+            <label>Email</label>
+            <input
+              placeholder="Input Email Anda"
+              className="border rounded-lg input-bordered relative bg-gray-100 p-2"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
-        </div>
-      </form>
-    </>
+          <div className="flex flex-col">
+            <label>Password</label>
+            <input
+              placeholder="Input Password Anda"
+              className="border rounded-lg input-bordered relative bg-gray-100 p-2"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <button
+            type="submit" 
+            className="w-full py-3 mt-8 rounded-full bg-emerald-500 hover:bg-emerald-700 relative text-white"
+          >
+            Sign In
+          </button>
+          {error && <p className="text-center text-red-500 mt-2">{error}</p>}
+          <p className="text-center mt-8">
+            Tidak Punya Akun?{" "}
+            <a
+              onClick={() => navigate("/register")}
+              className="text-emerald-500 font-bold"
+            >
+              Sign Up
+            </a>
+          </p>
+        </form>
+      </div>
+    </div>
   );
 }
 
