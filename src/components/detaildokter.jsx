@@ -1,11 +1,14 @@
 import React from 'react'
+import dokter from "../assets/dokter.svg";
+import kalender from "../assets/calendar.png"
+import time from "../assets/time.png"
 
 function DetailDokter() {
   return (
   <>
   <form>
-    <div id="alert" className="alert alert-warning fixed top-0 z-[1] hidden">
-      <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+    <div className="alert alert-warning fixed top-0 z-[1] hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" clasme="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
@@ -18,17 +21,17 @@ function DetailDokter() {
     <div className="max-w-6xl mx-auto md:flex">
       <div className="md:w-3/5 max-w-2/3 bg-base-100 shadow-md rounded-tl-2xl md:rounded-l-2xl">
         <div className="card card-side">
-          <div className="w-48"><img id="doctor-image" className="rounded-2xl" src="" alt="" /></div>
+          <div className="w-48"><img className="rounded-2xl" src={dokter} alt="" /></div>
           <div className="card-body">
-            <h2 id="doctor-name" className="card-title"></h2>
-            <p id="doctor-specialis"></p>
+            <h2 className="card-title"></h2>
+            <p></p>
             <div className="card-actions justify-start items-center h-12">
               <div className="rating">
-                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" disabled  /> <input
-                type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400" disabled  /> <input type="radio"
-                name="rating-2" className="mask mask-star-2 bg-orange-400" disabled  /> <input type="radio"
-                name="rating-2" className="mask mask-star-2 bg-orange-400" disabled  /> <input type="radio"
-                name="rating-2" className="mask mask-star-2 bg-orange-400" disabled />
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400"/> 
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400"/> 
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400"/> 
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400"/> 
+                <input type="radio" name="rating-2" className="mask mask-star-2 bg-orange-400"/>
               </div>
             </div>
           </div>
@@ -48,7 +51,7 @@ function DetailDokter() {
         <div className="navbar flex">
           <div className="flex-none">
             <div className="flex-none py-3 px-2.5">
-              <img src="img/calendar.png" alt="" />
+              <img src={kalender} alt="" />
             </div>
           </div>
           <div className="flex-1">
@@ -65,7 +68,7 @@ function DetailDokter() {
         </div>
         <div className="navbar">
           <div className="flex-none py-3 px-2.5">
-            <img src="img/time.png" alt="" />
+            <img src={time} alt="" />
           </div>
           <div className="flex-1">
             <div className="normal-case text-xl py-2.5 px-4 font-medium">Time</div>
@@ -78,9 +81,9 @@ function DetailDokter() {
           <input className="join-item btn" type="radio" name="time" value="05.00 PM" aria-label="05.00 PM" />
         </div>
         <div className="flex justify-center">
-          <input type="hidden" id="doctor-id" name="id" value="" />
-          <input type="hidden" name="hospital" id="doctor-hospital" value=""/>
-          <button type="submit" id="button-submit" className="btn m-7 btn-active btn-accent rounded-full text-base-100">Book Appointment</button>
+          <input type="hidden" name="id" value="" />
+          <input type="hidden" name="hospital" value=""/>
+          <button type="submit" className="btn m-7 btn-active btn-accent rounded-full text-base-100">Book Appointment</button>
         </div>
       </div>
     </div>

@@ -1,7 +1,9 @@
 import React from "react";
 import dokter from "../assets/dokter.svg";
+import { useNavigate } from "react-router-dom";
 
 function ListDokter() {
+  const navigate = useNavigate();
   return (
     <>
       <form
@@ -50,13 +52,16 @@ function ListDokter() {
                 />
               </div>
               <input type="hidden" name="id" value="" />
-              <a href="/detaildocter.jsx"><button
-                type="submit"
-                id=""
-                className="btn bg-blue-500 text-white"
-              >
-                Reservasi
-              </button></a>
+              <a href="/detaildocter.jsx">
+                <button
+                  type="submit"
+                  id=""
+                  className="btn bg-blue-500 text-white"
+                  onClick={() => navigate("/detaildokter")}
+                >
+                  Reservasi
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -106,6 +111,7 @@ function ListDokter() {
                 type="submit"
                 id=""
                 className="btn bg-blue-500 text-white"
+                onClick={() => navigate("/detaildokter")}
               >
                 Reservasi
               </button>
@@ -158,6 +164,7 @@ function ListDokter() {
                 type="submit"
                 id=""
                 className="btn bg-blue-500 text-white"
+                onClick={() => navigate("/detaildokter")}
               >
                 Reservasi
               </button>
