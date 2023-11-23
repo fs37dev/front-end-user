@@ -4,14 +4,16 @@ import InputRegister from "../components/inputregister";
 
 function Register() {
   return (
-    <div className="card w-full image-full" style={{backgroundColor: "#00bfa6"}}>
-      <figure>
-        <img src={registerimg} alt="register" />
-      </figure>
-      <div className="card-body">
-        <InputRegister />
-      </div>
-    </div>
+    <>
+      <div
+        className='relative w-full h-screen bg-zinc-900/90'
+      >
+        <figure>
+          <img className='absolute w-full h-full object-cover mix-bland-overlay' src={registerimg} alt="register" />
+        </figure>
+          <InputRegister />
+        </div>
+    </>
   );
 }
 
