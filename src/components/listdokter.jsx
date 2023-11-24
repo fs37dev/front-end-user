@@ -4,9 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 function ListDokter() {
   const navigate = useNavigate();
+    const handleSubmit = (event) => {
+      event.preventDefault();
+    };
   return (
     <>
       <form
+        onSubmit={handleSubmit}
         action=""
         method="get"
         className="flex flex-row gap-6 py-8 overflow-y-auto"
