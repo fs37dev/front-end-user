@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import dokter from "../assets/dokter.svg";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDoctors } from "../redux/actions/doctor-action";
 
-function ListDokter({ doctors, fetchDoctors }) {
-  useEffect(() => {
-    fetchDoctors();
-  }, [fetchDoctors]);
-
+function ListDokter() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [selectedDoctor, setSelectedDoctor] = useState(null);
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,7 +17,15 @@ function ListDokter({ doctors, fetchDoctors }) {
     } else {
       alert("Pilih seorang dokter terlebih dahulu!");
     }
+
   };
+
+  const doctors = useSelector((state) => state.doctors);
+  console.log(doctors)
+
+    useEffect(() => {
+      dispatch(fetchDoctors());
+    }, []);
 
   return (
     <>

@@ -19,12 +19,6 @@ const doctorsReducer = (state = initialState, action) => {
         loading: false,
         doctorsList: action.payload,
       };
-    case "FETCH_DOCTORS_FAILURE":
-      return {
-        ...state,
-        loading: false,
-        error: action.payload,
-      };
     default:
       return state;
   }
