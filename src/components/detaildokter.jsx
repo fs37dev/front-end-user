@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
 import dokter from "../assets/dokter.svg";
-import kalender from "../assets/calendar.png"
-import time from "../assets/time.png"
-import { useNavigate } from 'react-router-dom';
+import kalender from "../assets/calendar.png";
+import time from "../assets/time.png";
+import { useNavigate } from "react-router-dom";
+import SelectPackage from "./selectpackage";
 
 function DetailDokter() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <>
       <form>
@@ -156,12 +157,14 @@ function DetailDokter() {
                 aria-label="05.00 PM"
               />
             </div>
+            <SelectPackage />
             <div className="flex justify-center">
               <input type="hidden" name="id" value="" />
               <input type="hidden" name="hospital" value="" />
               <button
                 type="submit"
-                className="btn m-7 btn-active btn-accent rounded-full text-base-100" onClick={() => navigate("/selectpackage")}
+                className="btn m-7 btn-active btn-accent rounded-full text-base-100"
+                onClick={() => navigate("/selectpackage")}
               >
                 Book Appointment
               </button>
@@ -173,4 +176,4 @@ function DetailDokter() {
   );
 }
 
-export default DetailDokter
+export default DetailDokter;

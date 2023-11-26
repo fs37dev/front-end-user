@@ -6,7 +6,6 @@ import HomeService from "./components/homeservice";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import DetailDokter from "./components/detaildokter";
-import PilihMedia from "./pages/pilihmedia";
 import BookDokter from "./pages/bookdokter";
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/detaildokter" element={<DetailDokter />} />
-        <Route path="/selectpackage" element={<PilihMedia />} />
       </Routes>
     </>
   );

@@ -11,12 +11,7 @@ function SelectPackage() {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      action=""
-      method="get"
-      className="flex flex-row gap-6 py-8 overflow-y-auto"
-    >
+    <>
       <div className="card card-side bg-base-100 top-6 max-w-6xl mx-auto">
         <figure className="ml-10">
           <img src={timerss} alt="timer" />
@@ -98,20 +93,7 @@ function SelectPackage() {
           </p>
         </div>
       </div>
-
-      <div className="card">
-        <div className="card-body flex items-center justify-center">
-          <input id="price" type="hidden" name="price" value="40" />
-          <button
-            id="button-submit"
-            type="submit"
-            className="btn btn-success w-full md:w-1/2 lg:w-1/3 xl:w-1/4"
-          >
-            Next
-          </button>
-        </div>
-      </div>
-    </form>
+    </>
   );
 }
 
