@@ -5,6 +5,8 @@ import HomeService from "../components/homeservice";
 import Artikel from "../components/homeartikel";
 import ListDokter from "../components/listdokter";
 import HomeAbout from "../components/homeabout";
+import Profile from "../components/profile";
+import InputProfile from "../components/inputprofile";
 
 function Home() {
   return (
@@ -37,6 +39,8 @@ function Home() {
         <ListDokter />
       </div>
       <HomeAbout />
+      {/* <Profile/> */}
+      <InputProfile/>
     </>
   );
 }
