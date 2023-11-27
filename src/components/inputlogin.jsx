@@ -9,21 +9,21 @@ function InputLogin() {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
-  const [error, setError] = useState(""); 
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    if (auth.user && Object.keys(auth.user).length > 0) {
+    if (auth.isAuthenticated) {
       navigate("/");
     }
-  }, [auth, navigate]);
+  }, [auth.isAuthenticated, navigate]);
 
   const handleSignIn = (e) => {
     e.preventDefault();
 
     if (!email || !password) {
-      setError("Email dan password harus diisi!"); 
+      setError("Email dan password harus diisi!");
     } else {
-      setError(""); 
+      setError("");
       dispatch(loginUser(email, password));
     }
   };
@@ -62,18 +62,19 @@ function InputLogin() {
           >
             Sign In
           </button>
-          {error && <p className="text-center text-red-500 mt-2">{error}</p>}{" "}
+          {error && <p className="text-center text-red-500 mt-2">{error}</p>}
           {auth.error && (
             <p className="text-center text-red-500 mt-2">{auth.error}</p>
           )}
           <p className="text-center mt-8">
             Tidak Punya Tidak Punya Akun?{" "}
-            <a
+            <button
+              type="button"
               onClick={() => navigate("/register")}
-              className="text-emerald-500 font-bold"
+              className="text-emerald-500 font-bold bg-transparent border-none"
             >
               Sign Up
-            </a>
+            </button>
           </p>
         </form>
       </div>
