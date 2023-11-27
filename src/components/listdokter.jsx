@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import dokter from "../assets/dokter.svg";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDoctors } from "../redux/actions/doctor-action";

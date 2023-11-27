@@ -1,4 +1,3 @@
-// doctors.js (contoh reducer)
 const initialState = {
   doctorsList: [],
   loading: false,
