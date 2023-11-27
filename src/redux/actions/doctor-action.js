@@ -4,14 +4,12 @@ export const fetchDoctors = () => {
   return async function (dispatch) {
     dispatch(fetchDoctorsRequest());
 
-    const { data } = await axios.get(
-      "https://6526133c67cfb1e59ce7dd93.mockapi.io/doctor"
-    );
+    const response = await axios.get("https://6526133c67cfb1e59ce7dd93.mockapi.io/doctor");
 
-    dispatch(fetchDoctorsSuccess(data))
+    const doctors = response.data;
 
-    console.log(data)
-  }
+    dispatch(fetchDoctorsSuccess(doctors));
+  };
 };
 
 export const fetchDoctorsRequest = () => {
@@ -26,4 +24,3 @@ export const fetchDoctorsSuccess = (doctors) => {
     payload: doctors,
   };
 };
-
