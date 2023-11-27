@@ -7,6 +7,7 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import DetailDokter from "./components/detaildokter";
 import BookDokter from "./pages/bookdokter";
+import Footer from "./components/footer";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/detaildokter" element={<DetailDokter />} />
       </Routes>
+      <Footer/>
     </>
   );
 }
