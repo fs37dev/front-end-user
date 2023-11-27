@@ -4,7 +4,9 @@ export const fetchDoctors = () => {
   return async function (dispatch) {
     dispatch(fetchDoctorsRequest());
 
-    const response = await axios.get("https://6526133c67cfb1e59ce7dd93.mockapi.io/doctor");
+    const response = await axios.get(
+      "https://back-end-production-a31e.up.railway.app/doctors"
+    );
 
     const doctors = response.data;
 
