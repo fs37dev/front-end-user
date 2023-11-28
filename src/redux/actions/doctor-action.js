@@ -5,7 +5,7 @@ export const fetchDoctors = () => {
     dispatch(fetchDoctorsRequest());
 
     const response = await axios.get(
-      "https://back-end-production-a31e.up.railway.app/doctors"
+      "https://back-end-production-a31e.up.railway.app/api/doctors"
     );
 
     const doctors = response.data;
