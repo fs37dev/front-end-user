@@ -7,6 +7,8 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import DetailDokter from "./components/detaildokter";
 import BookDokter from "./pages/bookdokter";
+import Footer from "./components/footer";
+import DetailArtikelPage from "./pages/detailartikel";
 
 function App() {
   return (
@@ -14,13 +16,15 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/service" element={<HomeService />} />
+        <Route path="/service" element={<HomeService />} />
         <Route path="/doctors" element={<BookDokter />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/detaildokter" element={<DetailDokter />} /> */}
+        <Route path="/detaildokter" element={<DetailDokter />} />
+        <Route path="/detailartikel" element={<DetailArtikelPage />} />
       </Routes>
+      <Footer />
     </>
   );
 }

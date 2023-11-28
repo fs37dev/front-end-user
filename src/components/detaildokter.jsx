@@ -2,11 +2,14 @@ import React from "react";
 import dokter from "../assets/dokter.svg";
 import kalender from "../assets/calendar.png";
 import time from "../assets/time.png";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import SelectPackage from "./selectpackage";
 
 function DetailDokter() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const doctor = location.state.doctor;
+
   return (
     <>
       <form>
