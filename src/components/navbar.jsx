@@ -20,7 +20,7 @@ function Navbar() {
       <nav>
         <ul className="lg:flex flex-row gap-2 justify-center items-center menu menu-horizontal">
           <li className="lg:hidden">
-            <details>
+            <details style={{ zIndex: 1 }}>
               <summary>Menu</summary>
               <ul className="p-2 bg-base-100">
                 <li className="text-gray-400 font-bold">

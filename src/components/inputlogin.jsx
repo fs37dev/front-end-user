@@ -1,20 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "../redux/actions/user-action";
 
 function InputLogin() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
   const [error, setError] = useState("");
 
+  useEffect(() => {
+    if (auth.isAuthenticated) {
+      navigate("/");
+    }
+  }, [auth.isAuthenticated, navigate]);
+
   const handleSignIn = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
     if (!email || !password) {
-      setError("Input data anda!");
+      setError("Email dan password harus diisi!");
+      hideErrorAfterTimeout();
     } else {
-      navigate("/"); 
+      setError("");
+      hideErrorAfterTimeout();
+      dispatch(loginUser(email, password));
     }
+  };
+
+  const hideErrorAfterTimeout = () => {
+    setTimeout(() => {
+      setError("");
+    }, 2000);
   };
 
   return (
@@ -46,20 +65,24 @@ function InputLogin() {
             />
           </div>
           <button
-            type="submit" 
+            type="submit"
             className="w-full py-3 mt-8 rounded-full bg-emerald-500 hover:bg-emerald-700 relative text-white"
           >
             Sign In
           </button>
           {error && <p className="text-center text-red-500 mt-2">{error}</p>}
+          {auth.error && (
+            <p className="text-center text-red-500 mt-2">{auth.error}</p>
+          )}
           <p className="text-center mt-8">
-            Tidak Punya Akun?{" "}
-            <a
+            Tidak Punya Tidak Punya Akun?{" "}
+            <button
+              type="button"
               onClick={() => navigate("/register")}
-              className="text-emerald-500 font-bold"
+              className="text-emerald-500 font-bold bg-transparent border-none"
             >
               Sign Up
-            </a>
+            </button>
           </p>
         </form>
       </div>
