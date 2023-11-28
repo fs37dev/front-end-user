@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { registerUser } from "../redux/actions/user-action";
 
 function InputRegister() {
   const navigate = useNavigate();
@@ -8,18 +10,34 @@ function InputRegister() {
   const [password, setPassword] = useState("");
   const [konfirmasiPassword, setKonfirmasiPassword] = useState("");
   const [error, setError] = useState("");
+  const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
 
   const handleSignUp = (e) => {
     e.preventDefault();
 
     if (!nama || !email || !password || !konfirmasiPassword) {
       setError("Input data anda!");
+      hideErrorAfterTimeout();
     } else if (password !== konfirmasiPassword) {
-      setError('Password dan Konfirmasi Password tidak cocok!')
+      setError("Password dan Konfirmasi Password tidak cocok!");
+      hideErrorAfterTimeout();
     } else {
-      navigate("/");
+      dispatch(registerUser(nama, email, password));
     }
   };
+
+  const hideErrorAfterTimeout = () => {
+    setTimeout(() => {
+      setError("");
+    }, 2000);
+  };
+
+  useEffect(() => {
+    if (auth.isAuthenticated) {
+      navigate("/login");
+    }
+  }, [auth.isAuthenticated, navigate]);
 
   return (
     <div className="relative w-full h-screen">
@@ -81,12 +99,13 @@ function InputRegister() {
             {error && <p className="text-center text-red-500 mt-2">{error}</p>}
             <p className="text-center mt-3">
               Sudah Punya Akun?{" "}
-              <a
+              <button 
+              type="button"
                 onClick={() => navigate("/login")}
                 className="text-emerald-500 font-bold"
               >
                 Sign In
-              </a>
+              </button>
             </p>
           </div>
         </form>

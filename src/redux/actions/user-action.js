@@ -28,7 +28,7 @@ const loginUser = (email, password) => {
         { email, password }
       );
 
-      const userData = response.data; 
+      const userData = response.data;
       dispatch(loginSuccess(userData));
     } catch (error) {
       dispatch(loginFailure(error.message));
@@ -37,3 +37,39 @@ const loginUser = (email, password) => {
 };
 
 export { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, loginUser };
+
+const REGISTER_REQUEST = "REGISTER_REQUEST";
+const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+const REGISTER_FAILURE = "REGISTER_FAILURE";
+
+const registerRequest = () => ({
+  type: REGISTER_REQUEST,
+});
+
+const registerSuccess = (userData) => ({
+  type: REGISTER_SUCCESS,
+  payload: userData,
+});
+
+const registerFailure = (error) => ({
+  type: REGISTER_FAILURE,
+  payload: error,
+});
+
+const registerUser = (name, email, password) => {
+  return async (dispatch) => {
+    dispatch(registerRequest());
+    try {
+      const response = await axios.post(
+        "https://back-end-production-a31e.up.railway.app/api/auth/register",
+        { name, email, password }
+      );
+      const userData = response.data;
+      dispatch(registerSuccess(userData));
+    } catch (error) {
+      dispatch(registerFailure(error.message));
+    }
+  };
+};
+
+export { REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE, registerUser };

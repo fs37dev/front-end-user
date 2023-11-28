@@ -22,10 +22,18 @@ function InputLogin() {
 
     if (!email || !password) {
       setError("Email dan password harus diisi!");
+      hideErrorAfterTimeout();
     } else {
       setError("");
+      hideErrorAfterTimeout();
       dispatch(loginUser(email, password));
     }
+  };
+
+  const hideErrorAfterTimeout = () => {
+    setTimeout(() => {
+      setError("");
+    }, 2000);
   };
 
   return (
