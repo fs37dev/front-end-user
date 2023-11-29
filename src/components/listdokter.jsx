@@ -40,7 +40,9 @@ function ListDokter() {
             </figure>
             <div className="card-body" key={index}>
               <h2 className="card-title">{doctor.name}</h2>
-              <p>{doctor.specialis}</p>
+              <p>
+                {doctor.specialist ? doctor.specialist.name : "No specialist"}
+              </p>
               <div className="card-actions justify-between items-center">
                 <div className="rating">
                   {[...Array(5)].map((star, i) => {
@@ -62,7 +64,9 @@ function ListDokter() {
                   className="btn bg-blue-500 text-white"
                   onClick={() => {
                     setSelectedDoctor(doctor);
-                    navigate("/detaildokter", { state: { doctor } });
+                    navigate(`/detaildokter/${doctor.id}`, {
+                      state: { doctor },
+                    });
                   }}
                 >
                   Reservasi
