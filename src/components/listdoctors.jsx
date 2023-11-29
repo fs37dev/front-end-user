@@ -72,7 +72,9 @@ function ListDoctor() {
                 className="btn bg-blue-500 text-white"
                 onClick={() => {
                   setSelectedDoctor(doctor);
-                  navigate("/detaildokter", { state: { doctor } });
+                  navigate(`/detaildokter/${doctor.id}`, {
+                    state: { doctor },
+                  });
                 }}
               >
                 Reservasi

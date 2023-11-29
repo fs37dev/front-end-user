@@ -11,7 +11,12 @@ function ReviewSummeryUser() {
           </a>
         </div>
         <div className="flex-1 justify-center">
-          <a className="btn btn-ghost normal-case text-2xl">Review Summary</a>
+          <a
+            className="btn btn-ghost normal-case text-2xl"
+            onClick={() => Navigate("/")}
+          >
+            Review Summary
+          </a>
         </div>
       </div>
       <ReviewSummary />

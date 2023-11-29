@@ -20,6 +20,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/detaildokter" element={<DetailDokter />} />
         <Route path="/detailartikel" element={<DetailArtikelPage />} />
+        <Route path="/detaildokter/:id" element={<DetailDokter/>} />
       </Routes>
     </>
   );
