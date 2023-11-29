@@ -9,7 +9,7 @@ import DetailDokter from "./components/detaildokter";
 import BookDokter from "./pages/bookdokter";
 import Footer from "./components/footer";
 import DetailArtikelPage from "./pages/detailartikel";
-import InputProfileUser from "./pages/InputProfileUser";
+
 
 function App() {
   return (
@@ -24,7 +24,6 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/detaildokter" element={<DetailDokter />} />
         <Route path="/detailartikel" element={<DetailArtikelPage />} />
-        <Route path="/profile" element={<InputProfileUser/>} />
       </Routes>
       <Footer />
     </>

@@ -5,8 +5,6 @@ import HomeService from "../components/homeservice";
 import Artikel from "../components/homeartikel";
 import ListDokter from "../components/listdokter";
 import HomeAbout from "../components/homeabout";
-import Profile from "../components/profile";
-
 
 function Home() {
   return (
@@ -39,7 +37,6 @@ function Home() {
         <ListDokter />
       </div>
       <HomeAbout />
-      <Profile></Profile>
     </>
   );
 }
