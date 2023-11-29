@@ -1,16 +1,16 @@
 import React from "react";
+import HomeService from "../components/homeservice";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import ListDoctor from "../components/listdoctors";
 
-function BookDokter() {
+function ServiceUser() {
   return (
     <>
       <Navbar />
-      <ListDoctor />
+      <HomeService />
       <Footer />
     </>
   );
 }
 
-export default BookDokter;
+export default ServiceUser;
