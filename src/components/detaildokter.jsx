@@ -42,11 +42,8 @@ function DetailDokter() {
 
   return (
     <>
-      <div
-        className="navbar max-w-6xl py-5"
-        onClick={() => navigate("/doctors")}
-      >
-        <div className="flex-none">
+      <div className="navbar max-w-6xl lg:px-20 px-15 py-10 flex flex-row">
+        <div className="flex-none" onClick={() => navigate("/doctors")}>
           <a className="btn btn-ghost normal-case text-xl shadow-xl">
             <img src={left} alt="" />
           </a>
@@ -136,7 +133,7 @@ function DetailDokter() {
                 className="join-item btn"
                 type="radio"
                 name="date"
-                value="21"
+                value="2023-12-21"
                 aria-label="21"
                 onChange={(e) => {
                   setSelectedDate(e.target.value);
@@ -146,7 +143,7 @@ function DetailDokter() {
                 className="join-item btn"
                 type="radio"
                 name="date"
-                value="22"
+                value="2023-12-22"
                 aria-label="22"
                 onChange={(e) => {
                   setSelectedDate(e.target.value);
@@ -156,7 +153,7 @@ function DetailDokter() {
                 className="join-item btn"
                 type="radio"
                 name="date"
-                value="23"
+                value="2023-12-23"
                 aria-label="23"
                 onChange={(e) => {
                   setSelectedDate(e.target.value);
@@ -178,8 +175,8 @@ function DetailDokter() {
                 className="join-item btn"
                 type="radio"
                 name="time"
-                value="09.00 AM"
-                aria-label="09.00 AM"
+                value="09.00"
+                aria-label="09.00"
                 onChange={(e) => {
                   setSelectedTime(e.target.value);
                 }}
@@ -188,8 +185,8 @@ function DetailDokter() {
                 className="join-item btn"
                 type="radio"
                 name="time"
-                value="11.00 AM"
-                aria-label="11.00 AM"
+                value="11.00"
+                aria-label="11.00"
                 onChange={(e) => {
                   setSelectedTime(e.target.value);
                 }}
@@ -198,8 +195,8 @@ function DetailDokter() {
                 className="join-item btn"
                 type="radio"
                 name="time"
-                value="03.00 PM"
-                aria-label="03.00 PM"
+                value="15.00"
+                aria-label="15.00"
                 onChange={(e) => {
                   setSelectedTime(e.target.value);
                 }}
@@ -208,8 +205,8 @@ function DetailDokter() {
                 className="join-item btn"
                 type="radio"
                 name="time"
-                value="05.00 PM"
-                aria-label="05.00 PM"
+                value="18.00"
+                aria-label="18.00"
                 onChange={(e) => {
                   setSelectedTime(e.target.value);
                 }}

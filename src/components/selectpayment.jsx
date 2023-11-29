@@ -36,8 +36,8 @@ function SelectPayment() {
 
   return (
     <>
-      <div className="navbar max-w-6xl py-5" onClick={() => navigate(-1)}>
-        <div className="flex-none">
+      <div className="navbar max-w-6xl py-5">
+        <div className="flex-none" onClick={() => navigate(-1)}>
           <a className="btn btn-ghost normal-case text-xl shadow-xl">
             <img src={left} alt="" />
           </a>
