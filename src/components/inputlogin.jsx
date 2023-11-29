@@ -24,9 +24,8 @@ function InputLogin() {
       setError("Email dan password harus diisi!");
       hideErrorAfterTimeout();
     } else {
-      setError("");
-      hideErrorAfterTimeout();
       dispatch(loginUser(email, password));
+      hideErrorAfterTimeout();
     }
   };
 
@@ -36,13 +35,14 @@ function InputLogin() {
     }, 2000);
   };
 
+  useEffect(() => {
+    setError(auth.error);
+  }, [auth]);
+
   return (
     <div className="relative w-full h-screen">
       <div className="flex justify-center items-center h-full">
-        <form
-          className="rounded-lg shadow-2xl lg:w-full max-w-[900px] w-80 mx-auto bg-white p-8"
-          onSubmit={handleSignIn}
-        >
+        <form className="rounded-lg shadow-2xl lg:w-full max-w-[900px] w-80 mx-auto bg-white p-8" onSubmit={handleSignIn}>
           <h2 className="text-4xl font-bold text-center py-4">Login.</h2>
           <div className="flex flex-col mb-4">
             <label>Email</label>
@@ -64,23 +64,14 @@ function InputLogin() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button
-            type="submit"
-            className="w-full py-3 mt-8 rounded-full bg-emerald-500 hover:bg-emerald-700 relative text-white"
-          >
+          <button type="submit" className="w-full py-3 mt-8 rounded-full bg-emerald-500 hover:bg-emerald-700 relative text-white">
             Sign In
           </button>
           {error && <p className="text-center text-red-500 mt-2">{error}</p>}
-          {auth.error && (
-            <p className="text-center text-red-500 mt-2">{auth.error}</p>
-          )}
+          {auth.error && <p className="text-center text-red-500 mt-2">{auth.error}</p>}
           <p className="text-center mt-8">
             Tidak Punya Tidak Punya Akun?{" "}
-            <button
-              type="button"
-              onClick={() => navigate("/register")}
-              className="text-emerald-500 font-bold bg-transparent border-none"
-            >
+            <button type="button" onClick={() => navigate("/register")} className="text-emerald-500 font-bold bg-transparent border-none">
               Sign Up
             </button>
           </p>
