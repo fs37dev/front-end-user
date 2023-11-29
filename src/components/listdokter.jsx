@@ -40,7 +40,9 @@ function ListDokter() {
             </figure>
             <div className="card-body" key={index}>
               <h2 className="card-title">{doctor.name}</h2>
-              <p>{doctor.specialist.name}</p>
+              <p>
+                {doctor.specialist ? doctor.specialist.name : "No specialist"}
+              </p>
               <div className="card-actions justify-between items-center">
                 <div className="rating">
                   {[...Array(5)].map((star, i) => {

@@ -31,7 +31,7 @@ function ListDoctor() {
     <>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-6 py-8 overflow-y-auto lg:px-20 px-5 py-10  "
+        className="flex flex-col gap-6 overflow-y-auto lg:px-20 px-5 py-10  "
       >
         {doctors.map((doctor, index) => (
           <div
@@ -46,7 +46,9 @@ function ListDoctor() {
               </div>
               <div>
                 <h2 className="card-title">{doctor.name}</h2>
-                <p>{doctor.specialist.name}</p>
+                <p>
+                  {doctor.specialist ? doctor.specialist.name : "No specialist"}
+                </p>
                 <div className="card-actions justify-between items-center">
                   <div className="rating">
                     {[...Array(5)].map((star, i) => {
