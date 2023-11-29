@@ -5,7 +5,7 @@ export const fetchArtikels = () => {
     dispatchEvent(fetchArtikelsRequest());
 
     const response = await axios.get(
-      "https://back-end-production-a31e.up.railway.app/articles"
+      "https://back-end-production-a31e.up.railway.app/api/articles"
     );
     const artikels = response.data;
     dispatch(fetchArtikelsSuccess(artikels));
