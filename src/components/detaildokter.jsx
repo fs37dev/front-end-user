@@ -9,12 +9,15 @@ import Time from "../assets/Time.svg";
 import media from "../assets/package.png";
 import messages from "../assets/messages.svg";
 import video from "../assets/Video.svg";
+import { useDispatch } from "react-redux";
+import { submitReservation } from "../redux/actions/reservasi-action";
 
 function DetailDokter() {
   const navigate = useNavigate();
   const { id } = useParams();
   const location = useLocation();
   const doctor = location.state.doctor;
+  const dispatch = useDispatch();
 
   const [selectedPackage, setSelectedPackage] = React.useState(null);
   const [selectedDate, setSelectedDate] = React.useState(null);
@@ -29,14 +32,14 @@ function DetailDokter() {
         setError(null);
       }, 2000);
     } else {
-      navigate("/selectpayment", {
-        state: {
-          doctor: doctor,
-          selectedDate: selectedDate,
-          selectedTime: selectedTime,
-          selectedPackage: selectedPackage,
-        },
-      });
+      dispatch(
+        submitReservation(
+          doctor.id,
+          selectedDate,
+          selectedTime,
+          selectedPackage
+        )
+      );
     }
   };
 
