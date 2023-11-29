@@ -7,6 +7,7 @@ import DetailDokter from "./components/detaildokter";
 import BookDokter from "./pages/bookdokter";
 import DetailArtikelPage from "./pages/detailartikel";
 import ServiceUser from "./pages/services";
+import PilihPembayaran from "./pages/selectpayment";
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/detaildokter" element={<DetailDokter />} />
         <Route path="/detailartikel" element={<DetailArtikelPage />} />
-        <Route path="/detaildokter/:id" element={<DetailDokter/>} />
+        <Route path="/detaildokter/:id" element={<DetailDokter />} />
+        <Route path="/selectpayment" element={<PilihPembayaran />} />
       </Routes>
     </>
   );

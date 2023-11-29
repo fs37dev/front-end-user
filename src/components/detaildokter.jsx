@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import kalender from "../assets/calendar.png";
 import time from "../assets/time.png";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
@@ -19,10 +19,26 @@ function DetailDokter() {
   const [selectedPackage, setSelectedPackage] = React.useState(null);
   const [selectedDate, setSelectedDate] = React.useState(null);
   const [selectedTime, setSelectedTime] = React.useState(null);
+  const [error, setError] = useState(null);
 
-  React.useEffect(() => {
-    console.log("Selected package:", selectedPackage);
-  }, [selectedPackage]);
+  const handleButton = (e) => {
+    e.preventDefault();
+    if (!selectedDate || !selectedTime || !selectedPackage) {
+      setError("Please select a date, time, and package first");
+      setTimeout(() => {
+        setError(null);
+      }, 2000);
+    } else {
+      navigate("/selectpayment", {
+        state: {
+          doctor: doctor,
+          selectedDate: selectedDate,
+          selectedTime: selectedTime,
+          selectedPackage: selectedPackage,
+        },
+      });
+    }
+  };
 
   return (
     <>
@@ -67,7 +83,7 @@ function DetailDokter() {
               </div>
               <div className="card-body">
                 <h2 className="card-title">{doctor.name}</h2>
-                <p></p>
+                <p>{doctor.specialist.name}</p>
                 <div className="card-actions justify-start items-center h-12">
                   <div className="rating">
                     {[...Array(5)].map((star, i) => {
@@ -91,10 +107,9 @@ function DetailDokter() {
                 <h2 className="card-title text-slate-500">Biography</h2>
                 <p className="text-slate-500">
                   {doctor.name}
-                  is the top most isispecialist specialist in {
-                    doctor.hospital
-                  }{" "}
-                  at {doctor.city}. She is available for private consultation.
+                  is the top most {doctor.specialist.name} specialist in{" "}
+                  {doctor.hospital} at {doctor.city}. She is available for
+                  private consultation.
                 </p>
               </div>
             </div>
@@ -124,7 +139,6 @@ function DetailDokter() {
                 value="21"
                 aria-label="21"
                 onChange={(e) => {
-                  console.log("Date selected:", e.target.value);
                   setSelectedDate(e.target.value);
                 }}
               />
@@ -135,7 +149,6 @@ function DetailDokter() {
                 value="22"
                 aria-label="22"
                 onChange={(e) => {
-                  console.log("Date selected:", e.target.value);
                   setSelectedDate(e.target.value);
                 }}
               />
@@ -146,7 +159,6 @@ function DetailDokter() {
                 value="23"
                 aria-label="23"
                 onChange={(e) => {
-                  console.log("Date selected:", e.target.value);
                   setSelectedDate(e.target.value);
                 }}
               />
@@ -169,7 +181,6 @@ function DetailDokter() {
                 value="09.00 AM"
                 aria-label="09.00 AM"
                 onChange={(e) => {
-                  console.log("Time selected:", e.target.value);
                   setSelectedTime(e.target.value);
                 }}
               />
@@ -180,7 +191,6 @@ function DetailDokter() {
                 value="11.00 AM"
                 aria-label="11.00 AM"
                 onChange={(e) => {
-                  console.log("Time selected:", e.target.value);
                   setSelectedTime(e.target.value);
                 }}
               />
@@ -191,7 +201,6 @@ function DetailDokter() {
                 value="03.00 PM"
                 aria-label="03.00 PM"
                 onChange={(e) => {
-                  console.log("Time selected:", e.target.value);
                   setSelectedTime(e.target.value);
                 }}
               />
@@ -202,7 +211,6 @@ function DetailDokter() {
                 value="05.00 PM"
                 aria-label="05.00 PM"
                 onChange={(e) => {
-                  console.log("Time selected:", e.target.value);
                   setSelectedTime(e.target.value);
                 }}
               />
@@ -258,7 +266,6 @@ function DetailDokter() {
               value="Messaging"
               className="radio radio-success"
               onChange={(e) => {
-                console.log("package selected:", e.target.value);
                 setSelectedPackage(e.target.value);
               }}
             />
@@ -287,7 +294,6 @@ function DetailDokter() {
               value="Video Call"
               className="radio radio-success font-bold"
               onChange={(e) => {
-                console.log("package selected:", e.target.value);
                 setSelectedPackage(e.target.value);
               }}
             />
@@ -295,26 +301,19 @@ function DetailDokter() {
           </div>
         </div>
 
-        <div className="flex justify-center">
-          <input type="hidden" name="id" value={doctor.id} />
-          <input type="hidden" name="hospital" value={doctor.hospital} />
-          <button
-            type="submit"
-            className="btn m-7 btn-active btn-accent rounded-full text-base-100"
-            onClick={(e) => {
-              e.preventDefault();
-              console.log("Selected date:", selectedDate);
-              console.log("Selected time:", selectedTime);
-              console.log("Selected package:", selectedPackage);
-              if (!selectedDate || !selectedTime || !selectedPackage) {
-                alert("Please select a date, time, and package first");
-              } else {
-                navigate("/selectpackage");
-              }
-            }}
-          >
-            Book Appointment
-          </button>
+        <div className="card">
+          <div className="card-body flex items-center justify-center">
+            {error && <p style={{ color: "red" }}>{error}</p>}
+            {/* <input type="hidden" name="id" value={doctor.id} />
+            <input type="hidden" name="hospital" value={doctor.hospital} /> */}
+            <button
+              type="submit"
+              className="btn btn-success w-full md:w-1/2 lg:w-1/3 xl:w-1/4"
+              onClick={handleButton}
+            >
+              Book Appointment
+            </button>
+          </div>
         </div>
       </form>
     </>

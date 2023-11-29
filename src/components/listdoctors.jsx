@@ -46,7 +46,7 @@ function ListDoctor() {
               </div>
               <div>
                 <h2 className="card-title">{doctor.name}</h2>
-                <p>{doctor.specialis}</p>
+                <p>{doctor.specialist.name}</p>
                 <div className="card-actions justify-between items-center">
                   <div className="rating">
                     {[...Array(5)].map((star, i) => {
