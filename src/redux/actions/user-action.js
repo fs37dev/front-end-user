@@ -23,15 +23,12 @@ const loginUser = (email, password) => {
     dispatch(loginRequest());
 
     try {
-      const response = await axios.post(
-        "https://back-end-production-a31e.up.railway.app/auth/login",
-        { email, password }
-      );
+      const response = await axios.post("https://back-end-production-a31e.up.railway.app/api/auth/login", { email, password });
 
       const userData = response.data;
       dispatch(loginSuccess(userData));
     } catch (error) {
-      dispatch(loginFailure(error.message));
+      dispatch(loginFailure(error.response.data));
     }
   };
 };
@@ -60,14 +57,11 @@ const registerUser = (name, email, password) => {
   return async (dispatch) => {
     dispatch(registerRequest());
     try {
-      const response = await axios.post(
-        "https://back-end-production-a31e.up.railway.app/api/auth/register",
-        { name, email, password }
-      );
+      const response = await axios.post("https://back-end-production-a31e.up.railway.app/api/auth/register", { name, email, password });
       const userData = response.data;
       dispatch(registerSuccess(userData));
     } catch (error) {
-      dispatch(registerFailure(error.message));
+      dispatch(registerFailure(error.response.data));
     }
   };
 };

@@ -3,7 +3,10 @@ const initialState = {
   user: null,
   loading: false,
   error: null,
+  errorMessage: "",
 };
+
+console.info(initialState);
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -19,7 +22,7 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: true,
-        user: action.payload, 
+        user: action.payload,
         loading: false,
         error: null,
       };
@@ -30,7 +33,7 @@ const authReducer = (state = initialState, action) => {
         isAuthenticated: false,
         user: null,
         loading: false,
-        error: action.payload, 
+        error: action.payload.message,
       };
     case "LOGOUT":
       return {

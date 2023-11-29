@@ -12,17 +12,17 @@ function InputProfile() {
       <div>
         <div className="lg:px-20 px-10 py-5">
           <div className="py-3">
-            <div className="flex justify-center">
-              <img
-                src=""
-                alt="gambar user"
-                className="w-20 lg:w-40 rounded-full"
-              />
-            </div>
-            <div className="card card-side bg-base-100 shadow-xl">
-              <div className="card-body text-center">
-                <p className="font-bold">Username</p>
-                <p>email</p>
+            <div className="card card-side bg-gradient-to-r from-emerald-500 to-blue-500 shadow-xl transform hover:scale-105 transition-transform duration-300 mt-4">
+              <div className="card-body text-center text-white">
+                <div className="flex justify-center">
+                  <img
+                    src=""
+                    alt="gambar user"
+                    className="w-20 lg:w-40 rounded-full"
+                  />
+                </div>
+                <h2 className="text-xl font-extrabold mb-2">Username</h2>
+                <p className="mt-1 text-md opacity-80">Email</p>
               </div>
             </div>
           </div>
@@ -74,8 +74,11 @@ function InputProfile() {
                 </div>
               </div>
             </div>
-            <div className="card-body flex items-center justify-center">
-              <button id="payment" className="btn btn-success rounded-3xl w-52">
+            <div className="flex">
+              <button
+                type="submit"
+                className="w-full mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl px-10 sm:px-20 md:px-32 lg:px-80 xl:px-64 py-3 mt-12 rounded-full bg-emerald-500 hover:bg-emerald-700 text-white"
+              >
                 Edit
               </button>
             </div>
