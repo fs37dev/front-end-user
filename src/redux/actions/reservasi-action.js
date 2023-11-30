@@ -29,10 +29,9 @@ export const submitReservation = (doctorId, date, time, packageId) => {
         payload: response.data,
       });
     } catch (error) {
-      console.log(error.response);
       dispatch({
         type: SUBMIT_RESERVATION_FAILURE,
-        payload: error.message,
+        payload: error.response.data,
       });
     }
   };

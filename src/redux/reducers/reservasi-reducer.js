@@ -1,12 +1,8 @@
-import {
-  SUBMIT_RESERVATION_REQUEST,
-  SUBMIT_RESERVATION_SUCCESS,
-  SUBMIT_RESERVATION_FAILURE,
-} from "../actions/reservasi-action";
+import { SUBMIT_RESERVATION_REQUEST, SUBMIT_RESERVATION_SUCCESS, SUBMIT_RESERVATION_FAILURE } from "../actions/reservasi-action";
 
 const initialState = {
   loading: false,
-  reservation: null,
+  reservationId: null,
   error: null,
 };
 
@@ -18,18 +14,20 @@ const reservasiReducer = (state = initialState, action) => {
         loading: true,
       };
     case SUBMIT_RESERVATION_SUCCESS:
+      window.location.href = `/selectpayment/${action.payload.reservationId}`;
+
       return {
         ...state,
         loading: false,
-        reservation: action.payload,
+        reservationId: action.payload.reservationId,
         error: null,
       };
     case SUBMIT_RESERVATION_FAILURE:
       return {
         ...state,
         loading: false,
-        reservation: null,
-        error: action.payload,
+        reservationId: null,
+        error: action.payload.message,
       };
     default:
       return state;
