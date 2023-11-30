@@ -7,7 +7,6 @@ import ListDokter from "../components/listdokter";
 import HomeAbout from "../components/homeabout";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import Logout from "../components/logout";
 
 function Home() {
   return (
@@ -40,9 +39,8 @@ function Home() {
         </div>
         <ListDokter />
       </div>
-      <HomeAbout />
-      <Logout />
-      <Footer />
+      <HomeAbout/>
+      <Footer/>
     </>
   );
 }
