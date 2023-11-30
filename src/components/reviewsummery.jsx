@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,7 +36,6 @@ function ReviewSummary() {
                   </div>
                 </div>
               </div>
-
               <div className="card bg-base-100 flex justify-content my-auto items-center">
                 <div className="card-body shadow-xl rounded-xl w-100 max-[832px]:w-screen">
                   <div className="my-auto flex items-center gap-20">
@@ -73,15 +73,13 @@ function ReviewSummary() {
                 </div>
               </div>
             </div>
-            <div className="card-body flex items-center justify-center">
-              <button id="payment" className="btn btn-success rounded-3xl w-52">
-                Payment
-              </button>
-            </div>
-          </div>
-          <br />
-        </>
-      )}
+        <div className="card-body flex items-center justify-center">
+          <button className="w-full mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl px-10 sm:px-20 md:px-32 lg:px-80 xl:px-64 py-3 mt-12 rounded-full bg-emerald-500 hover:bg-emerald-700 text-white" onClick={()=> navigate('/inputpin')}>
+            Payment
+          </button>
+        </div>
+      </div>
+      <br />
     </>
   );
 }

@@ -14,6 +14,8 @@ import InputProfileUser from "./pages/inputprofileuser";
 import PrivateRoute from "./utils/PrivateRoute";
 import ReviewSummary from "./components/reviewsummery";
 import SummaryReview from "./pages/summaryreview";
+import Pin from "./pages/pin";
+import Appointment from "./pages/appointment";
 
 function App() {
   const TOKEN = localStorage.getItem("token");
@@ -34,6 +36,10 @@ function App() {
         <Route path="/detaildokter/:id" element={<DetailDokter />} />
         <Route path="/selectpayment/:id" element={<PilihPembayaran />} />
         <Route path="/review-summary/:id" element={<SummaryReview />} />
+        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/Myprofile" element={<InputProfileUser />} />
+        <Route path="/inputpin" element={<Pin />} />
+        <Route path="/viewappointment" element={<Appointment />} />
       </Routes>
 
       {/* <Route path="/detaildokter" element={<DetailDokter />} /> */}

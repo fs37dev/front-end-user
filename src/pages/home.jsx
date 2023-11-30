@@ -39,7 +39,7 @@ function Home() {
         </div>
         <ListDokter />
       </div>
-      <HomeAbout />
+      <HomeAbout/>
       <Footer/>
     </>
   );

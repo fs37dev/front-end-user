@@ -280,20 +280,21 @@ function DetailDokter() {
                 <p className="ml-2 mt-20 text-lg font-bold">$40</p>
               </div>
             </div>
-
-            <div className="card">
-              <div className="card-body flex items-center justify-center">
-                {error && <p style={{ color: "red" }}>{error}</p>}
-                {/* <input type="hidden" name="id" value={doctor.id} />
+        <div className="card px-10">
+          <div className="card-body flex items-center justify-center">
+            {error && <p style={{ color: "red" }}>{error}</p>}
+            {/* <input type="hidden" name="id" value={doctor.id} />
             <input type="hidden" name="hospital" value={doctor.hospital} /> */}
-                <button type="submit" className="btn btn-success w-full md:w-1/2 lg:w-1/3 xl:w-1/4" onClick={handleButton}>
-                  Book Appointment
-                </button>
-              </div>
-            </div>
-          </form>
-        </>
-      )}
+            <button
+              type="submit"
+              className="btn bg-emerald-500 hover:bg-emerald-700 w-full rounded-full text-white"
+              onClick={handleButton}
+            >
+              Book Appointment
+            </button>
+          </div>
+        </div>
+      </form>
     </>
   );
 }
