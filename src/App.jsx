@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Router } from "react-router-dom";
 import axios from "axios";
 import Home from "./pages/home";
 import AboutUs from "./pages/about";
@@ -11,28 +11,36 @@ import ServiceUser from "./pages/services";
 import PilihPembayaran from "./pages/selectpayment";
 import UserProfile from "./pages/profile";
 import InputProfileUser from "./pages/inputprofileuser";
+import PrivateRoute from "./utils/PrivateRoute";
+import ReviewSummary from "./components/reviewsummery";
+import SummaryReview from "./pages/summaryreview";
 
 function App() {
   const TOKEN = localStorage.getItem("token");
   axios.defaults.headers.common["Authorization"] = `Bearer ${TOKEN}`;
-
   return (
-    <>
+    <div className="App">
       <Routes>
+        {/* <PrivateRoute path="/">
+          
+        </PrivateRoute> */}
+
         <Route path="/" element={<Home />} />
         <Route path="/service" element={<ServiceUser />} />
-        <Route path="/doctors" element={<BookDokter />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/detaildokter" element={<DetailDokter />} />
-        <Route path="/detailartikel/:id" element={<DetailArtikelPage />} />
+        <Route path="/doctors" element={<BookDokter />} />
         <Route path="/detaildokter/:id" element={<DetailDokter />} />
-        <Route path="/selectpayment" element={<PilihPembayaran />} />
-        <Route path="/profile" element={<UserProfile />} />
-        <Route path="/Myprofile" element={<InputProfileUser />} />
+        <Route path="/selectpayment/:id" element={<PilihPembayaran />} />
+        <Route path="/review-summary/:id" element={<SummaryReview />} />
       </Routes>
-    </>
+
+      {/* <Route path="/detaildokter" element={<DetailDokter />} /> */}
+      {/* <Route path="/detailartikel/:id" element={<DetailArtikelPage />} />
+        {/* <Route path="/profile" element={<UserProfile />} /> */}
+      {/* <Route path="/Myprofile" element={<InputProfileUser />} /> */}
+    </div>
   );
 }
 

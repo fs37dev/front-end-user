@@ -1,13 +1,11 @@
 const initialState = {
   isAuthenticated: false,
   user: null,
-  username: '',
+  username: "",
   loading: false,
   error: null,
   errorMessage: "",
 };
-
-console.info(initialState);
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
