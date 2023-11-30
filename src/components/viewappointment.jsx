@@ -6,14 +6,16 @@ function ViewAppointment() {
   const navigate = useNavigate()
   return (
     <>
-      <div className="navbar max-w-6xl py-5">
-        <div className="flex-none" onClick={() => navigate("/reviewsummary")}>
+      <div className="navbar max-w-6xl lg:px-20 px-15 py-10 flex flex-row">
+        <div className="flex-none" onClick={() => navigate("/doctors")}>
           <a className="btn btn-ghost normal-case text-xl shadow-xl">
             <img src={left} alt="" />
           </a>
         </div>
         <div className="flex-1 justify-center">
-          <a className="btn btn-ghost normal-case text-2xl">Payment Method</a>
+          <button className="btn btn-ghost normal-case text-2xl">
+            View Appointment
+          </button>
         </div>
       </div>
       <div className="card bg-base-100 flex justify-content my-auto items-center">
@@ -75,7 +77,7 @@ function ViewAppointment() {
         <div className="card-body flex items-center justify-center">
           <button
             id="close"
-            className="btn bg-emerald-500 hover:bg-emerald-700 rounded-full text-white w-52"
+            className="btn bg-emerald-500 hover:bg-emerald-700 rounded-full text-white w-52"  onClick={() => navigate('/')}
           >
             Close
           </button>

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDoctors } from "../redux/actions/doctor-action";
+import {
+  fetchDoctorDetail,
+  fetchDoctors,
+} from "../redux/actions/doctor-action";
 
 function ListDoctor() {
   const navigate = useNavigate();
@@ -10,11 +13,7 @@ function ListDoctor() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (selectedDoctor) {
-      console.log("Dokter yang dipilih:", selectedDoctor);
-    } else {
-      alert("Pilih seorang dokter terlebih dahulu!");
-    }
+    navigate(`/detaildokter/${selectedDoctor.id}`);
   };
 
   useEffect(() => {
@@ -36,9 +35,9 @@ function ListDoctor() {
         {doctors.map((doctor, index) => (
           <div
             className="card card-compact bg-base-100 shadow-xl flex flex-row items-center px-4"
-            key={index}
+            key={doctor.id}
           >
-            <div className="card-body flex flex-row" key={index}>
+            <div className="card-body flex flex-row" key={doctor.id}>
               <div>
                 <figure className="w-60">
                   <img src={doctor.image} alt={doctor.image} className="w-40" />
@@ -70,13 +69,10 @@ function ListDoctor() {
             <div>
               <input type="hidden" name={`id_${index}`} value={doctor.id} />
               <button
-                type="button"
+                type="submit"
                 className="btn bg-blue-500 text-white"
                 onClick={() => {
                   setSelectedDoctor(doctor);
-                  navigate(`/detaildokter/${doctor.id}`, {
-                    state: { doctor },
-                  });
                 }}
               >
                 Reservasi
