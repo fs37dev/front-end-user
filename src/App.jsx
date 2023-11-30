@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Route, Routes } from "react-router-dom";
+import axios from "axios";
+import Home from "./pages/home";
+import AboutUs from "./pages/about";
+import Login from "./pages/login";
+import Register from "./pages/register";
+import DetailDokter from "./components/detaildokter";
+import BookDokter from "./pages/bookdokter";
+import DetailArtikelPage from "./pages/detailartikel";
+import ServiceUser from "./pages/services";
+import PilihPembayaran from "./pages/selectpayment";
+import UserProfile from "./pages/profile";
+import InputProfileUser from "./pages/inputprofileuser";
+import SummaryReview from "./pages/summaryreview";
+import Pin from "./pages/pin";
+import Appointment from "./pages/appointment";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const TOKEN = localStorage.getItem("token");
+  axios.defaults.headers.common["Authorization"] = `Bearer ${TOKEN}`;
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/service" element={<ServiceUser />} />
+        <Route path="/doctors" element={<BookDokter />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/detaildokter" element={<DetailDokter />} />
+        <Route path="/detailartikel/:id" element={<DetailArtikelPage />} />
+        <Route path="/detaildokter/:id" element={<DetailDokter />} />
+        <Route path="/selectpayment" element={<PilihPembayaran />} />
+        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/Myprofile" element={<InputProfileUser />} />
+        <Route path="/reviewsummary" element={<SummaryReview />} />
+        <Route path="/inputpin" element={<Pin />} />
+        <Route path="/viewappointment" element={<Appointment />} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
