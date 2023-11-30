@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   doctors: doctorsReducer,
   auth: authReducer,
   artikels: artikelReducer,
-  // reservasi: reservasiReducer,
+  reservasi: reservasiReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));

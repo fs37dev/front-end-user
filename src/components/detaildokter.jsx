@@ -32,6 +32,7 @@ function DetailDokter() {
         setError(null);
       }, 2000);
     } else {
+      console.log(doctor.id);
       dispatch(
         submitReservation(
           doctor.id,
@@ -140,6 +141,7 @@ function DetailDokter() {
                 aria-label="21"
                 onChange={(e) => {
                   setSelectedDate(e.target.value);
+                  console.log(e.target.value);
                 }}
               />
               <input
@@ -150,6 +152,7 @@ function DetailDokter() {
                 aria-label="22"
                 onChange={(e) => {
                   setSelectedDate(e.target.value);
+                  console.log(e.target.value);
                 }}
               />
               <input
@@ -160,6 +163,7 @@ function DetailDokter() {
                 aria-label="23"
                 onChange={(e) => {
                   setSelectedDate(e.target.value);
+                  console.log(e.target.value);
                 }}
               />
             </div>
@@ -182,6 +186,7 @@ function DetailDokter() {
                 aria-label="09.00"
                 onChange={(e) => {
                   setSelectedTime(e.target.value);
+                  console.log(e.target.value);
                 }}
               />
               <input
@@ -192,6 +197,7 @@ function DetailDokter() {
                 aria-label="11.00"
                 onChange={(e) => {
                   setSelectedTime(e.target.value);
+                  console.log(e.target.value);
                 }}
               />
               <input
@@ -202,6 +208,7 @@ function DetailDokter() {
                 aria-label="15.00"
                 onChange={(e) => {
                   setSelectedTime(e.target.value);
+                  console.log(e.target.value);
                 }}
               />
               <input
@@ -212,6 +219,7 @@ function DetailDokter() {
                 aria-label="18.00"
                 onChange={(e) => {
                   setSelectedTime(e.target.value);
+                  console.log(e.target.value);
                 }}
               />
             </div>
@@ -263,10 +271,11 @@ function DetailDokter() {
             <input
               type="radio"
               name="package"
-              value="Messaging"
+              value="P0001"
               className="radio radio-success"
               onChange={(e) => {
                 setSelectedPackage(e.target.value);
+                console.log(e.target.value);
               }}
             />
             <p className="ml-2 mt-20 text-lg font-bold">$40</p>
@@ -291,10 +300,11 @@ function DetailDokter() {
             <input
               type="radio"
               name="package"
-              value="Video Call"
+              value="P0002"
               className="radio radio-success font-bold"
               onChange={(e) => {
                 setSelectedPackage(e.target.value);
+                console.log(e.target.value);
               }}
             />
             <p className="ml-2 mt-20 text-lg font-bold">$40</p>
