@@ -103,7 +103,7 @@ function ReviewSummary() {
             <div className="card-body flex items-center justify-center">
               <button
                 className="w-full md:w-64 px-6 py-3 mb-4 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white transition duration-300 ease-in-out transform hover:scale-105 text-center shadow-md"
-                onClick={() => navigate("/inputpin")}
+                onClick={() => navigate(`/inputpin/${params.id}`)}
               >
                 Payment
               </button>

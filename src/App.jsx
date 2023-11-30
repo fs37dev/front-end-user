@@ -35,8 +35,8 @@ function App() {
         <Route path="/review-summary/:id" element={<SummaryReview />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/myprofile" element={<InputProfileUser />} />
-        <Route path="/inputpin" element={<Pin />} />
-        <Route path="/viewappointment" element={<Appointment />} />
+        <Route path="/inputpin/:id" element={<Pin />} />
+        <Route path="/view-appointment/:id" element={<Appointment />} />
       </Routes>
     </>
   );
