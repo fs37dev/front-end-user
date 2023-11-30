@@ -5,13 +5,13 @@ import { registerUser } from "../redux/actions/user-action";
 
 function InputRegister() {
   const navigate = useNavigate();
+  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [konfirmasiPassword, setKonfirmasiPassword] = useState("");
   const [error, setError] = useState("");
-  const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -24,6 +24,8 @@ function InputRegister() {
       hideErrorAfterTimeout();
     } else {
       dispatch(registerUser(nama, email, password));
+      navigate("/");
+      hideErrorAfterTimeout();
     }
   };
 
@@ -34,10 +36,8 @@ function InputRegister() {
   };
 
   useEffect(() => {
-    if (auth.isAuthenticated) {
-      navigate("/login");
-    }
-  }, [auth.isAuthenticated, navigate]);
+    setError(auth.error);
+  }, [auth]);
 
   return (
     <div className="relative w-full h-screen">
@@ -99,8 +99,8 @@ function InputRegister() {
             {error && <p className="text-center text-red-500 mt-2">{error}</p>}
             <p className="text-center mt-3">
               Sudah Punya Akun?{" "}
-              <button 
-              type="button"
+              <button
+                type="button"
                 onClick={() => navigate("/login")}
                 className="text-emerald-500 font-bold"
               >

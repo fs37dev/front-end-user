@@ -24,14 +24,23 @@ const loginUser = (email, password) => {
 
     try {
       const response = await axios.post(
-        "https://back-end-production-a31e.up.railway.app/auth/login",
+        "https://back-end-production-a31e.up.railway.app/api/auth/login",
         { email, password }
       );
 
+      console.log(response);
+
       const userData = response.data;
+
+      localStorage.setItem("token", response.data.data.access_token);
+
+      axios.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${userData.access_token}`;
+
       dispatch(loginSuccess(userData));
     } catch (error) {
-      dispatch(loginFailure(error.message));
+      dispatch(loginFailure(error.response.data));
     }
   };
 };
@@ -59,15 +68,22 @@ const registerFailure = (error) => ({
 const registerUser = (name, email, password) => {
   return async (dispatch) => {
     dispatch(registerRequest());
+
     try {
       const response = await axios.post(
         "https://back-end-production-a31e.up.railway.app/api/auth/register",
         { name, email, password }
       );
+
       const userData = response.data;
+
+      localStorage.setItem("token", userData.access_token);
+
+      axios.defaults.headers.common['Authorization'] = `Bearer ${userData.access_token}`;
+
       dispatch(registerSuccess(userData));
     } catch (error) {
-      dispatch(registerFailure(error.message));
+      dispatch(registerFailure(error.response.data));
     }
   };
 };
