@@ -16,6 +16,11 @@ export const submitReservation = (doctorId, date, time, packageId) => {
           date,
           time,
           packageId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         }
       );
 
@@ -24,6 +29,7 @@ export const submitReservation = (doctorId, date, time, packageId) => {
         payload: response.data,
       });
     } catch (error) {
+      console.log(error.response);
       dispatch({
         type: SUBMIT_RESERVATION_FAILURE,
         payload: error.message,

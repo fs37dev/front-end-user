@@ -1,14 +1,23 @@
 import React from "react";
 import bendera from "../assets/bendera.svg";
+import left from "../assets/left.png";
+import { useNavigate } from "react-router-dom";
 
 function InputProfile() {
-//   const [image, setImage] = useState("");
-
-//   const handleImageChange = (e) => {
-//     setImage(URL.createObjectURL(e.target.files[0]));
-//   };
+  const navigate = useNavigate()
+  
   return (
     <>
+      <div className="navbar max-w-6xl py-5">
+        <div className="flex-none" onClick={() => navigate('/profile')}>
+          <a className="btn btn-ghost normal-case text-xl shadow-xl">
+            <img src={left} alt="" />
+          </a>
+        </div>
+        <div className="flex-1 justify-center">
+          <a className="btn btn-ghost normal-case text-2xl">My Profile</a>
+        </div>
+      </div>
       <div>
         <div className="lg:px-20 px-10 py-5">
           <div className="py-3">
