@@ -61,7 +61,7 @@ function Navbar() {
                 </li>
                 <li className="btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2xl font-bold">
                   {auth.isAuthenticated ? (
-                    <span onClick={() => navigate("profile")}>{auth.username}</span>
+                    <span onClick={() => navigate("/profile")}>{auth.username}</span>
                   ) : (
                     <NavLink
                       to="/login"
