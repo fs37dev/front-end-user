@@ -9,7 +9,7 @@ function InputProfile() {
   return (
     <>
       <div className="navbar max-w-6xl py-5">
-        <div className="flex-none" onClick={() => navigate('/profile')}>
+        <div className="flex-none" onClick={() => navigate("/profile")}>
           <a className="btn btn-ghost normal-case text-xl shadow-xl">
             <img src={left} alt="" />
           </a>
@@ -83,10 +83,10 @@ function InputProfile() {
                 </div>
               </div>
             </div>
-            <div className="flex">
+            <div className="flex justify-center py-3">
               <button
                 type="submit"
-                className="w-full mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl px-10 sm:px-20 md:px-32 lg:px-80 xl:px-64 py-3 mt-12 rounded-full bg-emerald-500 hover:bg-emerald-700 text-white"
+                className="w-full md:w-64 px-6 py-3 mb-4 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white transition duration-300 ease-in-out transform hover:scale-105 text-center shadow-md"
               >
                 Edit
               </button>
