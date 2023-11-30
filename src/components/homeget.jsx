@@ -1,7 +1,9 @@
 import React from "react";
 import gambarhome from "../assets/home.svg";
+import { useNavigate } from "react-router-dom";
 
 function HomeGet() {
+  const navigate = useNavigate()
   return (
     <section>
       <div
@@ -20,7 +22,7 @@ function HomeGet() {
             membantu Anda konsultasi kesehatan.
           </h2>
           <div className="py-4">
-            <button className="btn btn-wide rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2xl">
+            <button className="btn btn-wide rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2xl" onClick={() => navigate('/doctors')}>
               Get started
             </button>
           </div>
