@@ -7,6 +7,7 @@ import ListDokter from "../components/listdokter";
 import HomeAbout from "../components/homeabout";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import SummaryReview from "./summaryreview";
 
 function Home() {
   return (
@@ -40,6 +41,7 @@ function Home() {
         <ListDokter />
       </div>
       <HomeAbout />
+      <SummaryReview/>
       <Footer/>
     </>
   );

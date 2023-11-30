@@ -11,6 +11,9 @@ import ServiceUser from "./pages/services";
 import PilihPembayaran from "./pages/selectpayment";
 import UserProfile from "./pages/profile";
 import InputProfileUser from "./pages/inputprofileuser";
+import SummaryReview from "./pages/summaryreview";
+import Pin from "./pages/pin";
+import Appointment from "./pages/appointment";
 
 function App() {
   const TOKEN = localStorage.getItem("token");
@@ -31,6 +34,9 @@ function App() {
         <Route path="/selectpayment" element={<PilihPembayaran />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/Myprofile" element={<InputProfileUser />} />
+        <Route path="/reviewsummary" element={<SummaryReview />} />
+        <Route path="/inputpin" element={<Pin />} />
+        <Route path="/viewappointment" element={<Appointment />} />
       </Routes>
     </>
   );
