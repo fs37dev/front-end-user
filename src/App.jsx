@@ -26,7 +26,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/detaildokter" element={<DetailDokter />} />
-        <Route path="/detailartikel" element={<DetailArtikelPage />} />
+        <Route path="/detailartikel/:id" element={<DetailArtikelPage />} />
         <Route path="/detaildokter/:id" element={<DetailDokter />} />
         <Route path="/selectpayment" element={<PilihPembayaran />} />
         <Route path="/profile" element={<UserProfile />} />
