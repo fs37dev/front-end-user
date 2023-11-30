@@ -1,12 +1,12 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 
 function Navbar() {
-  const dispatch = useDispatch();
-  const { isLoggedIn, username } = useSelector((state) => state.auth);
-
+  const navigate = useNavigate()
+  const auth = useSelector((state) => state.auth);
+  
   return (
     <header
       className="flex flex-row justify-between items-center lg:px-20 px-10 py-5 bg-black"
@@ -60,12 +60,16 @@ function Navbar() {
                   </NavLink>
                 </li>
                 <li className="btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2xl font-bold">
-                  <NavLink
-                    to="/login"
-                    className={({ isActive }) => isActive && "active-link"}
-                  >
-                    Login
-                  </NavLink>
+                  {auth.isAuthenticated ? (
+                    <span onClick={() => navigate("profile")}>{auth.username}</span>
+                  ) : (
+                    <NavLink
+                      to="/login"
+                      className={({ isActive }) => isActive && "active-link"}
+                    >
+                      Login
+                    </NavLink>
+                  )}
                 </li>
               </ul>
             </details>
