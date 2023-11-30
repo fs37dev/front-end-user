@@ -8,7 +8,6 @@ function Profile() {
   const navigate = useNavigate();
   const menuItems = [
     { title: "My Profile", emoji: "😊", path: "/Myprofile" },
-    { title: "About", emoji: "ℹ️", path: "/about" },
     { title: "Reservasi", emoji: "📅", path: "/doctors" },
     { title: "LogOut", emoji: "🚪", path: "/logout" },
   ];
