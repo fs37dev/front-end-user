@@ -15,19 +15,12 @@ function Artikel() {
   }, []);
 
   const data = useSelector((state) => state.artikels);
-  console.log(data);
-  const artikels =
-    data.listartikel && data.listartikel.articles
-      ? data.listartikel.articles
-      : [];
+  const artikels = data.listartikel && data.listartikel.articles ? data.listartikel.articles : [];
 
   return (
     <div className="lg:px-20 px-10 py-10 ">
       <div>
-        <h1
-          className="text-3xl font-bold text-center"
-          style={{ color: "#009781" }}
-        >
+        <h1 className="text-3xl font-bold text-center" style={{ color: "#009781" }}>
           Artikel
         </h1>
       </div>
@@ -38,10 +31,8 @@ function Artikel() {
 
         <div>
           <div className="text-sm py-3 justify-end">
-            Artikel ini merupakan sumber informasi penting, pada topik tertentu,
-            memberikan penjelasan mendalam dan analisis yang didukung oleh bukti
-            yang kuat. Membacanya untuk mendapatkan pemahaman yang lebih baik
-            tentang subjek tersebut.
+            Artikel ini merupakan sumber informasi penting, pada topik tertentu, memberikan penjelasan mendalam dan analisis yang didukung oleh bukti yang kuat.
+            Membacanya untuk mendapatkan pemahaman yang lebih baik tentang subjek tersebut.
           </div>
 
           {artikels.slice(0, numArtikelsToShow).map((artikel, index) => (
@@ -65,7 +56,8 @@ function Artikel() {
             //     </div>
             //   </div>
             // </div>
-            <div className="py-2">
+
+            <div className="py-2" key={artikel.id}>
               <div className="card card-side bg-base-100 shadow-xl">
                 <figure>
                   <img src={artikel2} alt="artikel" className="" />
@@ -78,8 +70,7 @@ function Artikel() {
                       navigate(`/detailartikel/${artikel.id}`, {
                         state: { artikel },
                       });
-                    }}
-                  >
+                    }}>
                     {artikel.title}
                   </button>
                 </div>
@@ -90,14 +81,7 @@ function Artikel() {
       </div>
       {artikels.length > 3 && (
         <div className="flex justify-end">
-          <button
-            onClick={() =>
-              setNumArtikelsToShow(
-                numArtikelsToShow === artikels.length ? 3 : artikels.length
-              )
-            }
-            className="btn text-blue text-sky-500"
-          >
+          <button onClick={() => setNumArtikelsToShow(numArtikelsToShow === artikels.length ? 3 : artikels.length)} className="btn text-blue text-sky-500">
             {numArtikelsToShow === artikels.length ? "Show Less" : "Read More"}
           </button>
         </div>
