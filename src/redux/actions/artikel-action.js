@@ -26,15 +26,13 @@ export const fetchArtikelsSuccess = (artikels) => {
 };
 
 export const fetchArtikelDetail = (id) => {
-  return async function (dispatch) {
-    try {
-      const response = await axios.get(
-        `https://back-end-production-a31e.up.railway.app/api/articles/${id}`
-      );
-      dispatch(fetchArtikelDetailSuccess(response.data));
-    } catch (error) {
-      dispatch(fetchArtikelDetailFailure(error.message));
-    }
+  return async (dispatch) => {
+    dispatch(fetchArtikelDetailRequest());
+
+    const response = await axios.get(
+      `https://back-end-production-a31e.up.railway.app/api/articles/${id}`
+    );
+    dispatch(fetchArtikelDetailSuccess(response.data));
   };
 };
 
@@ -45,9 +43,8 @@ export const fetchArtikelDetailSuccess = (artikelDetail) => {
   };
 };
 
-export const fetchArtikelDetailFailure = (error) => {
+export const fetchArtikelDetailRequest = () => {
   return {
-    type: "FETCH_ARTIKEL_DETAIL_FAILURE",
-    payload: error,
+    type: "FETCH_ARTIKEL_DETAIL_REQUEST",
   };
 };

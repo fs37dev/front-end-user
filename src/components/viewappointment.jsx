@@ -20,7 +20,7 @@ function ViewAppointment() {
   return (
     <>
       <div className="navbar max-w-6xl lg:px-20 px-15 py-10 flex flex-row">
-        <div className="flex-none" onClick={() => navigate("/")}>
+        <div className="flex-none" onClick={() => navigate(-1)}>
           <a className="btn btn-ghost normal-case text-xl shadow-xl">
             <img src={left} alt="" />
           </a>
