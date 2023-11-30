@@ -1,8 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
+import { useDispatch, useSelector } from "react-redux";
 
 function Navbar() {
+  const dispatch = useDispatch();
+  const { isLoggedIn, username } = useSelector((state) => state.auth);
+
   return (
     <header
       className="flex flex-row justify-between items-center lg:px-20 px-10 py-5 bg-black"

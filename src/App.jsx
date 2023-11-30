@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import axios from "axios";
 import Home from "./pages/home";
 import AboutUs from "./pages/about";
 import Login from "./pages/login";
@@ -9,8 +10,10 @@ import DetailArtikelPage from "./pages/detailartikel";
 import ServiceUser from "./pages/services";
 import PilihPembayaran from "./pages/selectpayment";
 
-
 function App() {
+  const TOKEN = localStorage.getItem("token");
+  axios.defaults.headers.common["Authorization"] = `Bearer ${TOKEN}`;
+
   return (
     <>
       <Routes>
