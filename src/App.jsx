@@ -1,3 +1,4 @@
+import React from "react";
 import { Route, Routes, Router } from "react-router-dom";
 import axios from "axios";
 import Home from "./pages/home";
@@ -21,12 +22,8 @@ function App() {
   const TOKEN = localStorage.getItem("token");
   axios.defaults.headers.common["Authorization"] = `Bearer ${TOKEN}`;
   return (
-    <div className="App">
+    <>
       <Routes>
-        {/* <PrivateRoute path="/">
-          
-        </PrivateRoute> */}
-
         <Route path="/" element={<Home />} />
         <Route path="/service" element={<ServiceUser />} />
         <Route path="/about" element={<AboutUs />} />
@@ -37,16 +34,11 @@ function App() {
         <Route path="/selectpayment/:id" element={<PilihPembayaran />} />
         <Route path="/review-summary/:id" element={<SummaryReview />} />
         <Route path="/profile" element={<UserProfile />} />
-        <Route path="/Myprofile" element={<InputProfileUser />} />
+        <Route path="/myprofile" element={<InputProfileUser />} />
         <Route path="/inputpin" element={<Pin />} />
         <Route path="/viewappointment" element={<Appointment />} />
       </Routes>
-
-      {/* <Route path="/detaildokter" element={<DetailDokter />} /> */}
-      {/* <Route path="/detailartikel/:id" element={<DetailArtikelPage />} />
-        {/* <Route path="/profile" element={<UserProfile />} /> */}
-      {/* <Route path="/Myprofile" element={<InputProfileUser />} /> */}
-    </div>
+    </>
   );
 }
 
