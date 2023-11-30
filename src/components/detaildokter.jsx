@@ -169,8 +169,8 @@ function DetailDokter() {
                     className="join-item btn"
                     type="radio"
                     name="time"
-                    value="09.00"
-                    aria-label="09.00"
+                    value="09:00"
+                    aria-label="09:00"
                     onChange={(e) => {
                       setSelectedTime(e.target.value);
                     }}
@@ -179,8 +179,8 @@ function DetailDokter() {
                     className="join-item btn"
                     type="radio"
                     name="time"
-                    value="11.00"
-                    aria-label="11.00"
+                    value="11:00"
+                    aria-label="11:00"
                     onChange={(e) => {
                       setSelectedTime(e.target.value);
                     }}
@@ -189,8 +189,8 @@ function DetailDokter() {
                     className="join-item btn"
                     type="radio"
                     name="time"
-                    value="15.00"
-                    aria-label="15.00"
+                    value="15:00"
+                    aria-label="15:00"
                     onChange={(e) => {
                       setSelectedTime(e.target.value);
                     }}
@@ -280,21 +280,19 @@ function DetailDokter() {
                 <p className="ml-2 mt-20 text-lg font-bold">$40</p>
               </div>
             </div>
-        <div className="card px-10">
-          <div className="card-body flex items-center justify-center">
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            {/* <input type="hidden" name="id" value={doctor.id} />
+            <div className="card px-10">
+              <div className="card-body flex items-center justify-center">
+                {error && <p style={{ color: "red" }}>{error}</p>}
+                {/* <input type="hidden" name="id" value={doctor.id} />
             <input type="hidden" name="hospital" value={doctor.hospital} /> */}
-            <button
-              type="submit"
-              className="btn bg-emerald-500 hover:bg-emerald-700 w-full rounded-full text-white"
-              onClick={handleButton}
-            >
-              Book Appointment
-            </button>
-          </div>
-        </div>
-      </form>
+                <button type="submit" className="btn bg-emerald-500 hover:bg-emerald-700 w-full rounded-full text-white" onClick={handleButton}>
+                  Book Appointment
+                </button>
+              </div>
+            </div>
+          </form>
+        </>
+      )}
     </>
   );
 }
