@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import pilih from "../assets/package.png";
 import BRI from "../assets/BRI.png";
 import mandiri from "../assets/mandiri.png";
 import dana from "../assets/dana.png";
 import left from "../assets/left.png";
+import { useParams } from "react-router-dom";
 
 function SelectPayment() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const { doctor, selectedDate, selectedTime, selectedPackage } =
-    location.state || {};
+  const params = useParams();
 
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [error, setError] = useState(null);
@@ -22,15 +21,7 @@ function SelectPayment() {
         setError(null);
       }, 2000);
     } else {
-      navigate("/reviewsummary", {
-        state: {
-          doctor: doctor,
-          selectedDate: selectedDate,
-          selectedTime: selectedTime,
-          selectedPackage: selectedPackage,
-          selectedPayment: selectedPayment,
-        },
-      });
+      navigate(`/review-summary/${params.id}`);
     }
   };
 
@@ -75,11 +66,7 @@ function SelectPayment() {
 
       <div className="card card-side bg-base-100 shadow-xl my-6 max-w-6xl mx-auto">
         <div className="card-body">
-          <img
-            src={mandiri}
-            alt="mandiri"
-            className="w-29 absolute top-6 left-16"
-          />
+          <img src={mandiri} alt="mandiri" className="w-29 absolute top-6 left-16" />
         </div>
 
         <div className="flex items-center mt-5 mb-10 mr-5">
@@ -114,10 +101,7 @@ function SelectPayment() {
       <div className="card">
         <div className="card-body flex items-center justify-center">
           {error && <p style={{ color: "red" }}>{error}</p>}
-          <button
-            className="btn btn-success w-full md:w-1/2 lg:w-1/3 xl:w-1/4"
-            onClick={handleNext}
-          >
+          <button className="btn btn-success w-full md:w-1/2 lg:w-1/3 xl:w-1/4" onClick={handleNext}>
             Next
           </button>
         </div>

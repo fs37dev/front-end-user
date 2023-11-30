@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { registerUser } from "../redux/actions/user-action";
+import { useNavigate } from "react-router-dom";
 
 function InputRegister() {
   const navigate = useNavigate();
@@ -24,7 +24,6 @@ function InputRegister() {
       hideErrorAfterTimeout();
     } else {
       dispatch(registerUser(nama, email, password));
-      navigate("/");
       hideErrorAfterTimeout();
     }
   };
@@ -36,20 +35,24 @@ function InputRegister() {
   };
 
   useEffect(() => {
-    setError(auth.error);
+    if (auth.error) {
+      setError(auth.error);
+    }
   }, [auth]);
+
+  useEffect(() => {
+    if (auth.isAuthenticated) {
+      window.location.href = "/login";
+    }
+  }, [auth.isAuthenticated, navigate]);
 
   return (
     <div className="relative w-full h-screen">
       <div className="flex justify-center items-center h-full">
         <form className="rounded-lg shadow-2xl lg:w-full max-w-[900px] w-100 mx-auto bg-white ">
           <div className="card-body">
-            <h1 className="font-bold text-center text-xl">
-              Register Dengan Kami!
-            </h1>
-            <h2 className="font-bold text-center text-base">
-              Informasi Anda aman bersama kami
-            </h2>
+            <h1 className="font-bold text-center text-xl">Register Dengan Kami!</h1>
+            <h2 className="font-bold text-center text-base">Informasi Anda aman bersama kami</h2>
             <div className="flex flex-col py-1">
               <label>Nama</label>
               <input
@@ -90,20 +93,13 @@ function InputRegister() {
                 onChange={(e) => setKonfirmasiPassword(e.target.value)}
               />
             </div>
-            <button
-              className="w-50 py-3 mt-3 rounded-full bg-emerald-500 hover:bg-emerald-700 relative text-white"
-              onClick={handleSignUp}
-            >
+            <button className="w-50 py-3 mt-3 rounded-full bg-emerald-500 hover:bg-emerald-700 relative text-white" onClick={handleSignUp}>
               Sign Up
             </button>
             {error && <p className="text-center text-red-500 mt-2">{error}</p>}
             <p className="text-center mt-3">
               Sudah Punya Akun?{" "}
-              <button
-                type="button"
-                onClick={() => navigate("/login")}
-                className="text-emerald-500 font-bold"
-              >
+              <button type="button" onClick={() => navigate("/login")} className="text-emerald-500 font-bold">
                 Sign In
               </button>
             </p>

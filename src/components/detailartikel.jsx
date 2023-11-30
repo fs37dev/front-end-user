@@ -24,9 +24,7 @@ function DetailArtikel() {
           </a>
         </div>
         <div className="flex-1 justify-center">
-          <button className="btn btn-ghost normal-case text-2xl">
-            Artikel
-          </button>
+          <button className="btn btn-ghost normal-case text-2xl">Artikel</button>
         </div>
       </div>
       {error ? (
@@ -34,11 +32,7 @@ function DetailArtikel() {
       ) : (
         <div className="card w-ful bg-base-100 shadow-xl">
           <figure className="">
-            <img
-              src={artikel ? artikel.image : ""}
-              alt="gambar artikel"
-              className="w-20 lg:w-40 rounded-full"
-            />
+            <img src={artikel ? artikel.image : ""} alt="gambar artikel" className="w-20 lg:w-40 rounded-full" />
           </figure>
           <div className="card-body">
             <p className="font-bold">{artikel ? artikel.title : ""}</p>
