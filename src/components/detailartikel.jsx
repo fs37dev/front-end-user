@@ -14,8 +14,6 @@ function DetailArtikel() {
     dispatch(fetchArtikelDetail(params.id));
   }, []);
 
-  console.info(article);
-
   return (
     <>
       <div className="navbar max-w-6xl lg:px-20 px-15 py-10 flex flex-row">
