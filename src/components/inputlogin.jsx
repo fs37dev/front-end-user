@@ -4,18 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../redux/actions/user-action";
 
 function InputLogin() {
-  const navigate = useNavigate();
+  const { errorMessage, isAuthenticatedLogin } = useSelector((state) => state.user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth);
   const [error, setError] = useState("");
-
-  useEffect(() => {
-    if (auth.isAuthenticated) {
-      window.location.href = "/";
-    }
-  }, [auth.isAuthenticated, navigate]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -25,7 +19,6 @@ function InputLogin() {
       hideErrorAfterTimeout();
     } else {
       dispatch(loginUser(email, password));
-      hideErrorAfterTimeout();
     }
   };
 
@@ -36,8 +29,11 @@ function InputLogin() {
   };
 
   useEffect(() => {
-    setError(auth.error);
-  }, [auth]);
+    setError(errorMessage);
+    hideErrorAfterTimeout();
+  }, [errorMessage]);
+
+  isAuthenticatedLogin && navigate("/");
 
   return (
     <div className="relative w-full h-screen">
@@ -49,7 +45,7 @@ function InputLogin() {
             <input
               placeholder="Input Email Anda"
               className="border rounded-lg input-bordered relative bg-gray-100 p-2"
-              type="text"
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -68,7 +64,6 @@ function InputLogin() {
             Sign In
           </button>
           {error && <p className="text-center text-red-500 mt-2">{error}</p>}
-          {auth.error && <p className="text-center text-red-500 mt-2">{auth.error}</p>}
           <p className="text-center mt-8">
             Tidak Punya Tidak Punya Akun?{" "}
             <button type="button" onClick={() => navigate("/register")} className="text-emerald-500 font-bold bg-transparent border-none">

@@ -8,7 +8,6 @@ function UserProfile() {
     <>
       <Navbar />
       <Profile />
-      <Footer />
     </>
   );
 }

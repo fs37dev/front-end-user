@@ -9,7 +9,7 @@ export const SUBMIT_RESERVATION_FAILURE = "SUBMIT_RESERVATION_FAILURE";
 export const submitReservation = (doctorId, date, time, packageId) => {
   return async (dispatch) => {
     if (!token) {
-      window.location.href = "/login";
+      navigate("/login");
     } else {
       dispatch({ type: SUBMIT_RESERVATION_REQUEST });
 
@@ -28,6 +28,8 @@ export const submitReservation = (doctorId, date, time, packageId) => {
             },
           }
         );
+
+        console.log(response.data);
 
         dispatch({
           type: SUBMIT_RESERVATION_SUCCESS,

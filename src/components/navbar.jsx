@@ -6,9 +6,10 @@ import { getUserDetail } from "../redux/actions/user-action";
 import { useEffect } from "react";
 
 function Navbar() {
-  const dispatch = useDispatch();
+  const { data } = useSelector((state) => state.user);
+
   const navigate = useNavigate();
-  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUserDetail());
@@ -49,8 +50,8 @@ function Navbar() {
                   </NavLink>
                 </li>
                 <li className="btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2xl font-bold">
-                  {auth.userName ? (
-                    <span onClick={() => navigate("/profile")}>{auth.userName}</span>
+                  {data ? (
+                    <span onClick={() => navigate("/profile")}>{data.name}</span>
                   ) : (
                     <NavLink to="/login" className={({ isActive }) => isActive && "active-link"}>
                       Login
@@ -82,8 +83,8 @@ function Navbar() {
             </NavLink>
           </li>
           <li className="hidden lg:flex btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2x font-bold">
-            {auth.userName ? (
-              <span onClick={() => navigate("/profile")}>{auth.userName}</span>
+            {data ? (
+              <span onClick={() => navigate("/profile")}>{data.name}</span>
             ) : (
               <NavLink to="/login" className={({ isActive }) => isActive && "active-link"}>
                 Login

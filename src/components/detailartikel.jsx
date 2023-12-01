@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import left from "../assets/left.png";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchArtikelDetail } from "../redux/actions/artikel-action";
+import { clearStateArticle, fetchArtikelDetail } from "../redux/actions/artikel-action";
 
 function DetailArtikel() {
   const navigate = useNavigate();
@@ -11,6 +11,7 @@ function DetailArtikel() {
   const params = useParams();
 
   useEffect(() => {
+    dispatch(clearStateArticle());
     dispatch(fetchArtikelDetail(params.id));
   }, []);
 

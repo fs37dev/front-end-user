@@ -22,8 +22,6 @@ const reservasiReducer = (state = initialState, action) => {
         loading: true,
       };
     case SUBMIT_RESERVATION_SUCCESS:
-      window.location.href = `/reservations/${action.payload.reservationId}/select-payment`;
-
       return {
         ...state,
         loading: false,

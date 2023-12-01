@@ -1,5 +1,11 @@
 import axios from "axios";
 
+export const fetchDoctorsRequest = () => {
+  return {
+    type: "FETCH_DOCTORS_REQUEST",
+  };
+};
+
 export const fetchDoctors = () => {
   return async function (dispatch) {
     dispatch(fetchDoctorsRequest());
@@ -9,12 +15,6 @@ export const fetchDoctors = () => {
     const doctors = response.data;
 
     dispatch(fetchDoctorsSuccess(doctors));
-  };
-};
-
-export const fetchDoctorsRequest = () => {
-  return {
-    type: "FETCH_DOCTORS_REQUEST",
   };
 };
 
@@ -39,5 +39,11 @@ export const fetchDoctorSuccess = (doctor) => {
   return {
     type: "FETCH_DOCTOR_SUCCESS",
     payload: doctor,
+  };
+};
+
+export const clearStateDoctor = () => {
+  return {
+    type: "CLEAR_STATE_DOCTOR",
   };
 };

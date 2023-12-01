@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { registerUser } from "../redux/actions/user-action";
 import { useNavigate } from "react-router-dom";
+import { clearState, registerUser } from "../redux/actions/user-action";
 
 function InputRegister() {
-  const navigate = useNavigate();
-  const auth = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [konfirmasiPassword, setKonfirmasiPassword] = useState("");
   const [error, setError] = useState("");
+  const { errorMessage, isAuthenticatedRegister } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -24,7 +24,6 @@ function InputRegister() {
       hideErrorAfterTimeout();
     } else {
       dispatch(registerUser(nama, email, password));
-      hideErrorAfterTimeout();
     }
   };
 
@@ -35,21 +34,16 @@ function InputRegister() {
   };
 
   useEffect(() => {
-    if (auth.error) {
-      setError(auth.error);
-    }
-  }, [auth]);
+    setError(errorMessage);
+    hideErrorAfterTimeout();
+  }, [errorMessage]);
 
-  useEffect(() => {
-    if (auth.isAuthenticated) {
-      window.location.href = "/login";
-    }
-  }, [auth.isAuthenticated, navigate]);
+  isAuthenticatedRegister && navigate("/login");
 
   return (
     <div className="relative w-full h-screen">
       <div className="flex justify-center items-center h-full">
-        <form className="rounded-lg shadow-2xl lg:w-full max-w-[900px] w-100 mx-auto bg-white ">
+        <form className="rounded-lg shadow-2xl lg:w-full max-w-[900px] w-100 mx-auto bg-white " onSubmit={handleSignUp}>
           <div className="card-body">
             <h1 className="font-bold text-center text-xl">Register Dengan Kami!</h1>
             <h2 className="font-bold text-center text-base">Informasi Anda aman bersama kami</h2>
@@ -68,7 +62,7 @@ function InputRegister() {
               <input
                 placeholder="Input Email"
                 className="border rounded-lg input-bordered relative bg-gray-100 p-2"
-                type="text"
+                type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -93,7 +87,7 @@ function InputRegister() {
                 onChange={(e) => setKonfirmasiPassword(e.target.value)}
               />
             </div>
-            <button className="w-50 py-3 mt-3 rounded-full bg-emerald-500 hover:bg-emerald-700 relative text-white" onClick={handleSignUp}>
+            <button type="submit" className="w-50 py-3 mt-3 rounded-full bg-emerald-500 hover:bg-emerald-700 relative text-white">
               Sign Up
             </button>
             {error && <p className="text-center text-red-500 mt-2">{error}</p>}

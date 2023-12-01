@@ -1,14 +1,14 @@
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
-import doctorsReducer from "./reducers/doctor-reducer";
-import authReducer from "./reducers/user-reducer";
 import artikelReducer from "./reducers/artikel-reducer";
 import reservasiReducer from "./reducers/reservasi-reducer";
 import reviewSummaryReducer from "./reducers/review-summary-reducer";
+import userReducer from "./reducers/user-reducer";
+import doctorsReducer from "./reducers/doctor-reducer";
 
 const rootReducer = combineReducers({
   doctors: doctorsReducer,
-  auth: authReducer,
+  user: userReducer,
   artikels: artikelReducer,
   reservasi: reservasiReducer,
   reservation: reviewSummaryReducer,

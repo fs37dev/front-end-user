@@ -8,7 +8,6 @@ function BookDokter() {
     <>
       <Navbar />
       <ListDoctor />
-      <Footer />
     </>
   );
 }

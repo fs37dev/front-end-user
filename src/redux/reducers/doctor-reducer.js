@@ -1,8 +1,8 @@
 const initialState = {
-  doctorsList: [],
+  doctors: "",
   doctor: "",
   loading: false,
-  error: null,
+  error: "",
 };
 
 const doctorsReducer = (state = initialState, action) => {
@@ -24,6 +24,14 @@ const doctorsReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         doctor: action.payload.doctor,
+      };
+    case "CLEAR_STATE_DOCTOR":
+      return {
+        ...state,
+        doctorsList: [],
+        doctor: "",
+        loading: false,
+        error: null,
       };
     default:
       return state;

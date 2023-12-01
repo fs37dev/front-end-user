@@ -1,42 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchDoctorDetail,
-  fetchDoctors,
-} from "../redux/actions/doctor-action";
+import { fetchDoctorDetail, fetchDoctors } from "../redux/actions/doctor-action";
 
 function ListDoctor() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const [selectedDoctor, setSelectedDoctor] = useState(null);
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  // const [selectedDoctor, setSelectedDoctor] = useState(null);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    navigate(`/doctors/${selectedDoctor.id}`);
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   navigate(`/doctors/${selectedDoctor.id}`);
+  // };
 
-  useEffect(() => {
-    dispatch(fetchDoctors());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchDoctors());
+  // }, []);
 
-  const data = useSelector((state) => state.doctors);
-  const doctors =
-    data.doctorsList && data.doctorsList.doctors
-      ? data.doctorsList.doctors
-      : [];
+  // const data = useSelector((state) => state.doctors);
+  // const doctors = data.doctorsList && data.doctorsList.doctors ? data.doctorsList.doctors : [];
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-6 overflow-y-auto lg:px-20 px-5 py-10  "
-      >
+      {/* <form onSubmit={handleSubmit} className="flex flex-col gap-6 overflow-y-auto lg:px-20 px-5 py-10  ">
         {doctors.map((doctor, index) => (
-          <div
-            className="card card-compact bg-base-100 shadow-xl flex flex-row items-center px-4"
-            key={doctor.id}
-          >
+          <div className="card card-compact bg-base-100 shadow-xl flex flex-row items-center px-4" key={doctor.id}>
             <div className="card-body flex flex-row" key={doctor.id}>
               <div>
                 <figure className="w-60">
@@ -45,9 +33,7 @@ function ListDoctor() {
               </div>
               <div>
                 <h2 className="card-title">{doctor.name}</h2>
-                <p>
-                  {doctor.specialist ? doctor.specialist.name : "No specialist"}
-                </p>
+                <p>{doctor.specialist ? doctor.specialist.name : "No specialist"}</p>
                 <div className="card-actions justify-between items-center">
                   <div className="rating">
                     {[...Array(5)].map((star, i) => {
@@ -73,14 +59,14 @@ function ListDoctor() {
                 className="btn bg-blue-500 text-white"
                 onClick={() => {
                   setSelectedDoctor(doctor);
-                }}
-              >
+                }}>
                 Reservasi
               </button>
             </div>
           </div>
         ))}
       </form>
+      <Footer /> */}
     </>
   );
 }
