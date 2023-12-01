@@ -33,7 +33,6 @@ function Profile() {
 
   return (
     <>
-      o
       <div className="navbar max-w-6xl py-5">
         <div className="flex-none" onClick={() => navigate("/")}>
           <a className="btn btn-ghost normal-case text-xl shadow-xl">
