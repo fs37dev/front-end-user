@@ -6,16 +6,16 @@ import { fetchArtikelDetail } from "../redux/actions/artikel-action";
 
 function DetailArtikel() {
   const navigate = useNavigate();
+  const {artikels}  = useSelector((state) => state.artikels);
   const dispatch = useDispatch();
   const params = useParams();
 
-  const { artikelDetail } = useSelector((state) => state.artikels);
 
   useEffect(() => {
     dispatch(fetchArtikelDetail(params.id));
   }, []);
 
-  console.log(artikelDetail);
+  console.log(artikels);
 
   return (
     <>
@@ -31,19 +31,19 @@ function DetailArtikel() {
           </button>
         </div>
       </div>
-      {artikelDetail && (
+      {artikels && (
         <>
           <div className="card w-ful bg-base-100 shadow-xl">
             <figure className="">
               <img
-                src={artikelDetail.image}
+                src={artikels.articles.image}
                 alt="gambar artikel"
                 className="w-20 lg:w-40 rounded-full"
               />
             </figure>
             <div className="card-body">
-              <p className="font-bold">{artikelDetail.title}</p>
-              <p>{artikelDetail.description}</p>
+              <p className="font-bold">{artikels.articles.title}</p>
+              <p>{artikels.articles.description}</p>
             </div>
           </div>
         </>
