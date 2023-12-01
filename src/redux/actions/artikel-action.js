@@ -28,26 +28,33 @@ export const fetchArtikelsSuccess = (artikels) => {
 export const fetchArtikelDetail = (id) => {
   return async function (dispatch) {
     try {
+      dispatch(fetchArtikelDetailRequest());
+
       const response = await axios.get(
         `https://back-end-production-a31e.up.railway.app/api/articles/${id}`
       );
-      dispatch(fetchArtikelDetailSuccess(response.data));
+      dispatch({
+        type: "FETCH_ARTIKEL_DETAIL_SUCCESS",
+        payload: response.data,
+      });
     } catch (error) {
-      dispatch(fetchArtikelDetailFailure(error.message));
+      dispatch({
+        type: "GET_RESERVATION_DETAIL_FAIL",
+        payload: error.response.data,
+      });
     }
   };
 };
 
-export const fetchArtikelDetailSuccess = (artikelDetail) => {
+export const fetchArtikelDetailSuccess = (artikels) => {
   return {
     type: "FETCH_ARTIKEL_DETAIL_SUCCESS",
-    payload: artikelDetail,
+    payload: artikels,
   };
 };
 
-export const fetchArtikelDetailFailure = (error) => {
+export const fetchArtikelDetailRequest = () => {
   return {
-    type: "FETCH_ARTIKEL_DETAIL_FAILURE",
-    payload: error,
+    type: "FETCH_ARTIKEL_DETAIL_REQUEST",
   };
 };
