@@ -2,7 +2,7 @@ const initialState = {
   listartikel: [],
   loading: false,
   error: null,
-  artikels: null,
+  article: null,
 };
 
 const artikelReducer = (state = initialState, action) => {
@@ -22,7 +22,7 @@ const artikelReducer = (state = initialState, action) => {
     case "FETCH_ARTIKEL_DETAIL_SUCCESS":
       return {
         ...state,
-        artikels: action.payload.artikels,
+        article: action.payload.article,
         error: null,
       };
     case "FETCH_ARTIKEL_DETAIL_REQUEST":

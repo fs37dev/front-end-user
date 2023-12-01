@@ -5,7 +5,7 @@ import Home from "./pages/home";
 import AboutUs from "./pages/about";
 import Login from "./pages/login";
 import Register from "./pages/register";
-import DetailDokter from "./components/detaildokter";
+
 import BookDokter from "./pages/bookdokter";
 import ServiceUser from "./pages/services";
 import PilihPembayaran from "./pages/selectpayment";
@@ -14,7 +14,9 @@ import InputProfileUser from "./pages/inputprofileuser";
 import SummaryReview from "./pages/summaryreview";
 import Pin from "./pages/pin";
 import Appointment from "./pages/appointment";
+import Reservations from "./pages/reservations";
 import DetailArtikelPage from "./pages/detailartikel";
+import DokterDetail from "./pages/detaildokter";
 
 function App() {
   const TOKEN = localStorage.getItem("token");
@@ -28,14 +30,15 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/doctors" element={<BookDokter />} />
-        <Route path="/detaildokter/:id" element={<DetailDokter />} />
+        <Route path="/detaildokter/:id" element={<DokterDetail />} />
         <Route path="/detailartikel/:id" element={<DetailArtikelPage />} />
         <Route path="/selectpayment/:id" element={<PilihPembayaran />} />
         <Route path="/review-summary/:id" element={<SummaryReview />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/myprofile" element={<InputProfileUser />} />
         <Route path="/inputpin/:id" element={<Pin />} />
-        <Route path="/view-appointment/:id" element={<Appointment />} />
+        <Route path="/viewappointment/:id" element={<Appointment />} />
+        <Route path="/reservations" element={<Reservations />} />
       </Routes>
     </>
   );

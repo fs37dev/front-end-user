@@ -75,3 +75,39 @@ const registerUser = (name, email, password) => {
 };
 
 export { REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE, registerUser };
+
+const GET_USER_DETAIL_REQUEST = "GET_USER_DETAIL_REQUEST";
+const GET_USER_DETAIL_SUCCESS = "GET_USER_DETAIL_SUCCESS";
+const GET_USER_DETAIL_FAILURE = "GET_USER_DETAIL_FAILURE";
+
+const getUserDetailRequest = () => ({
+  type: GET_USER_DETAIL_REQUEST,
+});
+
+const getUserDetailSuccess = (user) => ({
+  type: GET_USER_DETAIL_SUCCESS,
+  payload: user,
+});
+
+const getUserDetailFailure = (error) => ({
+  type: GET_USER_DETAIL_FAILURE,
+  payload: error,
+});
+
+const getUserDetail = (name, email, password) => {
+  return async (dispatch) => {
+    dispatch(getUserDetailRequest());
+
+    try {
+      const response = await axios.get("https://back-end-production-a31e.up.railway.app/api/user");
+
+      const user = response.data;
+
+      dispatch(getUserDetailSuccess(user));
+    } catch (error) {
+      dispatch(getUserDetailFailure(error.response.data));
+    }
+  };
+};
+
+export { GET_USER_DETAIL_REQUEST, GET_USER_DETAIL_SUCCESS, GET_USER_DETAIL_FAILURE, getUserDetail };
