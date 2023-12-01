@@ -7,7 +7,7 @@ import left from "../assets/left.png";
 import timerss from "../assets/timerss.png";
 import Time from "../assets/Time.svg";
 import media from "../assets/package.png";
-import messages from "../assets/messages.svg";
+import messages from "../assets/pesan.svg";
 import video from "../assets/Video.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { submitReservation } from "../redux/actions/reservasi-action";
