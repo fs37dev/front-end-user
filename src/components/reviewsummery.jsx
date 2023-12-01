@@ -1,22 +1,32 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getReservationDetail } from "../redux/actions/review-summary";
 import moment from "moment";
+import left from "../assets/left.png";
 
 function ReviewSummary() {
   const { reservation } = useSelector((state) => state.reservation);
   const dispatch = useDispatch();
   const params = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getReservationDetail(params.id));
   }, []);
 
-  console.info(reservation);
-
   return (
     <>
+      <div className="navbar max-w-6xl py-5">
+        <div className="flex-none" onClick={() => navigate("/reviewsummary")}>
+          <a className="btn btn-ghost normal-case text-xl shadow-xl">
+            <img src={left} alt="" />
+          </a>
+        </div>
+        <div className="flex-1 justify-center">
+          <a className="btn btn-ghost normal-case text-2xl">Review Summary</a>
+        </div>
+      </div>
       {reservation && (
         <>
           <div className="card bg-base-100 flex justify-content my-auto items-center">
@@ -75,7 +85,7 @@ function ReviewSummary() {
             <div className="card-body flex items-center justify-center">
               <button
                 className="w-full mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl px-10 sm:px-20 md:px-32 lg:px-80 xl:px-64 py-3 mt-12 rounded-full bg-emerald-500 hover:bg-emerald-700 text-white"
-                onClick={() => navigate("/inputpin")}>
+                onClick={() => navigate(`/inputpin/${params.id}`)}>
                 Payment
               </button>
             </div>

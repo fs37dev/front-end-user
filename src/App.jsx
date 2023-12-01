@@ -17,6 +17,7 @@ import ReviewSummary from "./components/reviewsummery";
 import SummaryReview from "./pages/summaryreview";
 import Pin from "./pages/pin";
 import Appointment from "./pages/appointment";
+import Reservations from "./pages/reservations";
 
 function App() {
   const TOKEN = localStorage.getItem("token");
@@ -35,8 +36,9 @@ function App() {
         <Route path="/review-summary/:id" element={<SummaryReview />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/myprofile" element={<InputProfileUser />} />
-        <Route path="/inputpin" element={<Pin />} />
-        <Route path="/viewappointment" element={<Appointment />} />
+        <Route path="/inputpin/:id" element={<Pin />} />
+        <Route path="/viewappointment/:id" element={<Appointment />} />
+        <Route path="/reservations" element={<Reservations />} />
       </Routes>
     </>
   );

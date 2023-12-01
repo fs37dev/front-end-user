@@ -13,7 +13,7 @@ function InputLogin() {
 
   useEffect(() => {
     if (auth.isAuthenticated) {
-      navigate("/");
+      window.location.href = "/";
     }
   }, [auth.isAuthenticated, navigate]);
 
