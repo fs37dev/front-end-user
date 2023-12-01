@@ -11,11 +11,14 @@ import ServiceUser from "./pages/services";
 import PilihPembayaran from "./pages/selectpayment";
 import UserProfile from "./pages/profile";
 import InputProfileUser from "./pages/inputprofileuser";
+<<<<<<< HEAD
 import PrivateRoute from "./utils/PrivateRoute";
 import ReviewSummary from "./components/reviewsummery";
 import SummaryReview from "./pages/summaryreview";
 import Pin from "./pages/pin";
 import Appointment from "./pages/appointment";
+=======
+>>>>>>> main
 
 function App() {
   const TOKEN = localStorage.getItem("token");
@@ -32,14 +35,22 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+<<<<<<< HEAD
         <Route path="/doctors" element={<BookDokter />} />
+=======
+        <Route path="/detaildokter" element={<DetailDokter />} />
+        <Route path="/detailartikel" element={<DetailArtikelPage />} />
+>>>>>>> main
         <Route path="/detaildokter/:id" element={<DetailDokter />} />
         <Route path="/selectpayment/:id" element={<PilihPembayaran />} />
         <Route path="/review-summary/:id" element={<SummaryReview />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/Myprofile" element={<InputProfileUser />} />
+<<<<<<< HEAD
         <Route path="/inputpin" element={<Pin />} />
         <Route path="/viewappointment" element={<Appointment />} />
+=======
+>>>>>>> main
       </Routes>
 
       {/* <Route path="/detaildokter" element={<DetailDokter />} /> */}
