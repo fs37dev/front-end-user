@@ -6,6 +6,7 @@ import right from "../assets/right.svg";
 import left from "../assets/left.png";
 import { getReservationList } from "../redux/actions/reservasi-action";
 import moment from "moment";
+import { getReservationDetail } from "../redux/actions/review-summary";
 
 function ReservationList() {
   const { reservations } = useSelector((state) => state.reservasi);
@@ -22,6 +23,10 @@ function ReservationList() {
     if (status === "Pending") return <div className="badge badge-warning">{status}</div>;
     if (status === "Rejected") return <div className="badge badge-error">{status}</div>;
     else return <div className="badge badge-ghost">{status}</div>;
+  };
+
+  const handleButtonClick = (reservationId) => {
+    navigate(`/viewappointment/${reservationId}`);
   };
 
   return (
@@ -41,17 +46,25 @@ function ReservationList() {
         <div className="flex flex-col gap-6 overflow-y-auto lg:px-20 px-5 py-10  ">
           {reservations.map((reservation, index) => (
             <div className="card card-compact bg-base-100 shadow-xl flex flex-row items-center px-4" key={index}>
-              <div className="card-body flex flex-row" key={index}>
-                <div>
-                  <figure className="w-60">
-                    <img src={reservation.doctor.image} alt={reservation.doctor.image} className="w-40" />
-                  </figure>
+              <div className="card-body flex flex-row justify-between" key={index}>
+                <div className="flex flex-row">
+                  <div>
+                    <figure className="w-60">
+                      <img src={reservation.doctor.image} alt={reservation.doctor.image} className="w-40" />
+                    </figure>
+                  </div>
+                  <div>
+                    <h2 className="card-title text-info"> Reservation in {moment(reservation.date).format("LL")}</h2>
+                    <h2 className="card-title">{reservation.doctor.name}</h2>
+                    <p className="mb-2">{reservation.doctor.specialist.name}</p>
+                    <p>{getPaymentStatus(reservation.status)}</p>
+                  </div>
                 </div>
-                <div>
-                  <h2 className="card-title text-info"> Reservation in {moment(reservation.date).format("LL")}</h2>
-                  <h2 className="card-title">{reservation.doctor.name}</h2>
-                  <p className="mb-2">{reservation.doctor.specialist.name}</p>
-                  <p>{getPaymentStatus(reservation.status)}</p>
+
+                <div className="flex self-center">
+                  <button type="submit" className="btn bg-blue-500 text-white" onClick={() => handleButtonClick(reservation.id)}>
+                    Detail
+                  </button>
                 </div>
               </div>
             </div>

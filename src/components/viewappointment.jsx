@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+
 import left from "../assets/left.png";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -16,12 +17,14 @@ function ViewAppointment() {
     dispatch(getReservationDetail(params.id));
   }, []);
 
-  console.info(reservation);
+  const handleButtonClick = () => {
+    navigate("/reservations");
+  };
 
   return (
     <>
-      <div className="navbar max-w-6xl py-5">
-        <div className="flex-none" onClick={() => navigate("/reviewsummary")}>
+      <div className="navbar max-w-6xl lg:px-20 px-15 py-10 flex flex-row">
+        <div className="flex-none" onClick={() => navigate(-1)}>
           <a className="btn btn-ghost normal-case text-xl shadow-xl">
             <img src={left} alt="" />
           </a>
@@ -53,7 +56,9 @@ function ViewAppointment() {
               <div className="card-body shadow-xl rounded-xl w-100 max-[832px]:w-screen">
                 <div className="my-auto flex items-center gap-20">
                   <p>Date & Hour.</p>
-                  <h5 className="card-title">{moment(reservation.date).format("LL")} | {reservation.time} </h5>
+                  <h5 className="card-title">
+                    {moment(reservation.date).format("LL")} | {reservation.time}{" "}
+                  </h5>
                 </div>
                 <div className="my-auto flex items-center gap-20">
                   <p>Package</p>
@@ -84,7 +89,7 @@ function ViewAppointment() {
             </div>
           </div>
           <div className="card-body flex items-center justify-center">
-            <button id="close" className="btn bg-emerald-500 hover:bg-emerald-700 rounded-full text-white w-52">
+            <button onClick={handleButtonClick} id="close" className="btn bg-emerald-500 hover:bg-emerald-700 rounded-full text-white w-52">
               Close
             </button>
           </div>

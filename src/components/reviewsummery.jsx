@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import { getReservationDetail } from "../redux/actions/review-summary";
 import moment from "moment";
 import left from "../assets/left.png";
 
 function ReviewSummary() {
+  const navigate = useNavigate();
   const { reservation } = useSelector((state) => state.reservation);
   const dispatch = useDispatch();
   const params = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getReservationDetail(params.id));
