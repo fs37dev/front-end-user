@@ -1,16 +1,16 @@
 import React from "react";
-import DetailArtikel from "../components/detailartikel";
+import InputPIN from "../components/inputpin";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 
-function DetailArtikelPage() {
+function Pin() {
   return (
     <>
       <Navbar />
-      <DetailArtikel />;
+      <InputPIN />
       <Footer />
     </>
   );
 }
 
-export default DetailArtikelPage;
+export default Pin;

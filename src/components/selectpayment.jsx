@@ -21,20 +21,20 @@ function SelectPayment() {
         setError(null);
       }, 2000);
     } else {
-      navigate(`/review-summary/${params.id}`);
+      navigate(`/reservations/${params.id}/review-summary`);
     }
   };
 
   return (
     <>
-      <div className="navbar max-w-6xl py-5">
-        <div className="flex-none" onClick={() => navigate(-1)}>
+      <div className="navbar max-w-6xl lg:px-20 px-15 py-10 flex flex-row">
+        <div className="flex-none" onClick={() => navigate("/doctors")}>
           <a className="btn btn-ghost normal-case text-xl shadow-xl">
             <img src={left} alt="" />
           </a>
         </div>
         <div className="flex-1 justify-center">
-          <a className="btn btn-ghost normal-case text-2xl">Payment Method</a>
+          <button className="btn btn-ghost normal-case text-2xl">Payment</button>
         </div>
       </div>
 
@@ -101,7 +101,9 @@ function SelectPayment() {
       <div className="card">
         <div className="card-body flex items-center justify-center">
           {error && <p style={{ color: "red" }}>{error}</p>}
-          <button className="btn btn-success w-full md:w-1/2 lg:w-1/3 xl:w-1/4" onClick={handleNext}>
+          <button
+            className="w-full md:w-64 px-6 py-3 mb-4 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white transition duration-300 ease-in-out transform hover:scale-105 text-center shadow-md"
+            onClick={handleNext}>
             Next
           </button>
         </div>

@@ -1,16 +1,16 @@
 import React from "react";
-import DetailArtikel from "../components/detailartikel";
+import ViewAppointment from "../components/viewappointment";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 
-function DetailArtikelPage() {
+function Appointment() {
   return (
     <>
       <Navbar />
-      <DetailArtikel />;
+      <ViewAppointment />
       <Footer />
     </>
   );
 }
 
-export default DetailArtikelPage;
+export default Appointment;

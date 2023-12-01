@@ -36,27 +36,6 @@ function Artikel() {
           </div>
 
           {artikels.slice(0, numArtikelsToShow).map((artikel, index) => (
-            // <div className="py-4" key={index}>
-            //   <div
-            //     className="card w-full bg-base-100 shadow-2xl image-full"
-            //     key={index}
-            //   >
-            //     <figure>
-            //       <img src={artikel.image} alt="artikel" />
-            //     </figure>
-            //     <div className="card-body">
-            //       <h3
-            //         className="card-title"
-            //         onClick={() => navigate(`/detailartikel/${artikel.id}`)}
-            //       >
-            //         {artikel.title}
-            //       </h3>
-            //       <p className="text-sm">{artikel.content}</p>
-            //       <p>{artikel.date}</p>
-            //     </div>
-            //   </div>
-            // </div>
-
             <div className="py-2" key={artikel.id}>
               <div className="card card-side bg-base-100 shadow-xl">
                 <figure>
@@ -67,9 +46,7 @@ function Artikel() {
                   <button
                     className="card-title"
                     onClick={() => {
-                      navigate(`/detailartikel/${artikel.id}`, {
-                        state: { artikel },
-                      });
+                      window.location.href = `/detailartikel/${artikel.id}`;
                     }}>
                     {artikel.title}
                   </button>

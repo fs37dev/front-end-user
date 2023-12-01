@@ -1,16 +1,16 @@
 import React from "react";
-import DetailArtikel from "../components/detailartikel";
+import ReservationList from "../components/reservationlist";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 
-function DetailArtikelPage() {
+function Reservations() {
   return (
     <>
       <Navbar />
-      <DetailArtikel />;
+      <ReservationList />
       <Footer />
     </>
   );
 }
 
-export default DetailArtikelPage;
+export default Reservations;
