@@ -28,10 +28,11 @@ function InputLogin() {
     }, 2000);
   };
 
-  useEffect(() => {
-    setError(errorMessage);
-    hideErrorAfterTimeout();
-  }, [errorMessage]);
+  errorMessage &&
+    useEffect(() => {
+      setError(errorMessage);
+      hideErrorAfterTimeout();
+    }, []);
 
   isAuthenticatedLogin && navigate("/");
 

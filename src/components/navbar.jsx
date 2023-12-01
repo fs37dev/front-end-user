@@ -50,9 +50,8 @@ function Navbar() {
                   </NavLink>
                 </li>
                 <li className="btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2xl font-bold">
-                  {data ? (
-                    <span onClick={() => navigate("/profile")}>{data.name}</span>
-                  ) : (
+                  {data && <span onClick={() => navigate("/profile")}>{data.name}</span>}
+                  {!data && (
                     <NavLink to="/login" className={({ isActive }) => isActive && "active-link"}>
                       Login
                     </NavLink>
@@ -83,9 +82,8 @@ function Navbar() {
             </NavLink>
           </li>
           <li className="hidden lg:flex btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2x font-bold">
-            {data ? (
-              <span onClick={() => navigate("/profile")}>{data.name}</span>
-            ) : (
+            {data && <span onClick={() => navigate("/profile")}>{data.name}</span>}
+            {!data && (
               <NavLink to="/login" className={({ isActive }) => isActive && "active-link"}>
                 Login
               </NavLink>

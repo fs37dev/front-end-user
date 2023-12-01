@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDoctors } from "../redux/actions/doctor-action";
+// import { fetchDoctors } from "../redux/actions/doctor-action";
 import right from "../assets/right.svg";
 import left from "../assets/left.png";
 import { getReservationList } from "../redux/actions/reservasi-action";
 import moment from "moment";
-import { getReservationDetail } from "../redux/actions/review-summary";
+// import { getReservationDetail } from "../redux/actions/review-summary";
 
 function ReservationList() {
   const { reservations } = useSelector((state) => state.reservasi);
@@ -31,7 +31,7 @@ function ReservationList() {
 
   return (
     <>
-      <div className="navbar max-w-6xl py-5">
+      {/* <div className="navbar max-w-6xl py-5">
         <div className="flex-none" onClick={() => navigate("/profile")}>
           <a className="btn btn-ghost normal-case text-xl shadow-xl">
             <img src={left} alt="" />
@@ -70,7 +70,7 @@ function ReservationList() {
             </div>
           ))}
         </div>
-      )}
+      )} */}
     </>
   );
 }

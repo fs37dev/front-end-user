@@ -1,49 +1,58 @@
 import axios from "axios";
 
-export const fetchDoctorsRequest = () => {
-  return {
-    type: "FETCH_DOCTORS_REQUEST",
-  };
-};
+export const GET_DOCTOR_LIST_REQUEST = "GET_DOCTOR_LIST_REQUEST";
+export const GET_DOCTOR_LIST_SUCCESS = "GET_DOCTOR_LIST_SUCCESS";
+export const GET_DOCTOR_DETAIL_REQUEST = "GET_DOCTOR_DETAIL_REQUEST";
+export const GET_DOCTOR_DETAIL_SUCCESS = "GET_DOCTOR_DETAIL_SUCCESS";
 
-export const fetchDoctors = () => {
-  return async function (dispatch) {
-    dispatch(fetchDoctorsRequest());
+export const getDoctorList = () => {
+  return async (dispatch) => {
+    dispatch(getDoctorListRequest());
 
     const response = await axios.get("https://back-end-production-a31e.up.railway.app/api/doctors");
 
-    const doctors = response.data;
-
-    dispatch(fetchDoctorsSuccess(doctors));
+    dispatch(getDoctorListSuccess(response.data.doctors));
   };
 };
 
-export const fetchDoctorsSuccess = (doctors) => {
+const getDoctorListRequest = () => {
   return {
-    type: "FETCH_DOCTORS_SUCCESS",
-    payload: doctors,
+    type: GET_DOCTOR_LIST_REQUEST,
   };
 };
 
-export const fetchDoctorDetail = (id) => {
+const getDoctorListSuccess = (data) => {
+  return {
+    type: GET_DOCTOR_LIST_SUCCESS,
+    payload: data,
+  };
+};
+
+export const getDoctorDetail = (id) => {
   return async (dispatch) => {
-    dispatch(fetchDoctorsRequest());
+    dispatch(getDoctorDetailRequest());
 
     const response = await axios.get(`https://back-end-production-a31e.up.railway.app/api/doctors/${id}`);
 
-    dispatch(fetchDoctorSuccess(response.data));
+    dispatch(getDoctorDetailSuccess(response.data.doctor));
   };
 };
 
-export const fetchDoctorSuccess = (doctor) => {
+const getDoctorDetailRequest = () => {
   return {
-    type: "FETCH_DOCTOR_SUCCESS",
+    type: "GET_DOCTOR_DETAIL_REQUEST",
+  };
+};
+
+const getDoctorDetailSuccess = (doctor) => {
+  return {
+    type: "GET_DOCTOR_DETAIL_SUCCESS",
     payload: doctor,
   };
 };
 
-export const clearStateDoctor = () => {
-  return {
-    type: "CLEAR_STATE_DOCTOR",
-  };
-};
+// const clearStateDoctor = () => {
+//   return {
+//     type: "CLEAR_STATE_DOCTOR",
+//   };
+// };

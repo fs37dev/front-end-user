@@ -1,53 +1,52 @@
 import axios from "axios";
 
-const token = localStorage.getItem("token");
-
 export const SUBMIT_RESERVATION_REQUEST = "SUBMIT_RESERVATION_REQUEST";
 export const SUBMIT_RESERVATION_SUCCESS = "SUBMIT_RESERVATION_SUCCESS";
 export const SUBMIT_RESERVATION_FAILURE = "SUBMIT_RESERVATION_FAILURE";
+export const GET_RESERVATION_LIST_REQUEST = "GET_RESERVATION_LIST_REQUEST";
+export const GET_RESERVATION_LIST_SUCCESS = "GET_RESERVATION_LIST_SUCCESS";
+export const GET_RESERVATION_LIST_FAILURE = "GET_RESERVATION_LIST_FAILURE";
 
 export const submitReservation = (doctorId, date, time, packageId) => {
+  const token = localStorage.getItem("token");
+
   return async (dispatch) => {
-    if (!token) {
-      navigate("/login");
-    } else {
-      dispatch({ type: SUBMIT_RESERVATION_REQUEST });
+    dispatch(submitReservationRequest());
 
-      try {
-        const response = await axios.post(
-          "https://back-end-production-a31e.up.railway.app/api/reservations",
-          {
-            doctorId,
-            date,
-            time,
-            packageId,
+    try {
+      const response = await axios.post(
+        "https://back-end-production-a31e.up.railway.app/api/reservations",
+        {
+          doctorId,
+          date,
+          time,
+          packageId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
+        }
+      );
 
-        console.log(response.data);
-
-        dispatch({
-          type: SUBMIT_RESERVATION_SUCCESS,
-          payload: response.data,
-        });
-      } catch (error) {
-        dispatch({
-          type: SUBMIT_RESERVATION_FAILURE,
-          payload: error.response.data,
-        });
-      }
+      dispatch(submitReservationSuccess(response.data.reservationId));
+    } catch (error) {
+      dispatch(submitReservationFailure(error.response.data.message));
     }
   };
 };
 
-export const GET_RESERVATION_LIST_REQUEST = "GET_RESERVATION_LIST_REQUEST";
-export const GET_RESERVATION_LIST_SUCCESS = "GET_RESERVATION_LIST_SUCCESS";
-export const GET_RESERVATION_LIST_FAILURE = "GET_RESERVATION_LIST_FAILURE";
+const submitReservationRequest = () => ({
+  type: SUBMIT_RESERVATION_REQUEST,
+});
+const submitReservationSuccess = (data) => ({
+  type: SUBMIT_RESERVATION_SUCCESS,
+  payload: data,
+});
+const submitReservationFailure = (error) => ({
+  type: SUBMIT_RESERVATION_FAILURE,
+  payload: error,
+});
 
 export const getReservationList = () => {
   return async (dispatch) => {

@@ -1,37 +1,38 @@
 const initialState = {
-  doctors: "",
-  doctor: "",
   loading: false,
-  error: "",
+  data: "",
+  errorMessage: "",
 };
 
 const doctorsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_DOCTORS_REQUEST":
+    case "GET_DOCTOR_LIST_REQUEST":
       return {
         ...state,
         loading: true,
-        error: null,
+        data: "",
+        errorMessage: "",
       };
-    case "FETCH_DOCTORS_SUCCESS":
+    case "GET_DOCTOR_LIST_SUCCESS":
       return {
         ...state,
         loading: false,
-        doctorsList: action.payload,
+        data: action.payload,
+        errorMessage: "",
       };
-    case "FETCH_DOCTOR_SUCCESS":
+    case "GET_DOCTOR_DETAIL_REQUEST":
+      return {
+        ...state,
+        loading: true,
+        data: "",
+        errorMessage: "",
+      };
+    case "GET_DOCTOR_DETAIL_SUCCESS":
       return {
         ...state,
         loading: false,
-        doctor: action.payload.doctor,
-      };
-    case "CLEAR_STATE_DOCTOR":
-      return {
-        ...state,
-        doctorsList: [],
-        doctor: "",
-        loading: false,
-        error: null,
+        data: action.payload,
+        errorMessage: "",
       };
     default:
       return state;

@@ -9,9 +9,10 @@ import {
 
 const initialState = {
   loading: false,
+  isAuthenticatedReservation: false,
   reservationId: null,
   reservations: "",
-  error: null,
+  errorMessage: null,
 };
 
 const reservasiReducer = (state = initialState, action) => {
@@ -20,21 +21,29 @@ const reservasiReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        isAuthenticatedReservation: false,
+        reservationId: null,
+        reservations: "",
+        errorMessage: null,
       };
     case SUBMIT_RESERVATION_SUCCESS:
       return {
         ...state,
         loading: false,
-        reservationId: action.payload.reservationId,
-        error: null,
+        isAuthenticatedReservation: true,
+        reservationId: action.payload,
+        reservations: "",
+        errorMessage: null,
       };
 
     case SUBMIT_RESERVATION_FAILURE:
       return {
         ...state,
         loading: false,
+        isAuthenticatedReservation: false,
         reservationId: null,
-        error: action.payload.message,
+        reservations: "",
+        errorMessage: action.payload,
       };
     case GET_RESERVATION_LIST_REQUEST:
       return {
