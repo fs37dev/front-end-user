@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import pilih from "../assets/package.png";
 import BRI from "../assets/BRI.png";
 import mandiri from "../assets/mandiri.png";
