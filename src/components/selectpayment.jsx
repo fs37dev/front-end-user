@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import pilih from "../assets/package.png";
 import BRI from "../assets/BRI.png";
 import mandiri from "../assets/mandiri.png";
@@ -21,7 +21,7 @@ function SelectPayment() {
         setError(null);
       }, 2000);
     } else {
-      navigate(`/review-summary/${params.id}`);
+      navigate(`/reservations/${params.id}/review-summary`);
     }
   };
 
@@ -34,9 +34,7 @@ function SelectPayment() {
           </a>
         </div>
         <div className="flex-1 justify-center">
-          <button className="btn btn-ghost normal-case text-2xl">
-            Payment
-          </button>
+          <button className="btn btn-ghost normal-case text-2xl">Payment</button>
         </div>
       </div>
 
@@ -68,11 +66,7 @@ function SelectPayment() {
 
       <div className="card card-side bg-base-100 shadow-xl my-6 max-w-6xl mx-auto">
         <div className="card-body">
-          <img
-            src={mandiri}
-            alt="mandiri"
-            className="w-29 absolute top-6 left-16"
-          />
+          <img src={mandiri} alt="mandiri" className="w-29 absolute top-6 left-16" />
         </div>
 
         <div className="flex items-center mt-5 mb-10 mr-5">
@@ -109,8 +103,7 @@ function SelectPayment() {
           {error && <p style={{ color: "red" }}>{error}</p>}
           <button
             className="w-full md:w-64 px-6 py-3 mb-4 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white transition duration-300 ease-in-out transform hover:scale-105 text-center shadow-md"
-            onClick={handleNext}
-          >
+            onClick={handleNext}>
             Next
           </button>
         </div>

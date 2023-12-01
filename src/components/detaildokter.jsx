@@ -218,8 +218,8 @@ function DetailDokter() {
                     className="join-item btn"
                     type="radio"
                     name="time"
-                    value="18.00"
-                    aria-label="18.00"
+                    value="18:00"
+                    aria-label="18:00"
                     onChange={(e) => {
                       setSelectedTime(e.target.value);
                     }}

@@ -46,7 +46,7 @@ function Artikel() {
                   <button
                     className="card-title"
                     onClick={() => {
-                      navigate(`/detailartikel/${artikel.id}`)
+                      window.location.href = `/detailartikel/${artikel.id}`;
                     }}>
                     {artikel.title}
                   </button>

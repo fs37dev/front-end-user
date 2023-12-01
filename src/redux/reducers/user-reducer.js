@@ -1,7 +1,7 @@
 const initialState = {
   isAuthenticated: false,
   user: null,
-  username: "",
+  userName: "",
   loading: false,
   error: null,
   errorMessage: "",
@@ -42,6 +42,32 @@ const authReducer = (state = initialState, action) => {
         user: null,
         loading: false,
         error: null,
+      };
+
+    case "GET_USER_DETAIL_REQUEST":
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+
+    case "GET_USER_DETAIL_SUCCESS":
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: action.payload.user,
+        userName: action.payload.user.name,
+        loading: false,
+        error: null,
+      };
+
+    case "GET_USER_DETAIL_REQUEST_FAILURE":
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: null,
+        loading: false,
+        error: action.payload.message,
       };
     default:
       return state;

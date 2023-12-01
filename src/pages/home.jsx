@@ -39,7 +39,11 @@ function Home() {
         </div>
         <ListDokter />
       </div>
+<<<<<<< HEAD
       <HomeAbout/>
+=======
+      <HomeAbout />
+>>>>>>> main
       <Footer/>
     </>
   );

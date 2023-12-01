@@ -13,7 +13,7 @@ function ListDoctor() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate(`/detaildokter/${selectedDoctor.id}`);
+    navigate(`/doctors/${selectedDoctor.id}`);
   };
 
   useEffect(() => {
