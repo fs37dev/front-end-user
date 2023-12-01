@@ -19,7 +19,7 @@ function ReviewSummary() {
   return (
     <>
       <div className="navbar max-w-6xl py-5">
-        <div className="flex-none" onClick={() => navigate("/reviewsummary")}>
+        <div className="flex-none" onClick={() => navigate(`/reservations/${params.id}/select-payment`)}>
           <a className="btn btn-ghost normal-case text-xl shadow-xl">
             <img src={left} alt="" />
           </a>
@@ -86,7 +86,7 @@ function ReviewSummary() {
             <div className="card-body flex items-center justify-center">
               <button
                 className="w-full mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl px-10 sm:px-20 md:px-32 lg:px-80 xl:px-64 py-3 mt-12 rounded-full bg-emerald-500 hover:bg-emerald-700 text-white"
-                onClick={() => navigate(`/inputpin/${params.id}`)}>
+                onClick={() => navigate(`/reservations/${params.id}/inputpin`)}>
                 Payment
               </button>
             </div>

@@ -26,7 +26,7 @@ function ReservationList() {
   };
 
   const handleButtonClick = (reservationId) => {
-    navigate(`/viewappointment/${reservationId}`);
+    navigate(`/reservations/${reservationId}`);
   };
 
   return (

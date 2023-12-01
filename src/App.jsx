@@ -30,15 +30,16 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/doctors" element={<BookDokter />} />
-        <Route path="/detaildokter/:id" element={<DokterDetail />} />
+        <Route path="/doctors/:id" element={<DokterDetail />} />
         <Route path="/detailartikel/:id" element={<DetailArtikelPage />} />
-        <Route path="/selectpayment/:id" element={<PilihPembayaran />} />
-        <Route path="/review-summary/:id" element={<SummaryReview />} />
+        <Route path="/reservations/:id/select-payment" element={<PilihPembayaran />} />
+        <Route path="/reservations/:id/review-summary" element={<SummaryReview />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/myprofile" element={<InputProfileUser />} />
-        <Route path="/inputpin/:id" element={<Pin />} />
+        <Route path="/reservations/:id/inputpin" element={<Pin />} />
         <Route path="/viewappointment/:id" element={<Appointment />} />
         <Route path="/reservations" element={<Reservations />} />
+        <Route path="/reservations/:id" element={<Appointment />} />
       </Routes>
     </>
   );

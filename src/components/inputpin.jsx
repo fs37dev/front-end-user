@@ -52,7 +52,7 @@ function InputPIN() {
           </p>
           <div className="modal-action flex flex-col justify-center item-center">
             <form method="dialog">
-              <a className="btn bg-emerald-500 hover:bg-emerald-700 w-full rounded-full text-white" onClick={() => navigate(`/viewappointment/${params.id}`)}>
+              <a className="btn bg-emerald-500 hover:bg-emerald-700 w-full rounded-full text-white" onClick={() => navigate(`/reservations/${params.id}`)}>
                 View Appointment
               </a>
             </form>
