@@ -6,7 +6,6 @@ import Footer from "../components/footer";
 function ServiceUser() {
   return (
     <>
-      <Navbar />
       <HomeService />
       <Footer />
     </>

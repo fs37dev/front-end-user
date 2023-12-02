@@ -6,9 +6,7 @@ import Footer from "../components/footer";
 function Appointment() {
   return (
     <>
-      <Navbar />
       <ViewAppointment />
-      <Footer />
     </>
   );
 }

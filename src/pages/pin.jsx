@@ -6,7 +6,6 @@ import Footer from "../components/footer";
 function Pin() {
   return (
     <>
-      <Navbar />
       <InputPIN />
       <Footer />
     </>
