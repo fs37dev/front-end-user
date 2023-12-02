@@ -49,7 +49,7 @@ function Navbar() {
                   </NavLink>
                 </li>
                 <li className="btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2xl font-bold">
-                  {token ? <span onClick={() => navigate("/profile")}>{user.name || "User"}</span> : <span onClick={() => navigate("/login")}>Login</span>}
+                  {token ? <span onClick={() => navigate("/profile")}>{user.name}</span> : <span onClick={() => navigate("/login")}>Login</span>}
                 </li>
               </ul>
             </details>
@@ -76,7 +76,7 @@ function Navbar() {
             </NavLink>
           </li>
           <li className="hidden lg:flex btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2x font-bold">
-            {token ? <span onClick={() => navigate("/profile")}>{user.name || "User"}</span> : <span onClick={() => navigate("/login")}>Login</span>}
+            {token ? <span onClick={() => navigate("/profile")}>{user.name}</span> : <span onClick={() => navigate("/login")}>Login</span>}
           </li>
         </ul>
       </nav>
