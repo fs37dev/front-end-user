@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserDetail } from "../redux/actions/user-action";
-import { useEffect } from "react";
 
 function Navbar() {
-  const dispatch = useDispatch();
+  const token = localStorage.getItem("token");
+  const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
-  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUserDetail());
@@ -49,13 +49,7 @@ function Navbar() {
                   </NavLink>
                 </li>
                 <li className="btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2xl font-bold">
-                  {auth.userName ? (
-                    <span onClick={() => navigate("/profile")}>{auth.userName}</span>
-                  ) : (
-                    <NavLink to="/login" className={({ isActive }) => isActive && "active-link"}>
-                      Login
-                    </NavLink>
-                  )}
+                  {token ? <span onClick={() => navigate("/profile")}>{user.name || "User"}</span> : <span onClick={() => navigate("/login")}>Login</span>}
                 </li>
               </ul>
             </details>
@@ -82,13 +76,7 @@ function Navbar() {
             </NavLink>
           </li>
           <li className="hidden lg:flex btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2x font-bold">
-            {auth.userName ? (
-              <span onClick={() => navigate("/profile")}>{auth.userName}</span>
-            ) : (
-              <NavLink to="/login" className={({ isActive }) => isActive && "active-link"}>
-                Login
-              </NavLink>
-            )}
+            {token ? <span onClick={() => navigate("/profile")}>{user.name || "User"}</span> : <span onClick={() => navigate("/login")}>Login</span>}
           </li>
         </ul>
       </nav>

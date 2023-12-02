@@ -38,6 +38,14 @@ const artikelReducer = (state = initialState, action) => {
         artikels: null,
         error: action.payload.message,
       };
+    case "CLEAR_STATE_ARTICLE":
+      return {
+        ...state,
+        listartikel: [],
+        loading: false,
+        error: null,
+        article: null,
+      };
     default:
       return state;
   }

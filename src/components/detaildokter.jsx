@@ -10,44 +10,62 @@ import media from "../assets/package.png";
 import messages from "../assets/pesan.svg";
 import video from "../assets/Video.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { submitReservation } from "../redux/actions/reservasi-action";
-import { fetchDoctorDetail } from "../redux/actions/doctor-action";
+import { clearState, submitReservation } from "../redux/actions/reservasi-action";
+import { getDoctorDetail } from "../redux/actions/doctor-action";
+import Footer from "./footer";
+import { getUserDetail } from "../redux/actions/user-action";
 
 function DetailDokter() {
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedTime, setSelectedTime] = useState("");
+  const [selectedPackage, setSelectedPackage] = useState("");
+  const [error, setError] = useState("");
+  const { data } = useSelector((state) => state.doctors);
+  const { isAuthenticatedReservation } = useSelector((state) => state.reservasi);
+  const { reservationId } = useSelector((state) => state.reservasi);
+  const { errorMessage } = useSelector((state) => state.reservasi);
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const params = useParams();
   const dispatch = useDispatch();
 
-  const { doctor } = useSelector((state) => state.doctors);
-  const errMessage = useSelector((state) => state.reservasi.error);
-  const [selectedPackage, setSelectedPackage] = React.useState(null);
-  const [selectedDate, setSelectedDate] = React.useState(null);
-  const [selectedTime, setSelectedTime] = React.useState(null);
-  const [error, setError] = useState(null);
-
-  const handleButton = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!selectedDate || !selectedTime || !selectedPackage) {
       setError("Please select a date, time, and package first");
-      setTimeout(() => {
-        setError(null);
-      }, 2000);
+    } else if (!token) {
+      navigate("/login");
     } else {
-      dispatch(submitReservation(doctor.id, selectedDate, selectedTime, selectedPackage));
+      dispatch(submitReservation(data.id, selectedDate, selectedTime, selectedPackage, token));
     }
   };
 
+  const hideErrorAfterTimeout = () => {
+    setTimeout(() => {
+      setError("");
+    }, 2000);
+  };
+
   useEffect(() => {
-    dispatch(fetchDoctorDetail(params.id));
+    dispatch(getDoctorDetail(params.id));
+    dispatch(getUserDetail());
   }, []);
 
   useEffect(() => {
-    setError(errMessage);
-  }, [errMessage]);
+    if (errorMessage) setError(errorMessage);
+    dispatch(clearState());
+  }, [errorMessage]);
+
+  useEffect(() => {
+    if (isAuthenticatedReservation) navigate(`/reservations/${reservationId}/select-payment`);
+    dispatch(clearState());
+  }, [isAuthenticatedReservation]);
+
+  if (error) hideErrorAfterTimeout();
 
   return (
     <>
-      {doctor && (
+      {data && data.specialist && (
         <>
           <div className="navbar max-w-6xl lg:px-20 px-15 py-10 flex flex-row">
             <div className="flex-none" onClick={() => navigate("/doctors")}>
@@ -56,19 +74,12 @@ function DetailDokter() {
               </a>
             </div>
             <div className="flex-1 justify-center">
-              <button className="btn btn-ghost normal-case text-2xl">
-                Reservasi
-              </button>
+              <button className="btn btn-ghost normal-case text-2xl">Reservasi</button>
             </div>
           </div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="alert alert-warning fixed top-0 z-[1] hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                clasme="stroke-current shrink-0 h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" clasme="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -83,15 +94,11 @@ function DetailDokter() {
               <div className="md:w-3/5 max-w-2/3 bg-base-100 shadow-md rounded-tl-2xl md:rounded-l-2xl">
                 <div className="card card-side">
                   <div className="w-48">
-                    <img
-                      className="rounded-2xl w-40"
-                      src={doctor.image}
-                      alt=""
-                    />
+                    <img className="rounded-2xl w-40" src={data.image} alt="" />
                   </div>
                   <div className="card-body">
-                    <h2 className="card-title">{doctor.name}</h2>
-                    <p>{doctor.specialist.name}</p>
+                    <h2 className="card-title">{data.name}</h2>
+                    <p>{data.specialist.name}</p>
                     <div className="card-actions justify-start items-center h-12">
                       <div className="rating">
                         {[...Array(5)].map((star, i) => {
@@ -99,10 +106,11 @@ function DetailDokter() {
                           return (
                             <input
                               type="radio"
+                              key={i}
                               name={`rating-${ratingValue}`}
                               className="mask mask-star-2 bg-orange-400"
                               disabled
-                              checked={ratingValue === doctor.rating}
+                              checked={ratingValue === data.rating}
                             />
                           );
                         })}
@@ -114,10 +122,8 @@ function DetailDokter() {
                   <div className="card-body">
                     <h2 className="card-title text-slate-500">Biography</h2>
                     <p className="text-slate-500">
-                      {doctor.name}
-                      is the top most {doctor.specialist.name} specialist in{" "}
-                      {doctor.hospital} at {doctor.city}. She is available for
-                      private consultation.
+                      {data.name}
+                      is the top most {data.specialist.name} specialist in {data.hospital} at {data.city}. She is available for private consultation.
                     </p>
                   </div>
                 </div>
@@ -131,14 +137,10 @@ function DetailDokter() {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <div className="normal-case text-xl py-2.5 px-4 font-medium">
-                      Date
-                    </div>
+                    <div className="normal-case text-xl py-2.5 px-4 font-medium">Date</div>
                   </div>
                   <div className="flex-none">
-                    <span className="badge border-none font-semibold">
-                      October
-                    </span>
+                    <span className="badge border-none font-semibold">October</span>
                   </div>
                 </div>
                 <div className="menu menu-horizontal bg-base-200 w-80 justify-around rounded-2xl">
@@ -178,9 +180,7 @@ function DetailDokter() {
                     <img src={time} alt="" />
                   </div>
                   <div className="flex-1">
-                    <div className="normal-case text-xl py-2.5 px-4 font-medium">
-                      Time
-                    </div>
+                    <div className="normal-case text-xl py-2.5 px-4 font-medium">Time</div>
                   </div>
                 </div>
                 <div className="menu menu-horizontal bg-base-200 w-80 justify-around grid grid-cols-3 rounded-2xl">
@@ -257,17 +257,11 @@ function DetailDokter() {
             </div>
 
             <div className="card card-side bg-base-100 shadow-xl my-8 max-w-6xl mx-auto w-full">
-              <img
-                src={messages}
-                alt="messages"
-                className="w-20 absolute top-6 left-5"
-              />
+              <img src={messages} alt="messages" className="w-20 absolute top-6 left-5" />
 
               <div className="card-body">
                 <h2 className="text-2xl font-bold ml-20">Messaging</h2>
-                <p className="text-sm ml-20 font-semibold">
-                  Chat messages with doctor
-                </p>
+                <p className="text-sm ml-20 font-semibold">Chat messages with doctor</p>
               </div>
 
               <div className="flex items-center mb-5 mr-5">
@@ -285,17 +279,11 @@ function DetailDokter() {
             </div>
 
             <div className="card card-side bg-base-100 shadow-xl my-8 max-w-6xl mx-auto w-full">
-              <img
-                src={video}
-                alt="video-call"
-                className="w-20 absolute top-6 left-5"
-              />
+              <img src={video} alt="video-call" className="w-20 absolute top-6 left-5" />
 
               <div className="card-body">
                 <h2 className="text-2xl font-bold ml-20">Video Call</h2>
-                <p className="text-sm ml-20 font-semibold">
-                  Video call with doctor
-                </p>
+                <p className="text-sm ml-20 font-semibold">Video call with doctor</p>
               </div>
 
               <div className="flex items-center mb-5 mr-5">
@@ -316,14 +304,13 @@ function DetailDokter() {
                 {error && <p style={{ color: "red" }}>{error}</p>}
                 <button
                   type="submit"
-                  className="w-full md:w-64 px-6 py-3 mb-4 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white transition duration-300 ease-in-out transform hover:scale-105 text-center shadow-md"
-                  onClick={handleButton}
-                >
+                  className="w-full md:w-64 px-6 py-3 mb-4 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white transition duration-300 ease-in-out transform hover:scale-105 text-center shadow-md">
                   Book Appointment
                 </button>
               </div>
             </div>
           </form>
+          <Footer />
         </>
       )}
     </>

@@ -6,10 +6,13 @@ import mandiri from "../assets/mandiri.png";
 import dana from "../assets/dana.png";
 import left from "../assets/left.png";
 import { useParams } from "react-router-dom";
+import { getUserDetail } from "../redux/actions/user-action";
+import { useDispatch } from "react-redux";
 
 function SelectPayment() {
   const navigate = useNavigate();
   const params = useParams();
+  const dispatch = useDispatch();
 
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [error, setError] = useState(null);
@@ -17,13 +20,18 @@ function SelectPayment() {
   const handleNext = () => {
     if (!selectedPayment) {
       setError("Please select a payment method");
-      setTimeout(() => {
-        setError(null);
-      }, 2000);
     } else {
       navigate(`/reservations/${params.id}/review-summary`);
     }
   };
+
+  const hideErrorAfterTimeout = () => {
+    setTimeout(() => {
+      setError("");
+    }, 2000);
+  };
+
+  if (error) hideErrorAfterTimeout();
 
   return (
     <>
