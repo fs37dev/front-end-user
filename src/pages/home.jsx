@@ -32,6 +32,7 @@ function Home() {
       </div>
       <HomeAbout />
       <Footer />
+
     </>
   );
 }

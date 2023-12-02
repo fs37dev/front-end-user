@@ -36,10 +36,12 @@ function App() {
         <Route path="/doctors" element={<BookDokter />} />
         <Route path="/doctors/:id" element={<DokterDetail />} />
 
+
         <Route path="/profile" element={<UserProfile />} />
 
         <Route path="/reservations/:id/select-payment" element={<PilihPembayaran />} />
         <Route path="/reservations/:id/review-summary" element={<SummaryReview />} />
+
         <Route path="/reservations/:id/inputpin" element={<Pin />} />
         <Route path="/reservations/:id" element={<Appointment />} />
         <Route path="/reservations" element={<Reservations />} />

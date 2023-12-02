@@ -3,6 +3,7 @@ import DetailArtikel from "../components/detailartikel";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 
+
 function DetailArtikelPage() {
   return (
     <>
