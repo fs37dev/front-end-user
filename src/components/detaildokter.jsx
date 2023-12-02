@@ -10,8 +10,10 @@ import media from "../assets/package.png";
 import messages from "../assets/messages.svg";
 import video from "../assets/Video.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { submitReservation } from "../redux/actions/reservasi-action";
+import { clearState, submitReservation } from "../redux/actions/reservasi-action";
 import { getDoctorDetail } from "../redux/actions/doctor-action";
+import Footer from "./footer";
+import { getUserDetail } from "../redux/actions/user-action";
 
 function DetailDokter() {
   const [selectedDate, setSelectedDate] = useState("");
@@ -19,6 +21,7 @@ function DetailDokter() {
   const [selectedPackage, setSelectedPackage] = useState("");
   const [error, setError] = useState("");
   const { data } = useSelector((state) => state.doctors);
+  const { isAuthenticatedReservation } = useSelector((state) => state.reservasi);
   const { reservationId } = useSelector((state) => state.reservasi);
   const { errorMessage } = useSelector((state) => state.reservasi);
   const token = localStorage.getItem("token");
@@ -30,26 +33,35 @@ function DetailDokter() {
     e.preventDefault();
     if (!selectedDate || !selectedTime || !selectedPackage) {
       setError("Please select a date, time, and package first");
-      setTimeout(() => {
-        setError("");
-      }, 2000);
     } else if (!token) {
       navigate("/login");
     } else {
-      dispatch(submitReservation(data.id, selectedDate, selectedTime, selectedPackage));
+      dispatch(submitReservation(data.id, selectedDate, selectedTime, selectedPackage, token));
     }
+  };
+
+  const hideErrorAfterTimeout = () => {
+    setTimeout(() => {
+      setError("");
+    }, 2000);
   };
 
   useEffect(() => {
     dispatch(getDoctorDetail(params.id));
+    dispatch(getUserDetail());
   }, []);
 
-  // navigate(`/reservations/${reservationId}/select-payment`);
+  useEffect(() => {
+    if (errorMessage) setError(errorMessage);
+    dispatch(clearState());
+  }, [errorMessage]);
 
-  errorMessage &&
-    useEffect(() => {
-      setError(errorMessage);
-    }, []);
+  useEffect(() => {
+    if (isAuthenticatedReservation) navigate(`/reservations/${reservationId}/select-payment`);
+    dispatch(clearState());
+  }, [isAuthenticatedReservation]);
+
+  if (error) hideErrorAfterTimeout();
 
   return (
     <>
@@ -298,6 +310,7 @@ function DetailDokter() {
               </div>
             </div>
           </form>
+          <Footer />
         </>
       )}
     </>

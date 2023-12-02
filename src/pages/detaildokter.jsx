@@ -5,7 +5,6 @@ import Navbar from "../components/navbar";
 function DokterDetail() {
   return (
     <>
-      <Navbar />
       <DetailDokter />
     </>
   );

@@ -2,7 +2,7 @@ const initialState = {
   loading: false,
   isAuthenticatedLogin: false,
   isAuthenticatedRegister: false,
-  data: "",
+  user: "",
   errorMessage: "",
 };
 
@@ -15,7 +15,7 @@ const userReducer = (state = initialState, action) => {
         loading: true,
         isAuthenticatedLogin: false,
         isAuthenticatedRegister: false,
-        data: "",
+        user: "",
         errorMessage: "",
       };
     case "LOGIN_SUCCESS":
@@ -24,7 +24,7 @@ const userReducer = (state = initialState, action) => {
         loading: false,
         isAuthenticatedLogin: true,
         isAuthenticatedRegister: false,
-        data: "",
+        user: "",
         errorMessage: "",
       };
     case "REGISTER_SUCCESS":
@@ -33,7 +33,7 @@ const userReducer = (state = initialState, action) => {
         loading: false,
         isAuthenticatedLogin: false,
         isAuthenticatedRegister: true,
-        data: "",
+        user: "",
         errorMessage: "",
       };
     case "LOGIN_FAILURE":
@@ -43,7 +43,7 @@ const userReducer = (state = initialState, action) => {
         loading: false,
         isAuthenticatedLogin: false,
         isAuthenticatedRegister: false,
-        data: "",
+        user: "",
         errorMessage: action.payload,
       };
 
@@ -53,7 +53,7 @@ const userReducer = (state = initialState, action) => {
         loading: true,
         isAuthenticatedLogin: false,
         isAuthenticatedRegister: false,
-        data: "",
+        user: "",
         errorMessage: "",
       };
 
@@ -63,7 +63,7 @@ const userReducer = (state = initialState, action) => {
         loading: false,
         isAuthenticatedLogin: true,
         isAuthenticatedRegister: false,
-        data: action.payload,
+        user: action.payload,
         errorMessage: "",
       };
 
@@ -74,7 +74,7 @@ const userReducer = (state = initialState, action) => {
         loading: false,
         isAuthenticatedLogin: false,
         isAuthenticatedRegister: false,
-        data: "",
+        user: "",
         errorMessage: "",
       };
     case "CLEAR_STATE":
@@ -83,7 +83,7 @@ const userReducer = (state = initialState, action) => {
         loading: false,
         isAuthenticatedLogin: false,
         isAuthenticatedRegister: false,
-        data: "",
+        user: "",
         errorMessage: "",
       };
     default:

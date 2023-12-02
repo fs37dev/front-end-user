@@ -18,10 +18,8 @@ function InputRegister() {
 
     if (!nama || !email || !password || !konfirmasiPassword) {
       setError("Input data anda!");
-      hideErrorAfterTimeout();
     } else if (password !== konfirmasiPassword) {
       setError("Password dan Konfirmasi Password tidak cocok!");
-      hideErrorAfterTimeout();
     } else {
       dispatch(registerUser(nama, email, password));
     }
@@ -33,13 +31,17 @@ function InputRegister() {
     }, 2000);
   };
 
-  errorMessage &&
-    useEffect(() => {
-      setError(errorMessage);
-      hideErrorAfterTimeout();
-    }, []);
+  useEffect(() => {
+    if (isAuthenticatedRegister) navigate("/login");
+    dispatch(clearState());
+  }, [isAuthenticatedRegister]);
 
-  isAuthenticatedRegister && navigate("/login");
+  useEffect(() => {
+    if (errorMessage) setError(errorMessage);
+    dispatch(clearState());
+  }, [errorMessage]);
+
+  if (error) hideErrorAfterTimeout();
 
   return (
     <div className="relative w-full h-screen">

@@ -6,7 +6,6 @@ import Footer from "../components/footer";
 function DetailArtikelPage() {
   return (
     <>
-      <Navbar />
       <DetailArtikel />;
       <Footer />
     </>

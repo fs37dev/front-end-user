@@ -2,13 +2,14 @@ import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { getReservationDetail } from "../redux/actions/review-summary";
 import moment from "moment";
 import left from "../assets/left.png";
+import { getReservationDetail } from "../redux/actions/reservasi-action";
+import Footer from "./footer";
 
 function ReviewSummary() {
+  const { data } = useSelector((state) => state.reservasi);
   const navigate = useNavigate();
-  const { reservation } = useSelector((state) => state.reservation);
   const dispatch = useDispatch();
   const params = useParams();
 
@@ -28,7 +29,7 @@ function ReviewSummary() {
           <a className="btn btn-ghost normal-case text-2xl">Review Summary</a>
         </div>
       </div>
-      {reservation && (
+      {data && (
         <>
           <div className="card bg-base-100 flex justify-content my-auto items-center">
             <div className="my-auto flex items-center gap-7 max-[832px]:flex-col">
@@ -36,12 +37,12 @@ function ReviewSummary() {
                 <div className="card bg-base-100 flex justify-content my-auto items-center">
                   <div className="card-body shadow-xl rounded-xl w-100 max-[832px]:w-screen max-[832px]:flex max-[832px]:flex-row max-[832px]:items-center">
                     <figure className="px-5 pt-5 max-[832px]:p-0">
-                      <img src={reservation.doctor.image} alt="" className="rounded-xl" width="200" />
+                      <img src={data.doctor.image} alt="" className="rounded-xl" width="200" />
                     </figure>
                     <div className="flex flex-col items-center max-[832px]:items-start max-[832px]:h-36">
-                      <h2 className="card-title">{reservation.doctor.name}</h2>
-                      <p>{reservation.doctor.specialist.name}</p>
-                      <p>{reservation.doctor.hospital}</p>
+                      <h2 className="card-title">{data.doctor.name}</h2>
+                      <p>{data.doctor.specialist.name}</p>
+                      <p>{data.doctor.hospital}</p>
                     </div>
                   </div>
                 </div>
@@ -52,33 +53,33 @@ function ReviewSummary() {
                     <p>Date & Hour.</p>
                     <h5 className="card-title">
                       {" "}
-                      {moment(reservation.date).format("LL")} | {reservation.time}
+                      {moment(data.date).format("LL")} | {data.time}
                     </h5>
                   </div>
                   <div className="my-auto flex items-center gap-20">
                     <p>Package</p>
-                    <h5 className="card-title">{reservation.package.name}</h5>
+                    <h5 className="card-title">{data.package.name}</h5>
                   </div>
                   <div className="my-auto flex items-center gap-20">
                     <p>Duration</p>
-                    <h5 className="card-title">{reservation.package.duration}</h5>
+                    <h5 className="card-title">{data.package.duration}</h5>
                   </div>
                 </div>
                 <br />
                 <div className="card-body shadow-xl rounded-xl w-100 max-[832px]:w-screen">
                   <div className="my-auto flex items-center gap-60">
                     <p>Amount</p>
-                    <h5 className="card-title">$ {reservation.package.price}</h5>
+                    <h5 className="card-title">$ {data.package.price}</h5>
                   </div>
                   <div className="my-auto flex items-center gap-60 max-[832px]:justify-between">
                     <p>Duration (30 mins)</p>
-                    <h5 className="card-title">1 x $ {reservation.package.price}</h5>
+                    <h5 className="card-title">1 x $ {data.package.price}</h5>
                   </div>
                   <br />
                   <hr />
                   <div className="my-auto flex items-center gap-60">
                     <p>Total</p>
-                    <h5 className="card-title">$ {reservation.package.price * 1}</h5>
+                    <h5 className="card-title">$ {data.package.price * 1}</h5>
                   </div>
                 </div>
               </div>
@@ -92,6 +93,7 @@ function ReviewSummary() {
             </div>
           </div>
           <br />
+          <Footer />
         </>
       )}
     </>

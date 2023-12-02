@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../redux/actions/user-action";
+import { clearState, loginUser } from "../redux/actions/user-action";
 
 function InputLogin() {
   const { errorMessage, isAuthenticatedLogin } = useSelector((state) => state.user);
@@ -16,7 +16,6 @@ function InputLogin() {
 
     if (!email || !password) {
       setError("Email dan password harus diisi!");
-      hideErrorAfterTimeout();
     } else {
       dispatch(loginUser(email, password));
     }
@@ -28,13 +27,17 @@ function InputLogin() {
     }, 2000);
   };
 
-  errorMessage &&
-    useEffect(() => {
-      setError(errorMessage);
-      hideErrorAfterTimeout();
-    }, []);
+  useEffect(() => {
+    if (isAuthenticatedLogin) navigate("/");
+    dispatch(clearState());
+  }, [isAuthenticatedLogin]);
 
-  isAuthenticatedLogin && navigate("/");
+  useEffect(() => {
+    if (errorMessage) setError(errorMessage);
+    dispatch(clearState());
+  }, [errorMessage]);
+
+  if (error) hideErrorAfterTimeout();
 
   return (
     <div className="relative w-full h-screen">

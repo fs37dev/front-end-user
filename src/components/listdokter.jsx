@@ -22,7 +22,7 @@ function ListDokter() {
       <div className="flex flex-row gap-6 py-8 overflow-y-auto">
         {Array.isArray(data) &&
           data.map((doctor, index) => (
-            <div className="card card-compact bg-base-100 shadow-xl" key={doctor.id}>
+            <div className="card card-compact bg-base-100 shadow-xl" key={index}>
               <figure className="w-60">
                 <img src={doctor.image} alt={doctor.image} className="w-40" />
               </figure>
@@ -44,7 +44,6 @@ function ListDokter() {
                       );
                     })}
                   </div>
-                  <input type="hidden" name={`id_${index}`} value={doctor.id} />
                   <button type="submit" className="btn bg-blue-500 text-white" onClick={() => handleButtonClick(doctor.id)}>
                     Reservasi
                   </button>

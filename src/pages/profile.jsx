@@ -6,7 +6,6 @@ import Footer from "../components/footer";
 function UserProfile() {
   return (
     <>
-      <Navbar />
       <Profile />
     </>
   );

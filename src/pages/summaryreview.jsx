@@ -6,9 +6,7 @@ import Footer from "../components/footer";
 function SummaryReview() {
   return (
     <>
-      <Navbar />
       <ReviewSummary />
-      <Footer />
     </>
   );
 }
