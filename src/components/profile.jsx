@@ -61,7 +61,7 @@ function Profile() {
               </div>
             </div>
           </div>
-          <div className="relative" onClick={handleLogoutButton}>
+          <div className="relative">
             <div className="card card-side bg-white shadow-xl flex flex-row items-center rounded-xl transition-transform transform hover:scale-105">
               <div className="card-body">
                 <a href="#my_modal_8" className="text-md font-bold">
@@ -86,6 +86,7 @@ function Profile() {
           <p className="py-2 flex justify-center">Apakah Anda yakin ingin keluar?</p>
           <div className="modal-action flex flex-col items-center justify-center">
             <a
+              onClick={handleLogoutButton}
               href="#"
               className="w-full md:w-64 px-6 py-3 mb-4 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white transition duration-300 ease-in-out transform hover:scale-105 text-center shadow-md">
               Logout
