@@ -11,7 +11,6 @@ function DetailArtikel() {
   const params = useParams();
 
   useEffect(() => {
-    dispatch(clearStateArticle());
     dispatch(fetchArtikelDetail(params.id));
   }, []);
 
@@ -24,9 +23,7 @@ function DetailArtikel() {
           </a>
         </div>
         <div className="flex-1 justify-center">
-          <button className="btn btn-ghost normal-case text-2xl">
-            Artikel
-          </button>
+          <button className="btn btn-ghost normal-case text-2xl">Artikel</button>
         </div>
       </div>
       {article && (
@@ -34,11 +31,7 @@ function DetailArtikel() {
           <div className="lg:px-20 px-15 py-10">
             <div className="card w-ful bg-base-100 shadow-xl">
               <figure className="">
-                <img
-                  src={article.image}
-                  alt="gambar artikel"
-                  className="w-80"
-                />
+                <img src={article.image} alt="gambar artikel" className="w-80" />
               </figure>
               <div className="card-body">
                 <p className="font-bold">{article.title}</p>

@@ -10,8 +10,12 @@ function Artikel() {
   const dispatch = useDispatch();
   const [numArtikelsToShow, setNumArtikelsToShow] = useState(3);
 
+  const handleArticleSelected = (artikelId) => {
+    dispatch(fetchArtikelDetail(artikelId));
+    navigate(`/detailartikel/${artikelId}`);
+  };
+
   useEffect(() => {
-    dispatch(fetchArtikelDetail());
     dispatch(fetchArtikels());
   }, []);
 
@@ -44,11 +48,7 @@ function Artikel() {
                 </figure>
                 <div className="card-body">
                   <p className="text-sm">{artikel.category}</p>
-                  <button
-                    className="card-title"
-                    onClick={() => {
-                      navigate(`/detailartikel/${artikel.id}`);
-                    }}>
+                  <button className="card-title" onClick={() => handleArticleSelected(artikel.id)}>
                     {artikel.title}
                   </button>
                 </div>
