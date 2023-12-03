@@ -7,6 +7,7 @@ import dana from "../assets/dana.png";
 import left from "../assets/left.png";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { getReservationDetail } from "../redux/actions/reservasi-action";
 
 function SelectPayment() {
   const navigate = useNavigate();
