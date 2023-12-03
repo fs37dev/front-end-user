@@ -12,7 +12,6 @@ import { getReservationDetail } from "../redux/actions/reservasi-action";
 function SelectPayment() {
   const navigate = useNavigate();
   const params = useParams();
-  const dispatch = useDispatch();
 
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [error, setError] = useState(null);
@@ -21,7 +20,6 @@ function SelectPayment() {
     if (!selectedPayment) {
       setError("Please select a payment method");
     } else {
-      dispatch(getReservationDetail(params.id));
       navigate(`/reservations/${params.id}/review-summary`);
     }
   };
