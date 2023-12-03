@@ -3,7 +3,7 @@ import dokter from "../assets/dokter.svg";
 import artikel2 from "../assets/artikel2.svg";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchArtikels } from "../redux/actions/artikel-action";
+import { fetchArtikelDetail, fetchArtikels } from "../redux/actions/artikel-action";
 
 function Artikel() {
   const navigate = useNavigate();
@@ -11,6 +11,7 @@ function Artikel() {
   const [numArtikelsToShow, setNumArtikelsToShow] = useState(3);
 
   useEffect(() => {
+    dispatch(fetchArtikelDetail());
     dispatch(fetchArtikels());
   }, []);
 
