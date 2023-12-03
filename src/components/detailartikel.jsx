@@ -11,6 +11,7 @@ function DetailArtikel() {
   const params = useParams();
 
   useEffect(() => {
+    dispatch(clearStateArticle());
     dispatch(fetchArtikelDetail(params.id));
   }, []);
 
