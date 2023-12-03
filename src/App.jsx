@@ -36,7 +36,6 @@ function App() {
         <Route path="/doctors" element={<BookDokter />} />
         <Route path="/doctors/:id" element={<DokterDetail />} />
 
-
         <Route path="/profile" element={<UserProfile />} />
 
         <Route path="/reservations/:id/select-payment" element={<PilihPembayaran />} />

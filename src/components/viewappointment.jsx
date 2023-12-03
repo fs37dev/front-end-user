@@ -17,7 +17,6 @@ function ViewAppointment() {
 
   useEffect(() => {
     dispatch(getReservationDetail(params.id));
-    dispatch(getUserDetail());
   }, []);
 
   return (

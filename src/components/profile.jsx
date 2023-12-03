@@ -5,7 +5,7 @@ import person from "../assets/person.png";
 import right from "../assets/right.svg";
 import left from "../assets/left.png";
 import { useDispatch, useSelector } from "react-redux";
-import { clearState, getUserDetail, logoutUser } from "../redux/actions/user-action";
+import { clearState, logoutUser } from "../redux/actions/user-action";
 import Footer from "./footer";
 
 function Profile() {
@@ -14,7 +14,6 @@ function Profile() {
   const navigate = useNavigate();
 
   const handleReservationButton = () => {
-    dispatch(getUserDetail());
     navigate("/reservations");
   };
 
@@ -23,10 +22,6 @@ function Profile() {
     dispatch(clearState());
     navigate("/");
   };
-
-  useEffect(() => {
-    dispatch(getUserDetail());
-  }, []);
 
   return (
     <>
