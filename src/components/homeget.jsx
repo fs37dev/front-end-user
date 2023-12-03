@@ -3,7 +3,7 @@ import gambarhome from "../assets/home.svg";
 import { useNavigate } from "react-router-dom";
 
 function HomeGet() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <section>
       <div
@@ -22,13 +22,16 @@ function HomeGet() {
             membantu Anda konsultasi kesehatan.
           </h2>
           <div className="py-4">
-            <button className="btn btn-wide rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2xl" onClick={() => navigate('/doctors')}>
+            <button
+              className="btn btn-wide rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2xl"
+              onClick={() => navigate("/doctors")}
+            >
               Get started
             </button>
           </div>
         </div>
         <div>
-          <img src={gambarhome} alt="gambarhome" className="hidden lg:flex"/>
+          <img src={gambarhome} alt="gambarhome" className="hidden lg:flex" />
         </div>
       </div>
     </section>

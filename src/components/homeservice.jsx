@@ -1,5 +1,5 @@
 import React from "react";
-import reservasi from '../assets/reservasi.svg'
+import reservasi from "../assets/reservasi.svg";
 import review from "../assets/review.svg";
 import faq from "../assets/faq.svg";
 import faqdoc from "../assets/faq1.svg";

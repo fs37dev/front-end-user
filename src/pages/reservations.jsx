@@ -1,15 +1,14 @@
 import React from "react";
-import InputPIN from "../components/inputpin";
+import ReservationList from "../components/reservationlist";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 
-function Pin() {
+function Reservations() {
   return (
     <>
-      <InputPIN />
-      <Footer />
+      <ReservationList />
     </>
   );
 }
 
-export default Pin;
+export default Reservations;

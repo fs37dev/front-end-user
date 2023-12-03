@@ -4,9 +4,7 @@ export const fetchArtikels = () => {
   return async function (dispatch) {
     dispatch(fetchArtikelsRequest());
 
-    const response = await axios.get(
-      "https://back-end-production-a31e.up.railway.app/api/articles"
-    );
+    const response = await axios.get("https://back-end-production-a31e.up.railway.app/api/articles");
     const artikels = response.data;
     dispatch(fetchArtikelsSuccess(artikels));
   };
@@ -28,26 +26,37 @@ export const fetchArtikelsSuccess = (artikels) => {
 export const fetchArtikelDetail = (id) => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(
-        `https://back-end-production-a31e.up.railway.app/api/articles/${id}`
-      );
-      dispatch(fetchArtikelDetailSuccess(response.data));
+      dispatch(fetchArtikelDetailRequest());
+
+      const response = await axios.get(`https://back-end-production-a31e.up.railway.app/api/articles/${id}`);
+      dispatch({
+        type: "FETCH_ARTIKEL_DETAIL_SUCCESS",
+        payload: response.data,
+      });
     } catch (error) {
-      dispatch(fetchArtikelDetailFailure(error.message));
+      dispatch({
+        type: "GET_RESERVATION_DETAIL_FAIL",
+        payload: error.response.data,
+      });
     }
   };
 };
 
-export const fetchArtikelDetailSuccess = (artikelDetail) => {
+export const fetchArtikelDetailSuccess = (artikels) => {
   return {
     type: "FETCH_ARTIKEL_DETAIL_SUCCESS",
-    payload: artikelDetail,
+    payload: artikels,
   };
 };
 
-export const fetchArtikelDetailFailure = (error) => {
+export const fetchArtikelDetailRequest = () => {
   return {
-    type: "FETCH_ARTIKEL_DETAIL_FAILURE",
-    payload: error,
+    type: "FETCH_ARTIKEL_DETAIL_REQUEST",
+  };
+};
+
+export const clearStateArticle = () => {
+  return {
+    type: "CLEAR_STATE_ARTICLE",
   };
 };

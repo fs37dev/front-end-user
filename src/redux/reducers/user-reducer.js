@@ -1,51 +1,94 @@
 const initialState = {
-  isAuthenticated: false,
-  user: null,
-  username: "",
   loading: false,
-  error: null,
+  isAuthenticatedLogin: false,
+  isAuthenticatedRegister: false,
+  user: "",
   errorMessage: "",
 };
 
-const authReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case "LOGIN_REQUEST":
     case "REGISTER_REQUEST":
       return {
         ...state,
         loading: true,
-        error: null,
+        isAuthenticatedLogin: false,
+        isAuthenticatedRegister: false,
+        user: "",
+        errorMessage: "",
       };
     case "LOGIN_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        isAuthenticatedLogin: true,
+        isAuthenticatedRegister: false,
+        user: "",
+        errorMessage: "",
+      };
     case "REGISTER_SUCCESS":
       return {
         ...state,
-        isAuthenticated: true,
-        user: action.payload,
-        username: action.payload.name,
         loading: false,
-        error: null,
+        isAuthenticatedLogin: false,
+        isAuthenticatedRegister: true,
+        user: "",
+        errorMessage: "",
       };
     case "LOGIN_FAILURE":
     case "REGISTER_FAILURE":
       return {
         ...state,
-        isAuthenticated: false,
-        user: null,
         loading: false,
-        error: action.payload.message,
+        isAuthenticatedLogin: false,
+        isAuthenticatedRegister: false,
+        user: "",
+        errorMessage: action.payload,
       };
-    case "LOGOUT":
+
+    case "GET_USER_DETAIL_REQUEST":
       return {
         ...state,
-        isAuthenticated: false,
-        user: null,
+        loading: true,
+        isAuthenticatedLogin: false,
+        isAuthenticatedRegister: false,
+        user: "",
+        errorMessage: "",
+      };
+
+    case "GET_USER_DETAIL_SUCCESS":
+      return {
+        ...state,
         loading: false,
-        error: null,
+        isAuthenticatedLogin: true,
+        isAuthenticatedRegister: false,
+        user: action.payload,
+        errorMessage: "",
+      };
+
+    case "GET_USER_DETAIL_REQUEST_FAILURE":
+      console.info(action.payload);
+      return {
+        ...state,
+        loading: false,
+        isAuthenticatedLogin: false,
+        isAuthenticatedRegister: false,
+        user: "",
+        errorMessage: "",
+      };
+    case "CLEAR_STATE":
+      return {
+        ...state,
+        loading: false,
+        isAuthenticatedLogin: false,
+        isAuthenticatedRegister: false,
+        user: "",
+        errorMessage: "",
       };
     default:
       return state;
   }
 };
 
-export default authReducer;
+export default userReducer;
