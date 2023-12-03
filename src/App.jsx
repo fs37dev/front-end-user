@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import axios from "axios";
 import Home from "./pages/home";
 import AboutUs from "./pages/about";
@@ -24,30 +24,28 @@ function App() {
   axios.defaults.headers.common["Authorization"] = `Bearer ${TOKEN}`;
   return (
     <>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/service" element={<ServiceUser />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/detailartikel/:id" element={<DetailArtikelPage />} />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/service" element={<ServiceUser />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/detailartikel/:id" element={<DetailArtikelPage />} />
 
-          <Route path="/doctors" element={<BookDokter />} />
-          <Route path="/doctors/:id" element={<DokterDetail />} />
+        <Route path="/doctors" element={<BookDokter />} />
+        <Route path="/doctors/:id" element={<DokterDetail />} />
 
-          <Route path="/profile" element={<UserProfile />} />
+        <Route path="/profile" element={<UserProfile />} />
 
-          <Route path="/reservations/:id/select-payment" element={<PilihPembayaran />} />
-          <Route path="/reservations/:id/review-summary" element={<SummaryReview />} />
+        <Route path="/reservations/:id/select-payment" element={<PilihPembayaran />} />
+        <Route path="/reservations/:id/review-summary" element={<SummaryReview />} />
 
-          <Route path="/reservations/:id/inputpin" element={<Pin />} />
-          <Route path="/reservations/:id" element={<Appointment />} />
-          <Route path="/reservations" element={<Reservations />} />
-          {/* <Route path="/myprofile" element={<InputProfileUser />} /> */}
-        </Routes>
-      </Router>
+        <Route path="/reservations/:id/inputpin" element={<Pin />} />
+        <Route path="/reservations/:id" element={<Appointment />} />
+        <Route path="/reservations" element={<Reservations />} />
+        {/* <Route path="/myprofile" element={<InputProfileUser />} /> */}
+      </Routes>
     </>
   );
 }
