@@ -5,7 +5,7 @@ import person from "../assets/person.png";
 import right from "../assets/right.svg";
 import left from "../assets/left.png";
 import { useDispatch, useSelector } from "react-redux";
-import { clearState, logoutUser } from "../redux/actions/user-action";
+import { clearState, getUserDetail, logoutUser } from "../redux/actions/user-action";
 import Footer from "./footer";
 
 function Profile() {
@@ -22,6 +22,12 @@ function Profile() {
     dispatch(clearState());
     navigate("/");
   };
+
+  useEffect(() => {
+    dispatch(getUserDetail());
+  }, []);
+
+  console.info(user);
 
   return (
     <>
