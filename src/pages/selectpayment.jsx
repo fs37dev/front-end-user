@@ -6,7 +6,6 @@ import Footer from "../components/footer";
 function PilihPembayaran() {
   return (
     <>
-      <Navbar />
       <SelectPayment />
       <Footer />
     </>
