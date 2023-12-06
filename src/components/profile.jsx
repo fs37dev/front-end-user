@@ -27,8 +27,6 @@ function Profile() {
     dispatch(getUserDetail());
   }, []);
 
-  console.info(user);
-
   return (
     <>
       <div className="navbar max-w-6xl py-5">
