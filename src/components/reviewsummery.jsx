@@ -15,7 +15,7 @@ function ReviewSummary() {
 
   useEffect(() => {
     dispatch(getReservationDetail(params.id));
-  }, []);
+  }, [params]);
 
   return (
     <>

@@ -68,7 +68,6 @@ const userReducer = (state = initialState, action) => {
       };
 
     case "GET_USER_DETAIL_REQUEST_FAILURE":
-      console.info(action.payload);
       return {
         ...state,
         loading: false,

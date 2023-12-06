@@ -82,7 +82,10 @@ export const getUserDetail = () => {
         },
       });
 
-      dispatch(getUserDetailSuccess(response.data.user));
+      const data = response.data.user;
+      localStorage.setItem("name", data.name);
+
+      dispatch(getUserDetailSuccess(data));
     } catch (error) {
       dispatch(getUserDetailFailure());
     }
@@ -110,6 +113,7 @@ export const clearState = () => ({
 export const logoutUser = () => {
   return async (dispatch) => {
     localStorage.removeItem("token");
+    localStorage.removeItem("name");
     dispatch(clearState());
   };
 };
