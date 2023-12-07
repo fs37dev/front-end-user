@@ -1,8 +1,7 @@
 import React from "react";
-import reservasi from "../assets/reservasi.svg";
-import review from "../assets/review.svg";
-import faq from "../assets/faq.svg";
-import faqdoc from "../assets/faq1.svg";
+import reservasi from "../assets/reservasi-doc.svg";
+import review from "../assets/review-doc.svg";
+import faq from "../assets/faqs-doc.svg";
 
 function HomeService() {
   return (
@@ -14,35 +13,43 @@ function HomeService() {
           </h1>
           <h1 className="text-3xl font-bold text-center">Kami</h1>
         </div>
-        <div className="lg:flex lg:flex-row lg:gap-6 lg:py-6 grid grid-cols-1 gap-6 place-items-center">
+        <div className="lg:flex lg:flex-row lg:gap-6 lg:py-6 grid grid-cols-1 gap-6 place-items-center justify-center">
           <div
             className="card w-96 bg-base-100 shadow-xl my-6"
             style={{ backgroundColor: "#f4feff", color: "#000" }}
           >
-            <figure>
-              <img src={reservasi} alt="Service" />
-            </figure>
+            <div className="flex items-center justify-center">
+              <figure className="w-32 h-40 mt-5">
+                <img src={reservasi} alt="Service" />
+              </figure>
+            </div>
             <div className="card-body">
               <h2 className="card-title">Reservasi Dokter</h2>
               <p>
                 Anda dapat melakukan reservasi dokter secara langsung, cepat,
-                dan mudah, serta kualitas konsultasi dan pengobatan yang
-                ditawarkan tidak perlu diragukan lagi.
+                dan mudah, serta kualitas konsultasi dan pengobatan yang tidak
+                perlu diragukan lagi.
               </p>
             </div>
           </div>
           <div
             className="card w-96 bg-base-100 shadow-xl my-6"
-            style={{ backgroundColor: "#f4feff", color: "#000" }}
+            style={{
+              background: `linear-gradient(to bottom, #009E75, #177EA1)`,
+              color: "#000",
+            }}
           >
-            <figure>
-              <img src={review} alt="Service" />
-            </figure>
+            <div className="flex items-center justify-center">
+              <figure className="w-32 h-40 mt-5">
+                <img src={review} alt="Service" />
+              </figure>
+            </div>
             <div className="card-body">
-              <h2 className="card-title">Review Dokter</h2>
-              <p>
+              <h2 className="card-title text-white">Review Dokter</h2>
+              <p className="text-white">
                 Diskusikan permasalahan kesehatan yang sedang Anda hadapi, dan
-                jangan ragu untuk menanyakan pengobatan yang tepat.
+                jangan ragu untuk menanyakan pengobatan yang tepat Kami siap
+                membantu.
               </p>
             </div>
           </div>
@@ -50,16 +57,22 @@ function HomeService() {
             className="card w-96 bg-base-100 shadow-xl"
             style={{ backgroundColor: "#f4feff", color: "#000" }}
           >
-            <figure>
-              <img src={faqdoc} alt="service" />
-              <img src={faq} alt="Service" />
-            </figure>
+            <div className="flex items-center justify-center">
+              <figure className="w-32 h-40 mt-5">
+                <img
+                  src={faq}
+                  alt="Service"
+                  className="w-full h-full object-cover object-center"
+                />
+              </figure>
+            </div>
+
             <div className="card-body">
               <h2 className="card-title">FAQ</h2>
               <p>
                 Temukan jawaban atas pertanyaan umum Anda tentang layanan dan
-                prosedur kami di sini. Jika pertanyaan Anda masih belum
-                terjawab, jangan ragu untuk menghubungi kami.
+                prosedur kami di sini. Jika masih ada pertanyaan, hubungi kami
+                tanpa ragu.
               </p>
             </div>
           </div>

@@ -91,8 +91,8 @@ function DetailDokter() {
             <div className="max-w-6xl mx-auto md:flex">
               <div className="md:w-3/5 max-w-2/3 bg-base-100 shadow-md rounded-tl-2xl md:rounded-l-2xl">
                 <div className="card card-side">
-                  <div className="w-48">
-                    <img className="rounded-2xl w-40" src={data.image} alt="" />
+                  <div className="flex items-center justify-center w-48">
+                    <img className="rounded-2xl w-40 h-30" src={data.image} alt="dokterimg" />
                   </div>
                   <div className="card-body">
                     <h2 className="card-title">{data.name}</h2>
@@ -117,7 +117,7 @@ function DetailDokter() {
                   </div>
                 </div>
                 <div className="card">
-                  <div className="card-body">
+                  <div className="card-body mb-2">
                     <h2 className="card-title text-slate-500">Biography</h2>
                     <p className="text-slate-500">
                       {data.name}
