@@ -7,7 +7,7 @@ function HomeGet() {
   return (
     <section className="flex h-screen">
       <div
-        className="lg:flex lg:flex-row lg:px-20 px-10 py-20 gap-10 lg:py-5 text-center lg:text-left"
+        className="lg:flex lg:flex-row lg:items-center lg:px-20 px-10 py-20 gap-10 lg:py-5 text-center lg:text-left"
         style={{ backgroundColor: "#f4feff", color: "#000" }}
       >
         <div className="">
