@@ -13,7 +13,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearState, submitReservation } from "../redux/actions/reservasi-action";
 import { getDoctorDetail } from "../redux/actions/doctor-action";
 import Footer from "./footer";
-import { getUserDetail } from "../redux/actions/user-action";
 
 function DetailDokter() {
   const [selectedDate, setSelectedDate] = useState("");
@@ -48,7 +47,6 @@ function DetailDokter() {
 
   useEffect(() => {
     dispatch(getDoctorDetail(params.id));
-    dispatch(getUserDetail());
   }, []);
 
   useEffect(() => {
