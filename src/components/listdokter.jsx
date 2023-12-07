@@ -22,13 +22,22 @@ function ListDokter() {
       <div className="flex flex-row gap-6 py-8 overflow-y-auto">
         {Array.isArray(data) &&
           data.map((doctor, index) => (
-            <div className="card card-compact bg-base-100 shadow-xl" key={index}>
-              <figure className="w-60">
-                <img src={doctor.image} alt={doctor.image} className="w-40" />
+            <div
+              className="card card-compact bg-base-100 shadow-xl"
+              key={index}
+            >
+              <figure className="w-60 h-36 overflow-hidden relative">
+                <img
+                  src={doctor.image}
+                  alt={doctor.image}
+                  className="w-full object-contain"
+                />
               </figure>
               <div className="card-body" key={index}>
                 <h2 className="card-title">{doctor.name}</h2>
-                <p>{doctor.specialist ? doctor.specialist.name : "No specialist"}</p>
+                <p>
+                  {doctor.specialist ? doctor.specialist.name : "No specialist"}
+                </p>
                 <div className="card-actions justify-between items-center">
                   <div className="rating">
                     {[...Array(5)].map((star, i) => {
@@ -44,7 +53,11 @@ function ListDokter() {
                       );
                     })}
                   </div>
-                  <button type="submit" className="btn bg-blue-500 text-white" onClick={() => handleButtonClick(doctor.id)}>
+                  <button
+                    type="submit"
+                    className="btn bg-blue-500 text-white"
+                    onClick={() => handleButtonClick(doctor.id)}
+                  >
                     Reservasi
                   </button>
                 </div>

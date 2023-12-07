@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
-import { useDispatch, useSelector } from "react-redux";
-import { getUserDetail } from "../redux/actions/user-action";
 
 function Navbar() {
-  const token = localStorage.getItem("token");
-  const { user } = useSelector((state) => state.user);
+  const userName = localStorage.getItem("name");
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getUserDetail());
-  }, []);
 
   return (
     <header className="flex flex-row justify-between items-center lg:px-20 px-10 py-5 bg-black" style={{ backgroundColor: "#f4feff", color: "#000" }}>
@@ -49,7 +41,7 @@ function Navbar() {
                   </NavLink>
                 </li>
                 <li className="btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2xl font-bold">
-                  {token ? <span onClick={() => navigate("/profile")}>{user.name || "User"}</span> : <span onClick={() => navigate("/login")}>Login</span>}
+                  {userName ? <span onClick={() => navigate("/profile")}>{userName}</span> : <span onClick={() => navigate("/login")}>Login</span>}
                 </li>
               </ul>
             </details>
@@ -76,7 +68,7 @@ function Navbar() {
             </NavLink>
           </li>
           <li className="hidden lg:flex btn rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white shadow-2x font-bold">
-            {token ? <span onClick={() => navigate("/profile")}>{user.name || "User"}</span> : <span onClick={() => navigate("/login")}>Login</span>}
+            {userName ? <span onClick={() => navigate("/profile")}>{userName}</span> : <span onClick={() => navigate("/login")}>Login</span>}
           </li>
         </ul>
       </nav>

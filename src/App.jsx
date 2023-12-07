@@ -19,6 +19,7 @@ import DetailArtikelPage from "./pages/detailartikel";
 import DokterDetail from "./pages/detaildokter";
 import Navbar from "./components/navbar";
 
+
 function App() {
   const TOKEN = localStorage.getItem("token");
   axios.defaults.headers.common["Authorization"] = `Bearer ${TOKEN}`;
@@ -36,7 +37,6 @@ function App() {
         <Route path="/doctors" element={<BookDokter />} />
         <Route path="/doctors/:id" element={<DokterDetail />} />
 
-
         <Route path="/profile" element={<UserProfile />} />
 
         <Route path="/reservations/:id/select-payment" element={<PilihPembayaran />} />
@@ -45,6 +45,7 @@ function App() {
         <Route path="/reservations/:id/inputpin" element={<Pin />} />
         <Route path="/reservations/:id" element={<Appointment />} />
         <Route path="/reservations" element={<Reservations />} />
+        
         {/* <Route path="/myprofile" element={<InputProfileUser />} /> */}
       </Routes>
     </>

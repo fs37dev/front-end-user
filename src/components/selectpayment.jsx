@@ -6,13 +6,12 @@ import mandiri from "../assets/mandiri.png";
 import dana from "../assets/dana.png";
 import left from "../assets/left.png";
 import { useParams } from "react-router-dom";
-import { getUserDetail } from "../redux/actions/user-action";
 import { useDispatch } from "react-redux";
+import { getReservationDetail } from "../redux/actions/reservasi-action";
 
 function SelectPayment() {
   const navigate = useNavigate();
   const params = useParams();
-  const dispatch = useDispatch();
 
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [error, setError] = useState(null);

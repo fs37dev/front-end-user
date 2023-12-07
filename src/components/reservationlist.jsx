@@ -5,7 +5,6 @@ import right from "../assets/right.svg";
 import left from "../assets/left.png";
 import { clearState, getReservationList } from "../redux/actions/reservasi-action";
 import moment from "moment";
-import { getUserDetail } from "../redux/actions/user-action";
 import Footer from "./footer";
 
 function ReservationList() {
@@ -28,7 +27,6 @@ function ReservationList() {
 
   useEffect(() => {
     dispatch(getReservationList());
-    dispatch(getUserDetail());
   }, []);
 
   return (

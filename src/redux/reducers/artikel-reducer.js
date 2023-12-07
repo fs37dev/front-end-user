@@ -10,39 +10,48 @@ const artikelReducer = (state = initialState, action) => {
     case "FETCH_ARTIKELS_REQUEST":
       return {
         ...state,
+        listartikel: [],
         loading: true,
         error: null,
+        article: null,
       };
     case "FETCH_ARTIKELS_SUCCESS":
       return {
         ...state,
-        loading: false,
         listartikel: action.payload,
+        loading: false,
+        error: null,
+        article: null,
       };
     case "FETCH_ARTIKEL_DETAIL_SUCCESS":
       return {
         ...state,
-        article: action.payload.article,
+        listartikel: [],
+        loading: false,
         error: null,
+        article: action.payload.article,
       };
     case "FETCH_ARTIKEL_DETAIL_REQUEST":
       return {
         ...state,
+        listartikel: [],
         loading: true,
         error: null,
+        article: null,
       };
     case "FETCH_ARTIKEL_DETAIL_FAIL":
       return {
         ...state,
+        listartikel: [],
         loading: false,
-        artikels: null,
         error: action.payload.message,
+        article: null,
       };
     case "CLEAR_STATE_ARTICLE":
       return {
         ...state,
         listartikel: [],
-        loading: false,
+        loading: true,
         error: null,
         article: null,
       };
