@@ -38,9 +38,14 @@ function ViewAppointment() {
             <div className="my-auto flex items-center gap-7 max-[832px]:flex-col">
               <div>
                 <div className="card bg-base-100 flex justify-content my-auto items-center">
-                  <div className="card-body shadow-xl rounded-xl w-100 max-[832px]:w-screen max-[832px]:flex max-[832px]:flex-row max-[832px]:items-center">
+                  <div className="card-body shadow-xl rounded-xl w-full max-w-[832px] mx-auto h-[400px] flex items-center justify-center">
                     <figure className="px-5 pt-5 max-[832px]:p-0">
-                      <img src={data.doctor.image} alt="Shoes" className="rounded-xl" width="200" />
+                      <img
+                        src={data.doctor.image}
+                        alt="Shoes"
+                        className="rounded-xl mb-6"
+                        width="200"
+                      />
                     </figure>
                     <div className="flex flex-col items-a max-[832px]:items-start max-[832px]:h-36">
                       <h2 className="card-title">{data.doctor.name}</h2>
@@ -88,7 +93,11 @@ function ViewAppointment() {
               </div>
             </div>
             <div className="card-body flex items-center justify-center">
-              <button onClick={() => navigate("/reservations")} id="close" className="btn bg-emerald-500 hover:bg-emerald-700 rounded-full text-white w-52">
+              <button
+                onClick={() => navigate("/reservations")}
+                id="close"
+                className="w-full mx-auto max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl px-10 sm:px-20 md:px-32 lg:px-80 xl:px-64 py-3 mt-12 rounded-full bg-emerald-500 hover:bg-emerald-700 text-white"
+              >
                 Close
               </button>
             </div>
