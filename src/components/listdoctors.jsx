@@ -23,16 +23,27 @@ function ListDoctor() {
         <>
           <div className="flex flex-col gap-6 overflow-y-auto lg:px-20 px-5 py-10  ">
             {data.map((doctor, index) => (
-              <div className="card card-compact bg-base-100 shadow-xl flex flex-row items-center px-4" key={doctor.id}>
+              <div
+                className="card card-compact bg-base-100 shadow-xl flex flex-row items-center px-4"
+                key={doctor.id}
+              >
                 <div className="card-body flex flex-row" key={doctor.id}>
                   <div>
                     <figure className="w-60">
-                      <img src={doctor.image} alt={doctor.image} className="w-40" />
+                      <img
+                        src={doctor.image}
+                        alt={doctor.image}
+                        className="w-40 h-40 object-cover rounded-full shadow-md"
+                      />
                     </figure>
                   </div>
                   <div>
                     <h2 className="card-title">{doctor.name}</h2>
-                    <p>{doctor.specialist ? doctor.specialist.name : "No specialist"}</p>
+                    <p>
+                      {doctor.specialist
+                        ? doctor.specialist.name
+                        : "No specialist"}
+                    </p>
                     <div className="card-actions justify-between items-center">
                       <div className="rating">
                         {[...Array(5)].map((star, i) => {
@@ -54,7 +65,11 @@ function ListDoctor() {
                 </div>
                 <div>
                   <input type="hidden" name={`id_${index}`} value={doctor.id} />
-                  <button type="submit" className="btn bg-blue-500 text-white" onClick={() => handleButtonClick(doctor.id)}>
+                  <button
+                    type="submit"
+                    className="btn bg-blue-500 text-white"
+                    onClick={() => handleButtonClick(doctor.id)}
+                  >
                     Reservasi
                   </button>
                 </div>
