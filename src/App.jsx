@@ -18,6 +18,7 @@ import Reservations from "./pages/reservations";
 import DetailArtikelPage from "./pages/detailartikel";
 import DokterDetail from "./pages/detaildokter";
 import Navbar from "./components/navbar";
+import FAQ from "./pages/faq";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/detailartikel/:id" element={<DetailArtikelPage />} />
+        <Route path="/faqs" element={<FAQ />} />
 
         <Route path="/doctors" element={<BookDokter />} />
         <Route path="/doctors/:id" element={<DokterDetail />} />
