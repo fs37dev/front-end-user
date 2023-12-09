@@ -19,19 +19,20 @@ function ReviewSummary() {
 
   return (
     <>
-      <div className="navbar max-w-6xl py-5">
-        <div
-          className="flex-none"
-          onClick={() => navigate(`/reservations/${params.id}/select-payment`)}
-        >
-          <a className="btn btn-ghost normal-case text-xl shadow-xl">
-            <img src={left} alt="" />
-          </a>
-        </div>
-        <div className="flex-1 justify-center">
-          <a className="btn btn-ghost normal-case text-2xl">Review Summary</a>
+      <div
+        className="absolute lg:py-3 py-3 lg:px-20"
+        onClick={() => navigate(`/reservations/${params.id}/select-payment`)}
+      >
+        <a className="btn btn-ghost normal-case text-xl shadow-xl">
+          <img src={left} alt="" />
+        </a>
+      </div>
+      <div className="flex flex-row justify-center py-5 text-center">
+        <div className="">
+          <a className="font-bold normal-case text-2xl">Review Summary</a>
         </div>
       </div>
+
       {data && (
         <>
           <div className="card bg-base-100 flex justify-content my-auto items-center">
