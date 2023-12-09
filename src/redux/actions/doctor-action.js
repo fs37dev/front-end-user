@@ -53,8 +53,4 @@ const getDoctorDetailSuccess = (doctor) => {
   };
 };
 
-// const clearStateDoctor = () => {
-//   return {
-//     type: "CLEAR_STATE_DOCTOR",
-//   };
-// };
+
