@@ -79,18 +79,17 @@ function DetailDokter() {
     <>
       {data && data.specialist && (
         <>
-          <div className="navbar max-w-6xl lg:px-20 px-15 py-10 flex flex-row">
+          <div className="navbar max-w-6xl py-5 text-center">
             <div className="flex-none" onClick={() => navigate("/doctors")}>
               <a className="btn btn-ghost normal-case text-xl shadow-xl">
                 <img src={left} alt="" />
               </a>
             </div>
             <div className="flex-1 justify-center">
-              <button className="btn btn-ghost normal-case text-2xl">
-                Reservasi
-              </button>
+              <a className="btn btn-ghost normal-case text-2xl">Reservasi</a>
             </div>
           </div>
+
           <form onSubmit={handleSubmit}>
             <div className="alert alert-warning fixed top-0 z-[1] hidden">
               <svg
