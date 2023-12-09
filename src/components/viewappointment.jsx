@@ -77,17 +77,17 @@ function ViewAppointment() {
                 <div className="card-body shadow-xl rounded-xl w-100 max-[832px]:w-screen">
                   <div className="my-auto flex items-center gap-60">
                     <p>Amount</p>
-                    <h5 className="card-title">$ {data.package.price}</h5>
+                    <h5 className="card-title">K {data.package.price}</h5>
                   </div>
                   <div className="my-auto flex items-center gap-60 max-[832px]:justify-between">
                     <p>Duration (30 mins)</p>
-                    <h5 className="card-title">1 x $ {data.package.price}</h5>
+                    <h5 className="card-title">1 x K {data.package.price}</h5>
                   </div>
                   <br />
                   <hr />
                   <div className="my-auto flex items-center gap-60">
                     <p>Total</p>
-                    <h5 className="card-title">$ {1 * data.package.price}</h5>
+                    <h5 className="card-title">K {1 * data.package.price}</h5>
                   </div>
                 </div>
               </div>

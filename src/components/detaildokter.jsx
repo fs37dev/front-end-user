@@ -172,11 +172,11 @@ function DetailDokter() {
                     </span>
                   </div>
                 </div>
-                <div className="menu menu-horizontal bg-base-200 w-80 justify-around rounded-2xl">
+                <div class="flex flex-wrap justify-between bg-base-200 w-80 rounded-2xl p-4">
                   {[...Array(29).keys()].map((day) => (
                     <input
                       key={day + 1}
-                      className="join-item btn"
+                      class="join-item btn mb-2"
                       type="radio"
                       name="date"
                       value={`2023-12-${day + 1}`}
@@ -187,6 +187,7 @@ function DetailDokter() {
                     />
                   ))}
                 </div>
+
                 <div className="navbar">
                   <div className="flex-none py-3 px-2.5">
                     <img src={time} alt="" />
