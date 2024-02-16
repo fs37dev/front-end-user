@@ -4,7 +4,7 @@ export const fetchArtikels = () => {
   return async function (dispatch) {
     dispatch(fetchArtikelsRequest());
 
-    const response = await axios.get("https://back-end-production-a31e.up.railway.app/api/articles");
+    const response = await axios.get("https://localhost:3000/api/articles");
     const artikels = response.data;
     dispatch(fetchArtikelsSuccess(artikels));
   };
@@ -28,7 +28,7 @@ export const fetchArtikelDetail = (id) => {
     try {
       dispatch(fetchArtikelDetailRequest());
 
-      const response = await axios.get(`https://back-end-production-a31e.up.railway.app/api/articles/${id}`);
+      const response = await axios.get(`https://localhost:3000/api/articles/${id}`);
       dispatch({
         type: "FETCH_ARTIKEL_DETAIL_SUCCESS",
         payload: response.data,

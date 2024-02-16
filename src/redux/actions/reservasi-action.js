@@ -17,7 +17,7 @@ export const submitReservation = (doctorId, date, time, packageId, token) => {
 
     try {
       const response = await axios.post(
-        "https://back-end-production-a31e.up.railway.app/api/reservations",
+        "https://localhost:3000/api/reservations",
         {
           doctorId,
           date,
@@ -55,7 +55,9 @@ export const getReservationList = () => {
     dispatch(getReservationListRequest());
 
     try {
-      const response = await axios.get("https://back-end-production-a31e.up.railway.app/api/reservations");
+      const response = await axios.get(
+        "https://localhost:3000/api/reservations"
+      );
 
       dispatch(getReservationListSuccess(response.data.reservations));
     } catch (error) {
@@ -81,7 +83,9 @@ export const getReservationDetail = (id) => {
     try {
       dispatch(getReservationDetailRequest());
 
-      const response = await axios.get(`https://back-end-production-a31e.up.railway.app/api/reservations/${id}`);
+      const response = await axios.get(
+        `https://localhost:3000/api/reservations/${id}`
+      );
 
       dispatch(getReservationDetailSuccess(response.data.reservation));
     } catch (error) {

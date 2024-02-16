@@ -17,7 +17,7 @@ export const registerUser = (name, email, password) => {
     dispatch(registerRequest());
 
     try {
-      await axios.post("https://back-end-production-a31e.up.railway.app/api/auth/register", { name, email, password });
+      await axios.post("https://localhost:3000/api/auth/register", { name, email, password });
 
       dispatch(registerSuccess());
     } catch (error) {
@@ -44,7 +44,10 @@ export const loginUser = (email, password) => {
     dispatch(loginRequest());
 
     try {
-      const response = await axios.post("https://back-end-production-a31e.up.railway.app/api/auth/login", { email, password });
+      const response = await axios.post(
+        "https://localhost:3000/api/auth/login",
+        { email, password }
+      );
       const token = response.data.data.access_token;
 
       localStorage.setItem("token", token);
@@ -76,7 +79,7 @@ export const getUserDetail = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await axios.get("https://back-end-production-a31e.up.railway.app/api/user", {
+      const response = await axios.get("https://localhost:3000/api/user", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -9,9 +9,11 @@ export const getDoctorList = () => {
   return async (dispatch) => {
     dispatch(getDoctorListRequest());
 
-    const response = await axios.get("https://back-end-production-a31e.up.railway.app/api/doctors");
+    // const response = await axios.get("https://localhost:3000/api/doctors");
+    const response = await axios.get("https://localhost:3000");
+    console.log(response.data)
     
-    dispatch(getDoctorListSuccess(response.data.doctors));
+    // dispatch(getDoctorListSuccess(response.data.doctors));
   };
 };
 
@@ -33,8 +35,10 @@ export const getDoctorDetail = (id) => {
     dispatch(getDoctorDetailRequest());
 
     const response = await axios.get(
-      `https://back-end-production-a31e.up.railway.app/api/doctors/${id}`
+      `https://localhost:3000/api/doctors/${id}`
     );
+
+
 
     dispatch(getDoctorDetailSuccess(response.data.doctor));
   };
